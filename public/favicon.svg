@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 60 280 440" fill="none">
+  <defs>
+    <linearGradient id="favGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#F9E29D" />
+      <stop offset="50%" stopColor="#D4AF37" />
+      <stop offset="100%" stopColor="#875E1E" />
+    </linearGradient>
+    <linearGradient id="favBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#1E7EB3" />
+      <stop offset="100%" stopColor="#083654" />
+    </linearGradient>
+    <linearGradient id="favEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#25A584" />
+      <stop offset="100%" stopColor="#064233" />
+    </linearGradient>
+    <radialGradient id="favEye" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stopColor="#1E7EB3" />
+      <stop offset="40%" stopColor="#083654" />
+      <stop offset="70%" stopColor="#F5B83D" />
+      <stop offset="100%" stopColor="#0F6B56" />
+    </radialGradient>
+  </defs>
+
+  <!-- Circular background badge -->
+  <circle cx="160" cy="280" r="160" fill="#0B2B38" />
+
+  <!-- Peacock Head Crest -->
+  <path d="M228 92 L206 65 M231 90 L218 58 M234 89 L232 55 M237 90 L246 58 M239 92 L258 66" stroke="url(#favGold)" stroke-width="2.5" stroke-linecap="round" />
+  <circle cx="206" cy="63" r="5" fill="url(#favBlue)" stroke="url(#favGold)" stroke-width="1.5" />
+  <circle cx="218" cy="56" r="5.5" fill="url(#favBlue)" stroke="url(#favGold)" stroke-width="1.5" />
+  <circle cx="232" cy="53" r="6" fill="url(#favBlue)" stroke="url(#favGold)" stroke-width="1.5" />
+  <circle cx="246" cy="56" r="5.5" fill="url(#favBlue)" stroke="url(#favGold)" stroke-width="1.5" />
+  <circle cx="258" cy="64" r="5" fill="url(#favBlue)" stroke="url(#favGold)" stroke-width="1.5" />
+
+  <!-- S-Curved Neck & Head -->
+  <path d="M228 95 C242 95 258 106 258 120 C258 138 238 160 234 185 C230 208 240 226 244 250 C246 265 238 276 224 282 C208 288 190 280 184 266 C178 250 188 230 196 210 C204 186 214 168 214 146 C214 132 208 120 214 108 C218 100 222 95 228 95 Z" fill="url(#favBlue)" stroke="#083654" stroke-width="2" />
+  <path d="M255 110 L274 116 L255 122 Z" fill="url(#favGold)" />
+  <circle cx="245" cy="110" r="3.5" fill="#191B1E" />
+
+  <!-- Cascading Emerald & Eyespot Feathers -->
+  <path d="M140 280 C115 295 95 328 104 360 C110 382 130 395 150 385 C170 375 172 345 166 315 Z" fill="url(#favEmerald)" stroke="#064233" stroke-width="2" />
+  <ellipse cx="132" cy="345" rx="16" ry="22" fill="url(#favEye)" />
+  <circle cx="132" cy="345" r="4" fill="#FAF6EE" />
+
+  <path d="M100 340 C75 362 55 400 66 435 C74 460 100 472 120 458 C140 444 142 410 132 376 Z" fill="url(#favEmerald)" stroke="#064233" stroke-width="2" />
+  <ellipse cx="94" cy="415" rx="18" ry="24" fill="url(#favEye)" />
+  <circle cx="94" cy="415" r="4.5" fill="#FAF6EE" />
+</svg>

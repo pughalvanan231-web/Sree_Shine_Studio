@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Poppins", "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-display: "Six Caps", sans-serif;
+  --font-heading: "Syne", "Poppins", sans-serif;
+  
+  --color-dark-bg: #0a0a0a;
+  --color-dark-surface: #0c0c0c;
+  --color-dark-card: #121212;
+  --color-dark-border: rgba(255, 255, 255, 0.08);
+  
+  --color-warm-ivory: #FAF7F2;
+  --color-warm-ivory-dark: #ECE5D8;
+  
+  /* Peacock & Brand Palette */
+  --color-peacock-teal: #0B2B38;
+  --color-peacock-blue: #0E5E8A;
+  --color-emerald-plumage: #0F6B56;
+  
+  /* Antique Gold System */
+  --color-antique-gold: #C8A25D;
+  --color-antique-gold-light: #F9E29D;
+  --color-antique-gold-dark: #A67C1E;
+}
+
+:root {
+  --bg-primary: #FAF7F2;
+  --bg-secondary: #FFFFFF;
+  --bg-card: #ECE5D8;
+  --text-primary: #0a0a0a;
+  --text-secondary: #374151;
+  --text-muted: #6B7280;
+  --accent-gold: #C8A25D;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+}
+
+@layer base {
+  * {
+    border-color: var(--border-subtle);
+  }
+  
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    letter-spacing: -0.01em;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #262626;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #C8A25D;
+  }
+}
+
+/* Flolapo Signature Six Caps Giant Title */
+.font-sixcaps {
+  font-family: "Six Caps", sans-serif;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.font-syne {
+  font-family: "Syne", sans-serif;
+}
+
+/* Glassmorphism & Flolapo Light Header */
+.glass-header-dark {
+  background: rgba(250, 247, 242, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #ECE5D8 20%, #C8A25D 80%, #F9E29D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Flolapo Moving Gallery Animations */
+@keyframes marqueeLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marqueeRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marqueeLeft 32s linear infinite;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marqueeRight 32s linear infinite;
+}
+
+.animate-marquee-left:hover,
+.animate-marquee-right:hover {
+  animation-play-state: paused;
+}
+
+/* Magnetic Button Hover Outline */
+.flolapo-pill-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.flolapo-pill-btn:hover {
+  border-color: #C8A25D;
+  background-color: #C8A25D;
+  color: #FAF7F2;
+}
+
+/* Respect reduced motion without breaking JS animations */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  .animate-marquee-left,
+  .animate-marquee-right {
+    animation: none !important;
+  }
+}
