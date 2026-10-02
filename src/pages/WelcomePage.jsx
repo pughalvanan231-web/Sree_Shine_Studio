@@ -39,13 +39,13 @@ export default function WelcomePage() {
         description="Sree Shine Studio — Commercial Photography, Branding, Fashion & Spatial Design."
       />
 
-      <div className="relative w-screen h-[100dvh] bg-[#0a0a0a] overflow-hidden flex flex-col items-center justify-between p-6 sm:p-10">
+      <div className="relative w-screen h-[100dvh] bg-black overflow-hidden flex flex-col items-center justify-between p-6 sm:p-10 select-none">
         {/* Top Studio Label */}
         <div className="z-20 text-[11px] sm:text-xs uppercase tracking-[0.25em] text-[#C8A25D] font-semibold">
           Sree Shine Studio
         </div>
 
-        {/* Video Canvas Container */}
+        {/* Video Canvas Container - Blended with Screen mode & Edge Vignette */}
         <div 
           onClick={handleEnterWebsite}
           className="relative z-10 w-full max-w-4xl flex items-center justify-center my-auto cursor-pointer"
@@ -59,7 +59,8 @@ export default function WelcomePage() {
             preload="auto"
             webkit-playsinline="true"
             onEnded={handleEnterWebsite}
-            className="w-full max-h-[70vh] object-contain drop-shadow-2xl"
+            style={{ mixBlendMode: "screen" }}
+            className="w-full max-h-[75vh] object-contain [mask-image:radial-gradient(ellipse_at_center,black_75%,transparent_100%)] contrast-110"
           />
         </div>
 
