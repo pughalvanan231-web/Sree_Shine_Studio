@@ -208,11 +208,11 @@ export default function FlolapoShowcaseGallery() {
                       }}
                       className="block relative overflow-hidden rounded-[24px] sm:rounded-[32px] bg-[#121212] border border-white/10 hover:border-[#C8A25D]/50 shadow-[0_20px_60px_rgba(0,0,0,0.85)] transition-all duration-500 group cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#C8A25D]"
                     >
-                      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 items-center p-4 sm:p-6 lg:p-8">
+                      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-center p-4 sm:p-6 lg:p-8">
                         
-                        {/* Image Frame */}
+                        {/* Image Frame (7 columns on desktop) */}
                         <div
-                          className={`lg:col-span-8 overflow-hidden rounded-2xl aspect-[16/10] sm:aspect-[16/9] bg-[#1a1a1a] ${
+                          className={`lg:col-span-7 overflow-hidden rounded-2xl aspect-[16/10] sm:aspect-[16/9] bg-[#1a1a1a] ${
                             isEven ? "lg:order-1" : "lg:order-2"
                           }`}
                         >
@@ -224,25 +224,25 @@ export default function FlolapoShowcaseGallery() {
                           />
                         </div>
 
-                        {/* Text Details */}
+                        {/* Text Details (5 columns on desktop with ample room and wrapping) */}
                         <div
-                          className={`lg:col-span-4 p-4 sm:p-6 lg:p-8 flex flex-col justify-between h-full space-y-6 ${
+                          className={`lg:col-span-5 p-2 sm:p-4 lg:p-6 flex flex-col justify-between h-full space-y-6 min-w-0 ${
                             isEven ? "lg:order-2" : "lg:order-1"
                           }`}
                         >
-                          <div className="space-y-4">
-                            <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-[#9CA3AF]">
+                          <div className="space-y-4 min-w-0">
+                            <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs uppercase tracking-widest text-[#9CA3AF]">
                               <span>{item.date}</span>
                               <span>·</span>
-                              <span className="text-[#C8A25D] font-medium">{item.category}</span>
+                              <span className="text-[#C8A25D] font-medium break-words">{item.category}</span>
                             </div>
 
-                            <h3 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-[#ECE5D8] group-hover:text-[#C8A25D] transition-colors leading-tight">
+                            <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl font-bold uppercase tracking-tight text-[#ECE5D8] group-hover:text-[#C8A25D] transition-colors leading-[1.15] break-words">
                               {item.title}
                             </h3>
                           </div>
 
-                          <div className="pt-6 sm:pt-10 flex items-center gap-2 text-xs uppercase tracking-widest text-[#9CA3AF] group-hover:text-[#ECE5D8] transition-colors">
+                          <div className="pt-4 sm:pt-6 flex items-center gap-2 text-xs uppercase tracking-widest text-[#9CA3AF] group-hover:text-[#ECE5D8] transition-colors">
                             <span className="font-medium text-[#C8A25D]">View Discipline Details</span>
                             <ArrowUpRight className="w-4 h-4 text-[#C8A25D] transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                           </div>
