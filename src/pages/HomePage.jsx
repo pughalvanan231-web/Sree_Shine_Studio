@@ -2,7 +2,7 @@ import SeoMeta from "../components/SeoMeta";
 import FlolapoHero from "../components/FlolapoHero";
 import FlolapoShowcaseGallery from "../components/FlolapoShowcaseGallery";
 import FlolapoManifesto from "../components/FlolapoManifesto";
-import FlolapoSkillsRotator from "../components/FlolapoSkillsRotator";
+import CustomerReviews from "../components/CustomerReviews";
 import FlolapoMovingGallery from "../components/FlolapoMovingGallery";
 import FlolapoContactBoxes from "../components/FlolapoContactBoxes";
 
@@ -23,8 +23,8 @@ export default function HomePage() {
       {/* 3. Agency Manifesto & Reach Out CTA */}
       <FlolapoManifesto />
 
-      {/* 4. "OUR SKILLS COVER" Animated List Rotator */}
-      <FlolapoSkillsRotator />
+      {/* 4. Customer Feedback & Client Reviews */}
+      <CustomerReviews />
 
       {/* 5. 4-Row Infinite Moving Gallery Marquee Wall */}
       <FlolapoMovingGallery />

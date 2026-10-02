@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowDown } from "lucide-react";
+import { ArrowDown, ArrowRight } from "lucide-react";
 
 export default function FlolapoHero() {
   const handleScrollToExplore = () => {
@@ -10,70 +10,115 @@ export default function FlolapoHero() {
   };
 
   return (
-    <section className="relative min-h-[90svh] sm:min-h-screen w-full flex flex-col justify-between pt-32 sm:pt-40 pb-10 sm:pb-12 bg-[#0a0a0a] text-[#ECE5D8] overflow-hidden">
-      {/* Subtle Background Ambience */}
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center opacity-25 filter grayscale"
-        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=2000&auto=format&fit=crop")' }}
+    <section className="relative min-h-[92svh] sm:min-h-screen w-full flex flex-col justify-between pt-24 sm:pt-28 pb-8 sm:pb-10 bg-[#b67352] text-white overflow-hidden select-none">
+      
+      {/* Terracotta Clay Background with Organic Palm Leaf Shadows */}
+      <div
+        className="absolute inset-0 z-0 bg-[#b67352] pointer-events-none"
+        style={{
+          backgroundImage: `
+            radial-gradient(circle at 50% 35%, rgba(205, 130, 95, 0.4) 0%, rgba(155, 85, 55, 0.85) 100%)
+          `,
+        }}
       />
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#0a0a0a]/80 via-[#0a0a0a]/60 to-[#0a0a0a] pointer-events-none" />
 
-      {/* Main Hero Content */}
-      <div className="site-container relative z-10 my-auto flex flex-col items-center text-center">
+      {/* Palm Leaf Shadow Graphic Overlay */}
+      <div 
+        className="absolute inset-0 z-0 opacity-25 pointer-events-none mix-blend-multiply bg-cover bg-center"
+        style={{
+          backgroundImage: `url("https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=2000&auto=format&fit=crop")`,
+        }}
+      />
+
+      {/* Main Photographic Collage Stage (Exact Match to Image 2) */}
+      <div className="site-container relative z-10 my-auto flex flex-col items-center justify-center py-4 sm:py-8">
         
-        {/* Label */}
-        <span className="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-[#C8A25D] font-semibold block mb-4 sm:mb-6">
-          Creative Studio & Agency
-        </span>
+        {/* Collage Wrapper */}
+        <div className="relative w-full max-w-3xl sm:max-w-4xl mx-auto flex flex-col items-center">
+          
+          {/* Top Row: 3 Framed Photos */}
+          <div className="relative w-full flex items-center justify-center gap-3 sm:gap-6 md:gap-8 mb-[-36px] sm:mb-[-54px] z-10">
+            
+            {/* Left Photo: Traditional Indian Bride in Saree */}
+            <div className="w-24 sm:w-36 md:w-44 aspect-[3/4] bg-black border-[3px] sm:border-4 border-black rounded-xs overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-300">
+              <img
+                src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=800&auto=format&fit=crop"
+                alt="Traditional Indian Wedding Photography"
+                className="w-full h-full object-cover"
+              />
+            </div>
 
-        {/* Big Short Headline */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold font-heading uppercase text-[#ECE5D8] tracking-tight leading-[1.05] max-w-5xl">
-          Crafting Visual Significance.
-        </h1>
+            {/* Top Center Photo: Gold Jewelry Earrings on Podium */}
+            <div className="w-24 sm:w-36 md:w-44 aspect-[3/4] bg-black border-[3px] sm:border-4 border-black rounded-xs overflow-hidden shadow-2xl -mt-6 sm:-mt-10 hover:scale-105 transition-transform duration-300">
+              <img
+                src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=800&auto=format&fit=crop"
+                alt="Product and Jewelry Photography"
+                className="w-full h-full object-cover"
+              />
+            </div>
 
-        {/* 1-2 Short Lines of Supporting Text */}
-        <p className="mt-5 sm:mt-6 text-sm sm:text-base md:text-lg text-[#9CA3AF] prose-hero mx-auto leading-relaxed">
-          We partner with ambitious brands to create commercial photography, tactile textiles, distinct identities, and digital experiences.
-        </p>
+            {/* Right Photo: Fashion Model in Green Studio */}
+            <div className="w-24 sm:w-36 md:w-44 aspect-[3/4] bg-black border-[3px] sm:border-4 border-black rounded-xs overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-300">
+              <img
+                src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop"
+                alt="Editorial Fashion Model Photography"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
 
-        {/* CTAs */}
-        <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-          <Link
-            to="/work"
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#C8A25D] hover:bg-[#DFB873] text-black font-semibold text-xs sm:text-sm uppercase tracking-wider rounded-full shadow-md transition-all duration-200 active:scale-95"
-          >
-            <span>Explore Work</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+          {/* Center Main Feature Photo: Black & White Editorial Woman Portrait */}
+          <div className="relative z-20 w-64 sm:w-96 md:w-[480px] aspect-[16/10] bg-black border-4 sm:border-[5px] border-black rounded-xs overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.75)] hover:scale-102 transition-transform duration-300">
+            <img
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=85&w=1200&auto=format&fit=crop"
+              alt="Editorial Portrait Photography"
+              className="w-full h-full object-cover filter grayscale contrast-110"
+            />
+          </div>
 
-          <Link
-            to="/services"
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#151515] hover:bg-[#202020] text-[#ECE5D8] border border-white/10 font-semibold text-xs sm:text-sm uppercase tracking-wider rounded-full transition-all duration-200"
-          >
-            <span>Disciplines</span>
-          </Link>
+          {/* Bottom Peeking Photo: Silk Drape Saree */}
+          <div className="relative z-10 w-24 sm:w-32 md:w-36 aspect-[3/4] bg-black border-[3px] sm:border-4 border-black rounded-xs overflow-hidden shadow-xl -mt-6 sm:-mt-10 hover:scale-105 transition-transform duration-300">
+            <img
+              src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+              alt="Silk and Textile Photography"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Giant Condensed "PHOTOGRAPHY" Title Overlay (Exact Match to Image 2) */}
+          <div className="relative z-30 -mt-10 sm:-mt-16 md:-mt-20 text-center pointer-events-none">
+            <h1 className="font-sixcaps text-7xl xs:text-8xl sm:text-9xl md:text-[140px] lg:text-[170px] xl:text-[200px] font-normal uppercase tracking-wider text-white drop-shadow-[0_8px_24px_rgba(0,0,0,0.6)] leading-none">
+              PHOTOGRAPHY
+            </h1>
+          </div>
+
         </div>
 
       </div>
 
-      {/* Hero Footer Bar */}
-      <div className="site-container relative z-10 flex items-center justify-between pt-6 border-t border-white/10 text-xs text-[#9CA3AF]">
+      {/* Hero Bottom Bar */}
+      <div className="site-container relative z-20 flex items-center justify-between pt-4 border-t border-white/20 text-xs text-white/80">
         <button
           type="button"
           onClick={handleScrollToExplore}
-          className="inline-flex items-center gap-2 uppercase tracking-widest text-[#9CA3AF] hover:text-[#C8A25D] transition-colors focus:outline-none"
+          className="inline-flex items-center gap-2 uppercase tracking-widest text-white/90 hover:text-white transition-colors cursor-pointer"
           aria-label="Scroll to Explore"
         >
-          <ArrowDown className="w-3.5 h-3.5 text-[#C8A25D]" />
+          <ArrowDown className="w-3.5 h-3.5 text-white animate-bounce" />
           <span>Scroll to Explore</span>
         </button>
 
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#C8A25D]" />
-          <span className="text-[11px] uppercase tracking-wider text-[#ECE5D8]">Bengaluru · Coimbatore</span>
+        <div className="flex items-center gap-4">
+          <Link
+            to="/work"
+            className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-black/40 hover:bg-black text-white text-xs uppercase tracking-wider font-semibold transition-all border border-white/20"
+          >
+            <span>Explore Work</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
       </div>
+
     </section>
   );
 }
-

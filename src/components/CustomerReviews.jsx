@@ -1,0 +1,260 @@
+import { useState, useEffect } from "react";
+import { Star, MoreVertical, ChevronLeft, ChevronRight } from "lucide-react";
+
+const REVIEWS = [
+  {
+    id: 1,
+    initial: "A",
+    name: "AURA BOTANICALS",
+    subtitle: "Organic Skincare & Lifestyle",
+    timeAgo: "2 months ago",
+    stars: 5,
+    quote:
+      "They made our brand identity and product photography so seamless, precision craft, affordable timeline, and a creative team that genuinely cares!",
+  },
+  {
+    id: 2,
+    initial: "L",
+    name: "LUMINA ATELIER",
+    subtitle: "Luxury Apparel & Fashion",
+    timeAgo: "4 months ago",
+    stars: 5,
+    quote:
+      "Their multidisciplinary approach made our campaign flawless. From surface textile prints to editorial visuals, the attention to detail was unmatched.",
+  },
+  {
+    id: 3,
+    initial: "P",
+    name: "PRAVAAS HERITAGE",
+    subtitle: "Textile Architecture & Craft",
+    timeAgo: "6 months ago",
+    stars: 5,
+    quote:
+      "Exceptional spatial booth design and digital presence. Sree Shine Studio knows how to elevate prestige across every customer touchpoint.",
+  },
+  {
+    id: 4,
+    initial: "Z",
+    name: "ZENITH EXPO",
+    subtitle: "Trade Fair & Spatial Architecture",
+    timeAgo: "7 months ago",
+    stars: 5,
+    quote:
+      "The exhibition pavilion designed by Sree Shine Studio became the centerpiece of the entire summit. Incredible execution and responsive support.",
+  },
+];
+
+export default function CustomerReviews() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const prevReview = () => {
+    setCurrentIndex((prev) => (prev === 0 ? REVIEWS.length - 1 : prev - 1));
+  };
+
+  const nextReview = () => {
+    setCurrentIndex((prev) => (prev === REVIEWS.length - 1 ? 0 : prev + 1));
+  };
+
+  // Optional subtle auto-cycle
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev === REVIEWS.length - 1 ? 0 : prev + 1));
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const current = REVIEWS[currentIndex];
+  const prevItem = REVIEWS[(currentIndex - 1 + REVIEWS.length) % REVIEWS.length];
+  const nextItem = REVIEWS[(currentIndex + 1) % REVIEWS.length];
+
+  return (
+    <section
+      id="customer-reviews"
+      className="relative py-24 sm:py-32 bg-[#0a0a0a] text-[#ECE5D8] border-t border-white/10 overflow-hidden select-none"
+      aria-label="Client Feedback Showcase"
+    >
+      {/* Ambient Gold Glow Rings in Background (Matching Reference) */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[850px] h-[600px] sm:h-[850px] pointer-events-none rounded-full border border-[#C8A25D]/10 bg-radial-gradient from-[#C8A25D]/5 via-transparent to-transparent -z-0 blur-2xl" />
+      <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full border-2 border-[#C8A25D]/15 pointer-events-none -z-0 opacity-60" />
+      <div className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full border-2 border-[#C8A25D]/15 pointer-events-none -z-0 opacity-60" />
+
+      {/* Dotted Corner Accents */}
+      <div className="absolute bottom-6 right-6 sm:bottom-10 sm:right-10 grid grid-cols-4 gap-1.5 opacity-20 pointer-events-none">
+        {[...Array(16)].map((_, i) => (
+          <div key={i} className="w-1 h-1 rounded-full bg-[#C8A25D]" />
+        ))}
+      </div>
+
+      <div className="site-container relative z-10">
+        
+        {/* Top Studio Brand Mark Header */}
+        <div className="flex flex-col items-center justify-center mb-10 sm:mb-14 space-y-2">
+          <div className="flex items-center gap-2">
+            <span className="text-[#C8A25D] text-lg font-bold">✦</span>
+            <span className="font-heading text-sm sm:text-base tracking-[0.35em] text-[#ECE5D8] uppercase font-bold">
+              SREE SHINE
+            </span>
+          </div>
+          <span className="text-[10px] uppercase tracking-[0.5em] text-[#C8A25D]">
+            STUDIO
+          </span>
+        </div>
+
+        {/* Carousel Showcase Row with Peeking Side Cards */}
+        <div className="relative max-w-5xl mx-auto flex items-center justify-center">
+          
+          {/* Left Peeking Card (Clickable to go Prev) */}
+          <button
+            type="button"
+            onClick={prevReview}
+            className="hidden md:block absolute -left-12 lg:-left-20 w-44 lg:w-64 h-[420px] rounded-[32px] bg-white/[0.03] backdrop-blur-md border border-white/10 opacity-30 hover:opacity-60 transition-all duration-300 transform -rotate-3 scale-90 cursor-pointer overflow-hidden p-6 text-left"
+            aria-label="Previous Review"
+          >
+            <div className="space-y-3 pointer-events-none">
+              <span className="text-xl font-heading text-white/50 block">Feedback</span>
+              <div className="flex text-[#C8A25D] text-xs">★★★★★</div>
+              <p className="text-[11px] text-white/40 line-clamp-4">"{prevItem.quote}"</p>
+            </div>
+          </button>
+
+          {/* Center Main Glass Card (Exact Match to Reference Design) */}
+          <div className="relative w-full max-w-lg mx-auto rounded-[32px] sm:rounded-[38px] bg-white/[0.05] backdrop-blur-xl border border-white/20 p-6 sm:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.85)] z-10 transition-all duration-300">
+            
+            {/* Title: Client (Light) / Feedback (Bold) */}
+            <div className="space-y-0.5 mb-6">
+              <span className="font-sans text-2xl sm:text-3xl text-[#ECE5D8] font-light block tracking-tight">
+                Client
+              </span>
+              <h2 className="font-heading text-3xl sm:text-5xl font-bold uppercase tracking-tight text-white">
+                Feedback
+              </h2>
+            </div>
+
+            {/* 5 Prominent Gold Stars */}
+            <div className="flex items-center gap-1.5 mb-7">
+              {[...Array(5)].map((_, i) => (
+                <Star
+                  key={i}
+                  className="w-5 h-5 sm:w-6 sm:h-6 fill-[#FFCC00] text-[#FFCC00] drop-shadow-[0_2px_8px_rgba(255,204,0,0.4)]"
+                />
+              ))}
+            </div>
+
+            {/* Dark Review Bubble (Google Review style inside) */}
+            <div className="rounded-2xl bg-[#181818]/95 border border-white/10 p-5 sm:p-6 shadow-inner space-y-4">
+              
+              {/* Reviewer Header */}
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  {/* Avatar Circle with Initial */}
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#DFB873] to-[#A67C1E] text-black font-bold text-base flex items-center justify-center shadow-md">
+                    {current.initial}
+                  </div>
+
+                  {/* Name & Subtitle */}
+                  <div>
+                    <h3 className="font-heading text-sm sm:text-base font-bold text-[#ECE5D8] tracking-wide">
+                      {current.name}
+                    </h3>
+                    <span className="text-[11px] text-[#9CA3AF] block font-sans">
+                      {current.subtitle}
+                    </span>
+                  </div>
+                </div>
+
+                {/* 3 Vertical Dots */}
+                <MoreVertical className="w-4 h-4 text-[#6B7280]" />
+              </div>
+
+              {/* Stars & Time */}
+              <div className="flex items-center gap-2 text-xs">
+                <div className="flex text-[#FFCC00] gap-0.5">
+                  {[...Array(current.stars)].map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 fill-[#FFCC00] text-[#FFCC00]" />
+                  ))}
+                </div>
+                <span className="text-[#9CA3AF] text-[11px]">{current.timeAgo}</span>
+              </div>
+
+              {/* Review Body Text */}
+              <p className="text-xs sm:text-sm text-[#D1D5DB] leading-relaxed font-sans pt-1">
+                "{current.quote}"
+              </p>
+            </div>
+
+            {/* Slider Dots & Mobile Nav */}
+            <div className="flex items-center justify-between mt-6 pt-4 border-t border-white/10">
+              <button
+                type="button"
+                onClick={prevReview}
+                className="w-8 h-8 rounded-full bg-white/5 hover:bg-[#C8A25D] hover:text-black transition-colors flex items-center justify-center text-[#ECE5D8]"
+                aria-label="Previous client review"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+
+              {/* Dot Indicators */}
+              <div className="flex items-center gap-2">
+                {REVIEWS.map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => setCurrentIndex(idx)}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      currentIndex === idx
+                        ? "w-6 bg-[#C8A25D]"
+                        : "w-2 bg-white/20 hover:bg-white/40"
+                    }`}
+                    aria-label={`Go to slide ${idx + 1}`}
+                  />
+                ))}
+              </div>
+
+              <button
+                type="button"
+                onClick={nextReview}
+                className="w-8 h-8 rounded-full bg-white/5 hover:bg-[#C8A25D] hover:text-black transition-colors flex items-center justify-center text-[#ECE5D8]"
+                aria-label="Next client review"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+
+          </div>
+
+          {/* Right Peeking Card (Clickable to go Next) */}
+          <button
+            type="button"
+            onClick={nextReview}
+            className="hidden md:block absolute -right-12 lg:-right-20 w-44 lg:w-64 h-[420px] rounded-[32px] bg-white/[0.03] backdrop-blur-md border border-white/10 opacity-30 hover:opacity-60 transition-all duration-300 transform rotate-3 scale-90 cursor-pointer overflow-hidden p-6 text-left"
+            aria-label="Next Review"
+          >
+            <div className="space-y-3 pointer-events-none">
+              <span className="text-xl font-heading text-white/50 block">Feedback</span>
+              <div className="flex text-[#C8A25D] text-xs">★★★★★</div>
+              <p className="text-[11px] text-white/40 line-clamp-4">"{nextItem.quote}"</p>
+            </div>
+          </button>
+
+        </div>
+
+        {/* Bottom Thank You Pill (Matching Reference) */}
+        <div className="mt-12 sm:mt-16 text-center max-w-xl mx-auto px-4">
+          <div className="inline-block px-6 sm:px-10 py-3.5 rounded-full border border-[#C8A25D]/40 bg-black/60 backdrop-blur-md shadow-lg">
+            <p className="text-xs sm:text-sm text-[#ECE5D8] italic font-serif leading-relaxed">
+              Thank you so much for your valuable feedback! We're thrilled you had a great experience and truly appreciate your support.
+            </p>
+          </div>
+
+          {/* Studio URL footer */}
+          <div className="mt-4">
+            <span className="text-[11px] uppercase tracking-[0.25em] text-[#8C6144] font-mono">
+              www.sreeshinestudio.com
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+}

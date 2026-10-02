@@ -10,10 +10,19 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Home", path: "/home" },
-    { name: "Services", path: "/services" },
+    { name: "Services", path: "/our-services" },
     { name: "Our Work", path: "/work" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
+  ];
+
+  const categoryLinks = [
+    { name: "Photography", path: "/work-category/photography" },
+    { name: "Branding", path: "/work-category/branding" },
+    { name: "Web Design", path: "/work-category/web-design" },
+    { name: "Social Media", path: "/work-category/social-media" },
+    { name: "Digital Marketing", path: "/work-category/digital-marketing" },
+    { name: "Content Production", path: "/work-category/content-production" },
   ];
 
   useEffect(() => {
@@ -122,7 +131,31 @@ export default function Navbar() {
               </NavLink>
             ))}
 
-            <div className="pt-6">
+            <div className="pt-4 border-t border-white/10">
+              <span className="text-[10px] uppercase tracking-[0.25em] text-[#6B7280] font-semibold mb-3 block">
+                Work Categories
+              </span>
+              <div className="grid grid-cols-2 gap-2">
+                {categoryLinks.map((cat) => (
+                  <NavLink
+                    key={cat.path}
+                    to={cat.path}
+                    onClick={() => setMenuOpen(false)}
+                    className={({ isActive }) =>
+                      `text-xs py-2 px-3 rounded-lg border transition-colors ${
+                        isActive
+                          ? "bg-[#C8A25D]/10 text-[#C8A25D] border-[#C8A25D]/30"
+                          : "text-[#9CA3AF] border-white/5 hover:text-[#ECE5D8] hover:border-white/20"
+                      }`
+                    }
+                  >
+                    {cat.name}
+                  </NavLink>
+                ))}
+              </div>
+            </div>
+
+            <div className="pt-4">
               <Link
                 to="/contact"
                 onClick={() => setMenuOpen(false)}
