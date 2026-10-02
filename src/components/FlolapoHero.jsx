@@ -73,14 +73,12 @@ export default function FlolapoHero() {
       ref={sectionRef}
       className="relative min-h-[92vh] sm:min-h-screen w-full flex flex-col justify-between pt-28 sm:pt-36 pb-8 sm:pb-12 px-4 sm:px-8 lg:px-14 bg-black text-[#ECE5D8] overflow-hidden"
     >
-      {/* Background Subtle Radial Glow */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-40"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 50% 35%, rgba(200, 162, 93, 0.09) 0%, rgba(10, 10, 10, 0) 70%)",
-        }}
+      {/* Background Image with Dark Overlay */}
+      <div 
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=2000&auto=format&fit=crop")' }}
       />
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/60 via-black/40 to-black/90 pointer-events-none" />
 
       {/* Main Hero Center Caption with Parallax Container */}
       <div
