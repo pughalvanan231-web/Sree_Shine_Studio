@@ -8,7 +8,7 @@ export default function ProcessSection() {
   const steps = STUDIO_INFO.processSteps;
 
   return (
-    <section className="py-24 bg-[#F4EFE6] relative overflow-hidden border-y border-[#DDD2BF]/50">
+    <section className="py-24 bg-[#F4EFE6] relative overflow-hidden border-y border-white/10/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -22,10 +22,10 @@ export default function ProcessSection() {
           <span className="text-xs uppercase tracking-widest text-[#A67C1E] font-semibold">
             Our Approach
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-[#191B1E]">
+          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-semibold text-[#ECE5D8]">
             How We Bring Ideas to Light
           </h2>
-          <p className="text-[#585C65] text-sm sm:text-base">
+          <p className="text-[#9CA3AF] text-sm sm:text-base">
             Four disciplined steps from initial inspiration to flawless launch.
           </p>
         </motion.div>
@@ -56,19 +56,19 @@ export default function ProcessSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.65, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
-                  className="bg-[#FBF9F5] p-6 sm:p-7 rounded-2xl border border-[#DDD2BF]/80 shadow-sm flex flex-col justify-between"
+                  className="bg-black p-6 sm:p-7 rounded-2xl border border-white/10 shadow-sm flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-[#F4EFE6] text-[#A67C1E] flex items-center justify-center border border-[#DDD2BF]/60">
+                      <div className="w-12 h-12 rounded-xl bg-[#F4EFE6] text-[#A67C1E] flex items-center justify-center border border-white/10/60">
                         <Icon className="w-5 h-5" />
                       </div>
-                      <span className="font-serif text-lg font-bold text-[#C8A25D]">
+                      <span className="font-heading text-lg font-bold text-[#C8A25D]">
                         {item.step}
                       </span>
                     </div>
 
-                    <h3 className="font-serif text-2xl font-semibold text-[#191B1E] mb-1">
+                    <h3 className="font-heading text-2xl font-semibold text-[#ECE5D8] mb-1">
                       {item.title}
                     </h3>
                     
@@ -76,7 +76,7 @@ export default function ProcessSection() {
                       {item.headline}
                     </p>
 
-                    <p className="text-sm text-[#585C65] leading-relaxed">
+                    <p className="text-sm text-[#9CA3AF] leading-relaxed">
                       {item.description}
                     </p>
                   </div>

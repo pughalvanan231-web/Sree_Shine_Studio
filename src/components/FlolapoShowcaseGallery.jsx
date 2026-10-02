@@ -97,7 +97,7 @@ export default function FlolapoShowcaseGallery() {
     <section
       ref={containerRef}
       id="showcase-gallery"
-      className="relative py-20 sm:py-32 bg-[#0a0a0a] text-[#ECE5D8]"
+      className="relative py-20 sm:py-32 bg-black text-[#ECE5D8]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -113,7 +113,7 @@ export default function FlolapoShowcaseGallery() {
           </div>
           <Link
             to="/work"
-            className="flolapo-pill-btn px-6 py-3 text-xs uppercase tracking-widest text-[#ECE5D8] font-medium self-start md:self-auto group"
+            className="px-6 py-2.5 bg-[#C8A25D] text-black hover:bg-[#DFB873] rounded font-semibold transition-colors inline-flex items-center justify-center[#ECE5D8] font-medium self-start md:self-auto group"
           >
             <span>All Projects</span>
             <ArrowUpRight className="w-3.5 h-3.5 ml-2 text-[#C8A25D] group-hover:text-black transition-colors" />

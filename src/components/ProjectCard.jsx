@@ -11,7 +11,7 @@ export default function ProjectCard({ project, index = 0, isLarge = false }) {
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.65, delay: (index % 3) * 0.1, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
-        "group relative flex flex-col justify-between rounded-2xl overflow-hidden bg-white border border-[#DDD2BF]/80 shadow-sm hover:shadow-xl transition-shadow duration-300",
+        "group relative flex flex-col justify-between rounded-2xl overflow-hidden bg-[#121212] border border-white/10 shadow-sm hover:shadow-xl transition-shadow duration-300",
         isLarge ? "md:col-span-2 md:row-span-2" : ""
       )}
     >
@@ -40,32 +40,32 @@ export default function ProjectCard({ project, index = 0, isLarge = false }) {
         
         {/* Category Pill */}
         <div className="absolute top-4 left-4 z-10">
-          <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-[#FBF9F5]/92 backdrop-blur-md text-[#0B2B38] border border-[#DDD2BF] shadow-xs">
+          <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-black/92 backdrop-blur-md text-[#0B2B38] border border-white/10 shadow-xs">
             {project.category}
           </span>
         </div>
 
         {/* Hover Arrow Badge */}
-        <div className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-[#FBF9F5] text-[#0B2B38] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 transform translate-y-1 group-hover:translate-y-0 shadow-md">
+        <div className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black text-[#0B2B38] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 transform translate-y-1 group-hover:translate-y-0 shadow-md">
           <ArrowUpRight className="w-4 h-4 text-[#A67C1E]" />
         </div>
       </Link>
 
       {/* Info Section */}
-      <div className="p-6 flex flex-col justify-between flex-1 bg-white">
+      <div className="p-6 flex flex-col justify-between flex-1 bg-[#121212]">
         <div>
           <div className="flex items-center justify-between text-xs text-[#848994] mb-1.5">
             <span>{project.client}</span>
             <span>{project.year}</span>
           </div>
           
-          <h3 className="font-serif text-2xl font-semibold text-[#191B1E] group-hover:text-[#A67C1E] transition-colors leading-snug">
+          <h3 className="font-heading text-2xl font-semibold text-[#ECE5D8] group-hover:text-[#A67C1E] transition-colors leading-snug">
             <Link to={`/work/${project.slug}`} className="focus-visible:outline-none">
               {project.title}
             </Link>
           </h3>
           
-          <p className="mt-2 text-sm text-[#585C65] line-clamp-2 leading-relaxed">
+          <p className="mt-2 text-sm text-[#9CA3AF] line-clamp-2 leading-relaxed">
             {project.shortDescription}
           </p>
         </div>

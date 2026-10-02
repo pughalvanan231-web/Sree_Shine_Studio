@@ -28,7 +28,7 @@ export default function WorkPage() {
       />
 
       {/* Filter Bar & Gallery */}
-      <section className="py-16 bg-[#FBF9F5]">
+      <section className="py-16 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Category Filter Pills */}
@@ -44,7 +44,7 @@ export default function WorkPage() {
                     "relative px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C4A47C]",
                     isActive
                       ? "bg-[#191B1E] text-[#FBF9F5] shadow-md"
-                      : "bg-[#F3EFE7] text-[#585C65] hover:text-[#191B1E] hover:bg-[#ECE5D8] border border-[#DDD2BF]"
+                      : "bg-[#121212] text-[#9CA3AF] hover:text-[#ECE5D8] hover:bg-[#ECE5D8] border border-white/10"
                   )}
                   aria-pressed={isActive}
                 >

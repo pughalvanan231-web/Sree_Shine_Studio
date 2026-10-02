@@ -71,7 +71,7 @@ export default function FlolapoHero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[92vh] sm:min-h-screen w-full flex flex-col justify-between pt-28 sm:pt-36 pb-8 sm:pb-12 px-4 sm:px-8 lg:px-14 bg-[#0a0a0a] text-[#ECE5D8] overflow-hidden"
+      className="relative min-h-[92vh] sm:min-h-screen w-full flex flex-col justify-between pt-28 sm:pt-36 pb-8 sm:pb-12 px-4 sm:px-8 lg:px-14 bg-black text-[#ECE5D8] overflow-hidden"
     >
       {/* Background Subtle Radial Glow */}
       <div
@@ -89,7 +89,7 @@ export default function FlolapoHero() {
       >
         {/* Massive Agency Title */}
         <div ref={titleRef} className="w-full">
-          <h1 className="font-sixcaps text-7xl xs:text-8xl sm:text-9xl md:text-[140px] lg:text-[180px] xl:text-[210px] tracking-wide text-[#ECE5D8] leading-none uppercase font-normal select-none">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading uppercase text-[#ECE5D8]">
             Sree Shine Studio
           </h1>
         </div>

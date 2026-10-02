@@ -84,7 +84,7 @@ export default function LightboxModal({ images, activeIndex, isOpen, onClose, on
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="max-h-[75vh] max-w-full object-contain rounded-lg shadow-2xl"
+              className="max-h-[75vh] max-w-full object-contain rounded-lg shadow-lg"
             />
           </div>
 

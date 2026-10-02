@@ -8,7 +8,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#0a0a0a] text-[#ECE5D8] border-t border-white/10 py-12 sm:py-16">
+    <footer className="bg-black text-[#ECE5D8] border-t border-white/10 py-12 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           
@@ -26,41 +26,20 @@ export default function Footer() {
           </button>
 
           {/* Copyright */}
-          <div className="text-center text-xs text-[#9CA3AF] tracking-wide">
+          <div className="text-center text-sm text-[#9CA3AF] tracking-wide">
             © {currentYear} <span className="text-[#ECE5D8] font-medium">Sree Shine Studio — Creative Studio & Agency</span>. All rights reserved.
           </div>
 
           {/* Socials */}
-          <div className="flex items-center gap-4 text-xs uppercase tracking-widest text-[#9CA3AF]">
+          <div className="flex items-center gap-4 text-sm font-medium text-[#9CA3AF]">
             <div className="flex items-center gap-2 text-[#C8A25D]">
-              <Share2 className="w-3.5 h-3.5" />
+              <Share2 className="w-4 h-4" />
               <span>Follow Us</span>
             </div>
             <div className="flex items-center gap-4 text-[#ECE5D8]">
-              <a
-                href="https://behance.net"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-[#C8A25D] transition-colors"
-              >
-                Behance
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-[#C8A25D] transition-colors"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-[#C8A25D] transition-colors"
-              >
-                Instagram
-              </a>
+              <a href="https://behance.net" target="_blank" rel="noreferrer" className="hover:text-[#C8A25D] transition-colors">Behance</a>
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-[#C8A25D] transition-colors">LinkedIn</a>
+              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-[#C8A25D] transition-colors">Instagram</a>
             </div>
           </div>
 

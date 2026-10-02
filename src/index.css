@@ -26,14 +26,14 @@
 }
 
 :root {
-  --bg-primary: #FAF7F2;
-  --bg-secondary: #FFFFFF;
-  --bg-card: #ECE5D8;
-  --text-primary: #0a0a0a;
-  --text-secondary: #374151;
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #121212;
+  --bg-card: #0c0c0c;
+  --text-primary: #ECE5D8;
+  --text-secondary: #9CA3AF;
   --text-muted: #6B7280;
   --accent-gold: #C8A25D;
-  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-subtle: rgba(255, 255, 255, 0.08);
 }
 
 @layer base {
@@ -68,82 +68,7 @@
   }
 }
 
-/* Flolapo Signature Six Caps Giant Title */
-.font-sixcaps {
-  font-family: "Six Caps", sans-serif;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
 
-.font-syne {
-  font-family: "Syne", sans-serif;
-}
-
-/* Glassmorphism & Flolapo Light Header */
-.glass-header-dark {
-  background: rgba(250, 247, 242, 0.82);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-
-.gold-gradient-text {
-  background: linear-gradient(135deg, #ECE5D8 20%, #C8A25D 80%, #F9E29D 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Flolapo Moving Gallery Animations */
-@keyframes marqueeLeft {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes marqueeRight {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0%);
-  }
-}
-
-.animate-marquee-left {
-  display: flex;
-  width: max-content;
-  animation: marqueeLeft 32s linear infinite;
-}
-
-.animate-marquee-right {
-  display: flex;
-  width: max-content;
-  animation: marqueeRight 32s linear infinite;
-}
-
-.animate-marquee-left:hover,
-.animate-marquee-right:hover {
-  animation-play-state: paused;
-}
-
-/* Magnetic Button Hover Outline */
-.flolapo-pill-btn {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 9999px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.flolapo-pill-btn:hover {
-  border-color: #C8A25D;
-  background-color: #C8A25D;
-  color: #FAF7F2;
-}
 
 /* Respect reduced motion without breaking JS animations */
 @media (prefers-reduced-motion: reduce) {

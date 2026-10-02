@@ -18,7 +18,7 @@ export default function AnimatedHero() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[96vh] flex flex-col justify-between pt-28 sm:pt-32 pb-12 bg-[#FBF9F5] overflow-hidden"
+      className="relative min-h-[96vh] flex flex-col justify-between pt-28 sm:pt-32 pb-12 bg-black overflow-hidden"
     >
       {/* Radiant Background Aura and Ornamental Gold Arc */}
       <motion.div
@@ -64,19 +64,19 @@ export default function AnimatedHero() {
             className="lg:col-span-6 space-y-8 text-left order-2 lg:order-1"
           >
             {/* Studio Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F4EFE6] border border-[#DDD2BF] text-xs font-semibold text-[#0B2B38]">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F4EFE6] border border-white/10 text-xs font-semibold text-[#0B2B38]">
               <Sparkles className="w-3.5 h-3.5 text-[#C8A25D]" />
               <span>Sree Shine Studio · Creative Excellence</span>
             </div>
 
             {/* Main Headline */}
             <div className="space-y-4">
-              <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[5.2rem] leading-[1.04] tracking-tight text-[#191B1E] font-medium">
+              <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-[5.2rem] leading-[1.04] tracking-tight text-[#ECE5D8] font-medium">
                 Your vision.<br />
                 <span className="italic font-normal text-[#C8A25D]">Our creative</span> spark.
               </h1>
 
-              <p className="text-lg sm:text-xl text-[#585C65] max-w-xl font-normal leading-relaxed">
+              <p className="text-lg sm:text-xl text-[#9CA3AF] max-w-xl font-normal leading-relaxed">
                 Photography, branding, and digital experiences crafted to make your business shine.
               </p>
             </div>
@@ -93,7 +93,7 @@ export default function AnimatedHero() {
 
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#F4EFE6] hover:bg-[#ECE5D8] text-[#191B1E] text-sm font-medium border border-[#DDD2BF] rounded-full transition-all duration-200 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C8A25D]"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-[#F4EFE6] hover:bg-[#ECE5D8] text-[#ECE5D8] text-sm font-medium border border-white/10 rounded-full transition-all duration-200 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C8A25D]"
               >
                 <span>Start a Project</span>
                 <ArrowUpRight className="w-4 h-4 text-[#A67C1E]" />
@@ -101,17 +101,17 @@ export default function AnimatedHero() {
             </div>
 
             {/* Key Studio Pillars Mini Grid */}
-            <div className="pt-8 border-t border-[#DDD2BF]/60 grid grid-cols-3 gap-6 max-w-lg">
+            <div className="pt-8 border-t border-white/10/60 grid grid-cols-3 gap-6 max-w-lg">
               <div>
-                <span className="block font-serif text-2xl font-semibold text-[#0B2B38]">8+</span>
+                <span className="block font-heading text-2xl font-semibold text-[#0B2B38]">8+</span>
                 <span className="text-xs text-[#848994]">Disciplines in-house</span>
               </div>
               <div>
-                <span className="block font-serif text-2xl font-semibold text-[#0B2B38]">100%</span>
+                <span className="block font-heading text-2xl font-semibold text-[#0B2B38]">100%</span>
                 <span className="text-xs text-[#848994]">Tailored craft</span>
               </div>
               <div>
-                <span className="block font-serif text-2xl font-semibold text-[#0B2B38]">Bengaluru</span>
+                <span className="block font-heading text-2xl font-semibold text-[#0B2B38]">Bengaluru</span>
                 <span className="text-xs text-[#848994]">Creative studio</span>
               </div>
             </div>

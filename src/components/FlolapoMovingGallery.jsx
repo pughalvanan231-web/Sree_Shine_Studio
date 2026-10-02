@@ -126,7 +126,7 @@ export default function FlolapoMovingGallery() {
     return combined.map((item, idx) => (
       <div
         key={idx}
-        className="px-6 sm:px-10 py-5 sm:py-7 mx-2.5 rounded-2xl bg-[#0a0a0a] text-[#ECE5D8] border border-black/10 shadow-sm shrink-0 flex items-center justify-between gap-6 min-w-[240px] sm:min-w-[300px] hover:border-[#C8A25D] transition-colors group cursor-default"
+        className="px-6 sm:px-10 py-5 sm:py-7 mx-2.5 rounded-2xl bg-black text-[#ECE5D8] border border-white/10 shadow-sm shrink-0 flex items-center justify-between gap-6 min-w-[240px] sm:min-w-[300px] hover:border-[#C8A25D] transition-colors group cursor-default"
       >
         <div>
           <h4 className="font-syne text-base sm:text-lg font-bold uppercase tracking-wider text-[#ECE5D8] group-hover:text-[#C8A25D] transition-colors">

@@ -26,7 +26,7 @@ export default function FlolapoManifesto() {
         >
           <Link
             to="/contact"
-            className="flolapo-pill-btn px-10 py-4 text-sm sm:text-base uppercase tracking-widest text-[#ECE5D8] font-semibold group shadow-lg inline-flex items-center gap-3"
+            className="px-6 py-2.5 bg-[#C8A25D] text-black hover:bg-[#DFB873] rounded font-semibold transition-colors inline-flex items-center justify-center:text-base uppercase tracking-widest text-[#ECE5D8] font-semibold group shadow-lg inline-flex items-center gap-3"
           >
             <span>Reach Out!</span>
             <ArrowUpRight className="w-4 h-4 text-[#C8A25D] group-hover:text-black transition-colors" />

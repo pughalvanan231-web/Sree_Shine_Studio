@@ -92,7 +92,7 @@ export default function FlolapoSkillsRotator() {
     // Outer scroll container that creates the scroll duration (e.g. 260vh)
     <div
       ref={containerRef}
-      className="relative w-full h-[280vh] bg-[#0a0a0a] text-[#ECE5D8] border-t border-white/5"
+      className="relative w-full h-[280vh] bg-black text-[#ECE5D8] border-t border-white/5"
     >
       {/* Sticky Viewport-Height Stage (Zero React DOM mutations) */}
       <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center overflow-hidden">

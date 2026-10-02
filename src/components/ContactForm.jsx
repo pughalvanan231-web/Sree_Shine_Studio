@@ -62,20 +62,20 @@ export default function ContactForm({ initialService = "" }) {
   };
 
   return (
-    <div className="bg-white p-6 sm:p-10 rounded-2xl border border-[#DDD2BF]/80 shadow-md">
+    <div className="bg-[#121212] p-6 sm:p-10 rounded-2xl border border-white/10 shadow-md">
       {status === "success" ? (
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           className="text-center py-12 space-y-5"
         >
-          <div className="w-16 h-16 bg-[#C4A47C]/15 text-[#9C7741] rounded-full flex items-center justify-center mx-auto">
+          <div className="w-16 h-16 bg-[#C4A47C]/15 text-[#C8A25D] rounded-full flex items-center justify-center mx-auto">
             <CheckCircle2 className="w-8 h-8" />
           </div>
-          <h3 className="font-serif text-3xl font-semibold text-[#191B1E]">
+          <h3 className="font-heading text-3xl font-semibold text-[#ECE5D8]">
             Inquiry Received
           </h3>
-          <p className="text-sm text-[#585C65] max-w-md mx-auto leading-relaxed">
+          <p className="text-sm text-[#9CA3AF] max-w-md mx-auto leading-relaxed">
             {statusMessage}
           </p>
           <div className="pt-4">
@@ -85,7 +85,7 @@ export default function ContactForm({ initialService = "" }) {
                 setFormData({ name: "", email: "", phone: "", service: "", message: "" });
                 setStatus("idle");
               }}
-              className="px-6 py-2.5 bg-[#F3EFE7] hover:bg-[#ECE5D8] text-[#191B1E] text-xs font-semibold rounded-full border border-[#DDD2BF] transition-colors"
+              className="px-6 py-2.5 bg-[#121212] hover:bg-[#ECE5D8] text-[#ECE5D8] text-xs font-semibold rounded-full border border-white/10 transition-colors"
             >
               Send Another Message
             </button>
@@ -94,7 +94,7 @@ export default function ContactForm({ initialService = "" }) {
       ) : (
         <form onSubmit={handleSubmit} noValidate className="space-y-6">
           <div className="space-y-1">
-            <h3 className="font-serif text-2xl font-semibold text-[#191B1E]">
+            <h3 className="font-heading text-2xl font-semibold text-[#ECE5D8]">
               Tell Us About Your Project
             </h3>
             <p className="text-xs text-[#848994]">
@@ -104,8 +104,8 @@ export default function ContactForm({ initialService = "" }) {
 
           {/* Name Field */}
           <div>
-            <label htmlFor="name" className="block text-xs font-semibold uppercase tracking-wider text-[#191B1E] mb-2">
-              Full Name <span className="text-[#9C7741]">*</span>
+            <label htmlFor="name" className="block text-xs font-semibold uppercase tracking-wider text-[#ECE5D8] mb-2">
+              Full Name <span className="text-[#C8A25D]">*</span>
             </label>
             <input
               type="text"
@@ -114,8 +114,8 @@ export default function ContactForm({ initialService = "" }) {
               value={formData.name}
               onChange={handleChange}
               placeholder="e.g., Alistair Vance"
-              className={`w-full px-4 py-3 rounded-xl border text-sm bg-[#FBF9F5] focus:bg-white text-[#191B1E] placeholder-[#848994] transition-colors focus:outline-none focus:ring-2 focus:ring-[#C4A47C] ${
-                errors.name ? "border-red-500 bg-red-50/20" : "border-[#DDD2BF]"
+              className={`w-full px-4 py-3 rounded-xl border text-sm bg-black focus:bg-[#121212] text-[#ECE5D8] placeholder-[#848994] transition-colors focus:outline-none focus:ring-2 focus:ring-[#C4A47C] ${
+                errors.name ? "border-red-500 bg-red-50/20" : "border-white/10"
               }`}
             />
             {errors.name && (
@@ -129,8 +129,8 @@ export default function ContactForm({ initialService = "" }) {
           {/* Email & Phone Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
-              <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-wider text-[#191B1E] mb-2">
-                Email Address <span className="text-[#9C7741]">*</span>
+              <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-wider text-[#ECE5D8] mb-2">
+                Email Address <span className="text-[#C8A25D]">*</span>
               </label>
               <input
                 type="email"
@@ -139,8 +139,8 @@ export default function ContactForm({ initialService = "" }) {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="you@company.com"
-                className={`w-full px-4 py-3 rounded-xl border text-sm bg-[#FBF9F5] focus:bg-white text-[#191B1E] placeholder-[#848994] transition-colors focus:outline-none focus:ring-2 focus:ring-[#C4A47C] ${
-                  errors.email ? "border-red-500 bg-red-50/20" : "border-[#DDD2BF]"
+                className={`w-full px-4 py-3 rounded-xl border text-sm bg-black focus:bg-[#121212] text-[#ECE5D8] placeholder-[#848994] transition-colors focus:outline-none focus:ring-2 focus:ring-[#C4A47C] ${
+                  errors.email ? "border-red-500 bg-red-50/20" : "border-white/10"
                 }`}
               />
               {errors.email && (
@@ -152,7 +152,7 @@ export default function ContactForm({ initialService = "" }) {
             </div>
 
             <div>
-              <label htmlFor="phone" className="block text-xs font-semibold uppercase tracking-wider text-[#191B1E] mb-2">
+              <label htmlFor="phone" className="block text-xs font-semibold uppercase tracking-wider text-[#ECE5D8] mb-2">
                 Phone Number <span className="text-xs text-[#848994] lowercase font-normal">(optional)</span>
               </label>
               <input
@@ -162,23 +162,23 @@ export default function ContactForm({ initialService = "" }) {
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="+91 98765 43210"
-                className="w-full px-4 py-3 rounded-xl border border-[#DDD2BF] text-sm bg-[#FBF9F5] focus:bg-white text-[#191B1E] placeholder-[#848994] transition-colors focus:outline-none focus:ring-2 focus:ring-[#C4A47C]"
+                className="w-full px-4 py-3 rounded-xl border border-white/10 text-sm bg-black focus:bg-[#121212] text-[#ECE5D8] placeholder-[#848994] transition-colors focus:outline-none focus:ring-2 focus:ring-[#C4A47C]"
               />
             </div>
           </div>
 
           {/* Service Selector */}
           <div>
-            <label htmlFor="service" className="block text-xs font-semibold uppercase tracking-wider text-[#191B1E] mb-2">
-              Primary Service Needed <span className="text-[#9C7741]">*</span>
+            <label htmlFor="service" className="block text-xs font-semibold uppercase tracking-wider text-[#ECE5D8] mb-2">
+              Primary Service Needed <span className="text-[#C8A25D]">*</span>
             </label>
             <select
               id="service"
               name="service"
               value={formData.service}
               onChange={handleChange}
-              className={`w-full px-4 py-3 rounded-xl border text-sm bg-[#FBF9F5] focus:bg-white text-[#191B1E] transition-colors focus:outline-none focus:ring-2 focus:ring-[#C4A47C] ${
-                errors.service ? "border-red-500 bg-red-50/20" : "border-[#DDD2BF]"
+              className={`w-full px-4 py-3 rounded-xl border text-sm bg-black focus:bg-[#121212] text-[#ECE5D8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#C4A47C] ${
+                errors.service ? "border-red-500 bg-red-50/20" : "border-white/10"
               }`}
             >
               <option value="">Select a discipline...</option>
@@ -201,8 +201,8 @@ export default function ContactForm({ initialService = "" }) {
 
           {/* Project Message */}
           <div>
-            <label htmlFor="message" className="block text-xs font-semibold uppercase tracking-wider text-[#191B1E] mb-2">
-              Project Summary & Scope <span className="text-[#9C7741]">*</span>
+            <label htmlFor="message" className="block text-xs font-semibold uppercase tracking-wider text-[#ECE5D8] mb-2">
+              Project Summary & Scope <span className="text-[#C8A25D]">*</span>
             </label>
             <textarea
               id="message"
@@ -211,8 +211,8 @@ export default function ContactForm({ initialService = "" }) {
               value={formData.message}
               onChange={handleChange}
               placeholder="Tell us about your brand, deliverables needed, target timelines, and any visual inspirations..."
-              className={`w-full px-4 py-3 rounded-xl border text-sm bg-[#FBF9F5] focus:bg-white text-[#191B1E] placeholder-[#848994] transition-colors focus:outline-none focus:ring-2 focus:ring-[#C4A47C] resize-y ${
-                errors.message ? "border-red-500 bg-red-50/20" : "border-[#DDD2BF]"
+              className={`w-full px-4 py-3 rounded-xl border text-sm bg-black focus:bg-[#121212] text-[#ECE5D8] placeholder-[#848994] transition-colors focus:outline-none focus:ring-2 focus:ring-[#C4A47C] resize-y ${
+                errors.message ? "border-red-500 bg-red-50/20" : "border-white/10"
               }`}
             />
             {errors.message && (

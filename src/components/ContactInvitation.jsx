@@ -29,7 +29,7 @@ export default function ContactInvitation() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight text-[#FBF9F5]"
+          className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight text-[#FBF9F5]"
         >
           Let’s create something<br />
           <span className="italic text-[#C8A25D]">worth noticing.</span>

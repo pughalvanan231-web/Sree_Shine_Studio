@@ -137,7 +137,7 @@ export default function PhotographicHero() {
           {/* 1. Small introductory label */}
           <div
             ref={labelRef}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold tracking-[0.25em] text-[#F9E29D] uppercase"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#121212]/10 backdrop-blur-md border border-white/20 text-xs font-semibold tracking-[0.25em] text-[#F9E29D] uppercase"
           >
             <Sparkles className="w-3.5 h-3.5 text-[#C8A25D]" />
             <span>SREE SHINE STUDIO</span>
@@ -146,7 +146,7 @@ export default function PhotographicHero() {
           {/* 2. Main Headline */}
           <h1
             ref={headingRef}
-            className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-[5.4rem] font-medium tracking-tight text-white leading-[1.08] max-w-4xl drop-shadow-md"
+            className="font-heading text-4xl sm:text-6xl md:text-7xl lg:text-[5.4rem] font-medium tracking-tight text-white leading-[1.08] max-w-4xl drop-shadow-md"
           >
             Creative Experiences.<br />
             <span className="italic font-normal text-[#F9E29D]">Lasting Impressions.</span>

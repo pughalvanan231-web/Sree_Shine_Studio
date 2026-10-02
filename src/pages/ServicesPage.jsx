@@ -73,14 +73,14 @@ export default function ServicesPage() {
         description="Explore Sree Shine Studio's core creative disciplines across commercial photography, textile design, visual identity, exhibitions, and digital engineering."
       />
 
-      <div className="bg-[#0a0a0a] text-[#ECE5D8] min-h-screen">
+      <div className="bg-black text-[#ECE5D8] min-h-screen">
         
         {/* Header Intro Title */}
         <section className="pt-32 sm:pt-44 pb-16 px-4 sm:px-8 lg:px-14 max-w-7xl mx-auto">
           <span className="text-xs uppercase tracking-[0.3em] text-[#C8A25D] font-semibold block mb-4 font-sans">
             DISCIPLINES & CAPABILITIES
           </span>
-          <h1 className="font-sixcaps text-6xl xs:text-7xl sm:text-9xl md:text-[140px] uppercase font-normal text-[#ECE5D8] leading-none">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading uppercase text-[#ECE5D8]">
             Our Services
           </h1>
           <p className="max-w-2xl text-sm sm:text-base text-[#9CA3AF] uppercase tracking-wider mt-4 font-light">
@@ -91,7 +91,7 @@ export default function ServicesPage() {
         {/* 1. Circular Media Presentation Section (Sticky Scroll Container) */}
         <div
           ref={circularContainerRef}
-          className="relative w-full h-[220vh] bg-[#0a0a0a]"
+          className="relative w-full h-[220vh] bg-black"
         >
           <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
             <div
@@ -123,11 +123,11 @@ export default function ServicesPage() {
         {/* 2. White Inset Rounded Services Accordion Section */}
         <section
           ref={whiteSectionRef}
-          className="relative py-20 sm:py-32 bg-[#0a0a0a]"
+          className="relative py-20 sm:py-32 bg-black"
         >
           <div
             ref={whiteWrapperRef}
-            className="w-full bg-[#ffffff] text-[#111111] py-20 sm:py-32 px-4 sm:px-8 lg:px-16 will-change-transform shadow-2xl"
+            className="w-full bg-[#ffffff] text-[#111111] py-20 sm:py-32 px-4 sm:px-8 lg:px-16 will-change-transform shadow-lg"
           >
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
               
@@ -161,7 +161,7 @@ export default function ServicesPage() {
                   return (
                     <div
                       key={service.id}
-                      className="border-b border-black/10 transition-colors pb-4"
+                      className="border-b border-white/10 transition-colors pb-4"
                     >
                       {/* Accordion Trigger Button */}
                       <button
@@ -180,7 +180,7 @@ export default function ServicesPage() {
                           </h3>
                         </div>
 
-                        <div className="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center group-hover:border-[#8C6144] group-hover:bg-[#8C6144]/10 transition-all shrink-0 ml-4">
+                        <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#8C6144] group-hover:bg-[#8C6144]/10 transition-all shrink-0 ml-4">
                           {isOpen ? (
                             <Minus className="w-4 h-4 text-[#8C6144]" />
                           ) : (

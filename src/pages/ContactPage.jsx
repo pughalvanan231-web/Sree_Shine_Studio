@@ -22,7 +22,7 @@ export default function ContactPage() {
         subtitle="Share your vision, project timeline, and required disciplines. Our creative directors will respond with a tailored proposal."
       />
 
-      <section className="py-20 bg-[#FBF9F5]">
+      <section className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             
@@ -35,22 +35,22 @@ export default function ContactPage() {
             <div className="lg:col-span-5 space-y-8">
               
               {/* Studio Card */}
-              <div className="bg-[#F3EFE7] p-8 rounded-2xl border border-[#DDD2BF] space-y-6">
+              <div className="bg-[#121212] p-8 rounded-2xl border border-white/10 space-y-6">
                 <div>
-                  <span className="text-xs uppercase tracking-widest text-[#9C7741] font-semibold block mb-1">
+                  <span className="text-xs uppercase tracking-widest text-[#C8A25D] font-semibold block mb-1">
                     Direct Contact
                   </span>
-                  <h3 className="font-serif text-2xl font-semibold text-[#191B1E]">
+                  <h3 className="font-heading text-2xl font-semibold text-[#ECE5D8]">
                     Sree Shine Studio
                   </h3>
                 </div>
 
-                <div className="space-y-4 text-sm text-[#191B1E]">
+                <div className="space-y-4 text-sm text-[#ECE5D8]">
                   <div className="flex items-start gap-3">
                     <MapPin className="w-5 h-5 text-[#C4A47C] shrink-0 mt-0.5" />
                     <div>
                       <span className="font-semibold block text-xs uppercase tracking-wider text-[#848994]">Studio Location</span>
-                      <p className="mt-0.5 text-xs sm:text-sm text-[#585C65] leading-relaxed">
+                      <p className="mt-0.5 text-xs sm:text-sm text-[#9CA3AF] leading-relaxed">
                         {STUDIO_INFO.location.address}
                       </p>
                     </div>
@@ -62,7 +62,7 @@ export default function ContactPage() {
                       <span className="font-semibold block text-xs uppercase tracking-wider text-[#848994]">Email Inquiries</span>
                       <a
                         href={`mailto:${STUDIO_INFO.contact.email}`}
-                        className="mt-0.5 text-xs sm:text-sm text-[#191B1E] font-medium hover:text-[#9C7741] transition-colors"
+                        className="mt-0.5 text-xs sm:text-sm text-[#ECE5D8] font-medium hover:text-[#C8A25D] transition-colors"
                       >
                         {STUDIO_INFO.contact.email}
                       </a>
@@ -75,7 +75,7 @@ export default function ContactPage() {
                       <span className="font-semibold block text-xs uppercase tracking-wider text-[#848994]">Studio Line</span>
                       <a
                         href={`tel:${STUDIO_INFO.contact.phone.replace(/\s+/g, '')}`}
-                        className="mt-0.5 text-xs sm:text-sm text-[#191B1E] font-medium hover:text-[#9C7741] transition-colors"
+                        className="mt-0.5 text-xs sm:text-sm text-[#ECE5D8] font-medium hover:text-[#C8A25D] transition-colors"
                       >
                         {STUDIO_INFO.contact.formattedPhone}
                       </a>
@@ -86,7 +86,7 @@ export default function ContactPage() {
                     <Clock className="w-5 h-5 text-[#C4A47C] shrink-0 mt-0.5" />
                     <div>
                       <span className="font-semibold block text-xs uppercase tracking-wider text-[#848994]">Studio Hours</span>
-                      <p className="mt-0.5 text-xs sm:text-sm text-[#585C65]">
+                      <p className="mt-0.5 text-xs sm:text-sm text-[#9CA3AF]">
                         {STUDIO_INFO.contact.hours}
                       </p>
                     </div>
@@ -94,7 +94,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Social Channels */}
-                <div className="pt-4 border-t border-[#DDD2BF]">
+                <div className="pt-4 border-t border-white/10">
                   <span className="font-semibold block text-xs uppercase tracking-wider text-[#848994] mb-3">
                     Social & Portfolios
                   </span>
@@ -105,7 +105,7 @@ export default function ContactPage() {
                         href={social.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-3 py-1.5 rounded-lg bg-white border border-[#DDD2BF] text-xs font-medium text-[#191B1E] hover:border-[#C4A47C] hover:text-[#9C7741] transition-colors inline-flex items-center gap-1 shadow-2xs"
+                        className="px-3 py-1.5 rounded-lg bg-[#121212] border border-white/10 text-xs font-medium text-[#ECE5D8] hover:border-[#C4A47C] hover:text-[#C8A25D] transition-colors inline-flex items-center gap-1 shadow-2xs"
                       >
                         <span>{social.name}</span>
                         <ArrowUpRight className="w-3 h-3 opacity-60" />
@@ -116,12 +116,12 @@ export default function ContactPage() {
               </div>
 
               {/* What Happens Next Card */}
-              <div className="bg-white p-7 rounded-2xl border border-[#DDD2BF]/80 shadow-sm space-y-3">
-                <h4 className="font-serif text-lg font-semibold text-[#191B1E] flex items-center gap-2">
+              <div className="bg-[#121212] p-7 rounded-2xl border border-white/10 shadow-sm space-y-3">
+                <h4 className="font-heading text-lg font-semibold text-[#ECE5D8] flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-[#C4A47C]" />
                   <span>What to Expect Next</span>
                 </h4>
-                <ul className="text-xs text-[#585C65] space-y-2 leading-relaxed">
+                <ul className="text-xs text-[#9CA3AF] space-y-2 leading-relaxed">
                   <li>• Initial scope assessment within 24 business hours.</li>
                   <li>• Scheduling of a 30-minute creative alignment session.</li>
                   <li>• Delivery of a comprehensive proposal & timeline roadmap.</li>

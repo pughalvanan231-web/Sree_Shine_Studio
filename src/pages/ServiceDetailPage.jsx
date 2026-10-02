@@ -37,14 +37,14 @@ export default function ServiceDetailPage() {
       />
 
       {/* Breadcrumb & Header */}
-      <div className="pt-28 pb-4 bg-[#FBF9F5] border-b border-[#DDD2BF]/40">
+      <div className="pt-28 pb-4 bg-black border-b border-white/10/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-xs text-[#848994]">
-            <Link to="/home" className="hover:text-[#191B1E] transition-colors">Home</Link>
+            <Link to="/home" className="hover:text-[#ECE5D8] transition-colors">Home</Link>
             <ChevronRight className="w-3.5 h-3.5" />
-            <Link to="/services" className="hover:text-[#191B1E] transition-colors">Services</Link>
+            <Link to="/services" className="hover:text-[#ECE5D8] transition-colors">Services</Link>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-[#191B1E] font-medium">{service.shortTitle}</span>
+            <span className="text-[#ECE5D8] font-medium">{service.shortTitle}</span>
           </div>
         </div>
       </div>
@@ -56,18 +56,18 @@ export default function ServiceDetailPage() {
       />
 
       {/* Service Overview & Hero Media */}
-      <section className="py-16 bg-[#FBF9F5]">
+      <section className="py-16 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             <div className="lg:col-span-6 space-y-6">
-              <span className="text-xs uppercase tracking-widest text-[#9C7741] font-semibold">
+              <span className="text-xs uppercase tracking-widest text-[#C8A25D] font-semibold">
                 Overview & Approach
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#191B1E] leading-snug">
+              <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-[#ECE5D8] leading-snug">
                 Crafting Visual Significance for {service.shortTitle}
               </h2>
-              <p className="text-base text-[#585C65] leading-relaxed">
+              <p className="text-base text-[#9CA3AF] leading-relaxed">
                 {service.summary}
               </p>
 
@@ -83,7 +83,7 @@ export default function ServiceDetailPage() {
             </div>
 
             <div className="lg:col-span-6">
-              <div className="rounded-2xl overflow-hidden border border-[#DDD2BF] shadow-xl aspect-[16/10] bg-[#ECE5D8]">
+              <div className="rounded-2xl overflow-hidden border border-white/10 shadow-xl aspect-[16/10] bg-[#ECE5D8]">
                 <img
                   src={service.heroImage || service.coverImage}
                   alt={service.title}
@@ -97,18 +97,18 @@ export default function ServiceDetailPage() {
       </section>
 
       {/* What You Receive (Deliverables Checklist) */}
-      <section className="py-20 bg-[#F3EFE7] border-y border-[#DDD2BF]/50">
+      <section className="py-20 bg-[#121212] border-y border-white/10/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             
             <div className="lg:col-span-4 space-y-3">
-              <span className="text-xs uppercase tracking-widest text-[#9C7741] font-semibold">
+              <span className="text-xs uppercase tracking-widest text-[#C8A25D] font-semibold">
                 Deliverables & Scope
               </span>
-              <h2 className="font-serif text-3xl font-semibold text-[#191B1E]">
+              <h2 className="font-heading text-3xl font-semibold text-[#ECE5D8]">
                 What You Receive
               </h2>
-              <p className="text-sm text-[#585C65] leading-relaxed">
+              <p className="text-sm text-[#9CA3AF] leading-relaxed">
                 Concrete, production-ready deliverables built with uncompromising attention to craft and technical fidelity.
               </p>
             </div>
@@ -117,10 +117,10 @@ export default function ServiceDetailPage() {
               {service.whatYouReceive.map((item, idx) => (
                 <div
                   key={idx}
-                  className="p-5 rounded-xl bg-white border border-[#DDD2BF]/80 shadow-sm flex items-start gap-3.5"
+                  className="p-5 rounded-xl bg-[#121212] border border-white/10 shadow-sm flex items-start gap-3.5"
                 >
                   <CheckCircle2 className="w-5 h-5 text-[#C4A47C] shrink-0 mt-0.5" />
-                  <span className="text-sm text-[#191B1E] font-medium leading-relaxed">
+                  <span className="text-sm text-[#ECE5D8] font-medium leading-relaxed">
                     {item}
                   </span>
                 </div>
@@ -133,20 +133,20 @@ export default function ServiceDetailPage() {
 
       {/* Relevant Work */}
       {relevantProjects.length > 0 && (
-        <section className="py-20 bg-[#FBF9F5]">
+        <section className="py-20 bg-black">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-end justify-between mb-12">
               <div>
-                <span className="text-xs uppercase tracking-widest text-[#9C7741] font-semibold block mb-1">
+                <span className="text-xs uppercase tracking-widest text-[#C8A25D] font-semibold block mb-1">
                   Selected Demonstrations
                 </span>
-                <h2 className="font-serif text-3xl font-semibold text-[#191B1E]">
+                <h2 className="font-heading text-3xl font-semibold text-[#ECE5D8]">
                   Relevant Case Studies
                 </h2>
               </div>
               <Link
                 to="/work"
-                className="text-xs font-semibold text-[#191B1E] hover:text-[#9C7741] inline-flex items-center gap-1 transition-colors"
+                className="text-xs font-semibold text-[#ECE5D8] hover:text-[#C8A25D] inline-flex items-center gap-1 transition-colors"
               >
                 <span>All Projects</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -164,13 +164,13 @@ export default function ServiceDetailPage() {
 
       {/* FAQs Section */}
       {service.faqs && service.faqs.length > 0 && (
-        <section className="py-20 bg-[#F3EFE7] border-t border-[#DDD2BF]/50">
+        <section className="py-20 bg-[#121212] border-t border-white/10/50">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 space-y-2">
-              <span className="text-xs uppercase tracking-widest text-[#9C7741] font-semibold">
+              <span className="text-xs uppercase tracking-widest text-[#C8A25D] font-semibold">
                 Questions Answered
               </span>
-              <h2 className="font-serif text-3xl font-semibold text-[#191B1E]">
+              <h2 className="font-heading text-3xl font-semibold text-[#ECE5D8]">
                 Frequently Asked Questions
               </h2>
             </div>
@@ -179,13 +179,13 @@ export default function ServiceDetailPage() {
               {service.faqs.map((faq, idx) => (
                 <div
                   key={idx}
-                  className="p-6 rounded-2xl bg-[#FBF9F5] border border-[#DDD2BF]/80 shadow-sm"
+                  className="p-6 rounded-2xl bg-black border border-white/10 shadow-sm"
                 >
-                  <h3 className="font-serif text-lg font-semibold text-[#191B1E] mb-2 flex items-center gap-2">
+                  <h3 className="font-heading text-lg font-semibold text-[#ECE5D8] mb-2 flex items-center gap-2">
                     <HelpCircle className="w-4 h-4 text-[#C4A47C] shrink-0" />
                     <span>{faq.question}</span>
                   </h3>
-                  <p className="text-sm text-[#585C65] leading-relaxed pl-6">
+                  <p className="text-sm text-[#9CA3AF] leading-relaxed pl-6">
                     {faq.answer}
                   </p>
                 </div>
@@ -198,7 +198,7 @@ export default function ServiceDetailPage() {
       {/* Pre-selected Contact CTA */}
       <section className="py-16 bg-[#121315] text-[#FBF9F5] text-center">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-          <h2 className="font-serif text-3xl sm:text-4xl font-medium text-[#FBF9F5]">
+          <h2 className="font-heading text-3xl sm:text-4xl font-medium text-[#FBF9F5]">
             Ready to Begin Your <span className="text-[#C4A47C]">{service.shortTitle}</span> Project?
           </h2>
           <p className="text-sm text-[#C1C4CC]">
