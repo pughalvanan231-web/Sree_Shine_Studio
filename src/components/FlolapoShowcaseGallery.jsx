@@ -72,10 +72,10 @@ export default function FlolapoShowcaseGallery() {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) return;
 
-    // Refresh after DOM layout stabilization
+    // Trigger refresh once DOM has fully settled
     const timeoutId = setTimeout(() => {
       ScrollTrigger.refresh();
-    }, 150);
+    }, 200);
 
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray(".stack-card");
@@ -91,11 +91,11 @@ export default function FlolapoShowcaseGallery() {
               scrollTrigger: {
                 trigger: nextCard,
                 start: "top 80%",
-                end: "top 25%",
+                end: "top 20%",
                 scrub: 0.5,
               },
-              scale: 0.92,
-              filter: "blur(4px)",
+              scale: 0.90,
+              filter: "blur(5px)",
               opacity: 0.45,
               y: -25,
               ease: "none",
@@ -114,52 +114,52 @@ export default function FlolapoShowcaseGallery() {
   return (
     <section
       ref={containerRef}
-      id="selected-works"
+      id="showcase-gallery"
       className="relative py-20 sm:py-32 bg-[#0a0a0a] text-[#ECE5D8] border-t border-white/10"
     >
-      <div className="site-container">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-14 sm:mb-20 pb-6 border-b border-white/10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 sm:mb-24 pb-6 border-b border-white/10">
           <div>
-            <span className="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-[#C8A25D] font-semibold block mb-2">
+            <span className="text-xs uppercase tracking-[0.25em] text-[#C8A25D] font-semibold block mb-2 font-sans">
               Portfolio Showcase
             </span>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-semibold uppercase tracking-tight text-[#ECE5D8]">
+            <h2 className="font-heading text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-[#ECE5D8]">
               Selected Works
             </h2>
           </div>
           <Link
             to="/work"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#ECE5D8] hover:text-[#C8A25D] transition-colors self-start sm:self-auto py-1"
+            className="px-6 py-3 rounded-full border border-white/20 text-xs uppercase tracking-widest text-[#ECE5D8] hover:text-black hover:bg-[#C8A25D] hover:border-[#C8A25D] font-medium self-start md:self-auto transition-all duration-200 inline-flex items-center gap-2 group"
           >
             <span>All Projects</span>
-            <ArrowUpRight className="w-4 h-4 text-[#C8A25D]" />
+            <ArrowUpRight className="w-3.5 h-3.5 text-[#C8A25D] group-hover:text-black transition-colors" />
           </Link>
         </div>
 
         {/* Overlapping Stacking Cards Container */}
-        <div className="relative space-y-10 sm:space-y-14">
+        <div className="relative space-y-12 sm:space-y-16">
           {SHOWCASE_ITEMS.map((item, index) => {
             const isEven = index % 2 === 0;
 
             return (
               <div
                 key={item.id}
-                className="stack-card sticky top-24 sm:top-28 pb-6 sm:pb-8"
+                className="stack-card sticky top-24 sm:top-28 pb-8"
                 style={{ zIndex: 10 + index }}
               >
-                {/* Inner Transform Wrapper for Stacking Card Animation */}
+                {/* Inner Transform Wrapper (Animates scale, blur, opacity on scroll) */}
                 <div className="stack-card-inner will-change-transform origin-top transform transition-all duration-300">
                   <Link
                     to={item.link}
-                    className="block relative overflow-hidden rounded-2xl sm:rounded-3xl bg-[#121212] border border-white/10 hover:border-[#C8A25D]/50 shadow-[0_20px_50px_rgba(0,0,0,0.85)] transition-all duration-300 group"
+                    className="block relative overflow-hidden rounded-[24px] sm:rounded-[32px] bg-[#121212] border border-white/10 hover:border-[#C8A25D]/50 shadow-[0_20px_60px_rgba(0,0,0,0.85)] transition-all duration-500 group"
                   >
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center p-4 sm:p-6 lg:p-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 items-center p-4 sm:p-6 lg:p-8">
                       
                       {/* Image Frame */}
                       <div
-                        className={`lg:col-span-8 overflow-hidden rounded-xl sm:rounded-2xl aspect-[16/10] sm:aspect-[16/9] bg-[#1a1a1a] ${
+                        className={`lg:col-span-8 overflow-hidden rounded-2xl aspect-[16/10] sm:aspect-[16/9] bg-[#1a1a1a] ${
                           isEven ? "lg:order-1" : "lg:order-2"
                         }`}
                       >
@@ -173,24 +173,24 @@ export default function FlolapoShowcaseGallery() {
 
                       {/* Text Details */}
                       <div
-                        className={`lg:col-span-4 p-2 sm:p-4 lg:p-6 flex flex-col justify-between h-full space-y-6 ${
+                        className={`lg:col-span-4 p-4 sm:p-6 lg:p-8 flex flex-col justify-between h-full space-y-6 ${
                           isEven ? "lg:order-2" : "lg:order-1"
                         }`}
                       >
-                        <div className="space-y-3">
-                          <div className="flex items-center gap-2.5 text-xs uppercase tracking-widest text-[#9CA3AF]">
+                        <div className="space-y-4">
+                          <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-[#9CA3AF]">
                             <span>{item.date}</span>
                             <span>·</span>
                             <span className="text-[#C8A25D] font-medium">{item.category}</span>
                           </div>
 
-                          <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-semibold uppercase tracking-tight text-[#ECE5D8] group-hover:text-[#C8A25D] transition-colors leading-tight">
+                          <h3 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-[#ECE5D8] group-hover:text-[#C8A25D] transition-colors leading-tight">
                             {item.title}
                           </h3>
                         </div>
 
-                        <div className="pt-4 flex items-center gap-2 text-xs uppercase tracking-widest text-[#9CA3AF] group-hover:text-[#ECE5D8] transition-colors">
-                          <span className="font-semibold text-[#C8A25D]">Explore Discipline</span>
+                        <div className="pt-6 sm:pt-10 flex items-center gap-2 text-xs uppercase tracking-widest text-[#9CA3AF] group-hover:text-[#ECE5D8] transition-colors">
+                          <span className="font-medium text-[#C8A25D]">Explore Discipline</span>
                           <ArrowUpRight className="w-4 h-4 text-[#C8A25D] transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                         </div>
                       </div>
