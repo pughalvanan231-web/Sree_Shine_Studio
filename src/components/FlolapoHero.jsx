@@ -30,17 +30,17 @@ export default function FlolapoHero() {
         }}
       />
 
-      {/* Main Photographic Collage Stage (Exact Match to Image 2) */}
+      {/* Main Photographic Collage Stage */}
       <div className="site-container relative z-10 my-auto flex flex-col items-center justify-center py-4 sm:py-8">
         
         {/* Collage Wrapper */}
         <div className="relative w-full max-w-3xl sm:max-w-4xl mx-auto flex flex-col items-center">
           
           {/* Top Row: 3 Framed Photos */}
-          <div className="relative w-full flex items-center justify-center gap-3 sm:gap-6 md:gap-8 mb-[-36px] sm:mb-[-54px] z-10">
+          <div className="relative w-full flex items-center justify-center gap-2.5 sm:gap-6 md:gap-8 mb-[-32px] sm:mb-[-54px] z-10">
             
             {/* Left Photo: Traditional Indian Bride in Saree */}
-            <div className="w-24 sm:w-36 md:w-44 aspect-[3/4] bg-black border-[3px] sm:border-4 border-black rounded-xs overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-300">
+            <div className="w-20 xs:w-24 sm:w-36 md:w-44 aspect-[3/4] bg-black border-2 sm:border-4 border-black rounded-xs overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-300">
               <img
                 src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=800&auto=format&fit=crop"
                 alt="Traditional Indian Wedding Photography"
@@ -49,7 +49,7 @@ export default function FlolapoHero() {
             </div>
 
             {/* Top Center Photo: Gold Jewelry Earrings on Podium */}
-            <div className="w-24 sm:w-36 md:w-44 aspect-[3/4] bg-black border-[3px] sm:border-4 border-black rounded-xs overflow-hidden shadow-2xl -mt-6 sm:-mt-10 hover:scale-105 transition-transform duration-300">
+            <div className="w-20 xs:w-24 sm:w-36 md:w-44 aspect-[3/4] bg-black border-2 sm:border-4 border-black rounded-xs overflow-hidden shadow-2xl -mt-4 sm:-mt-10 hover:scale-105 transition-transform duration-300">
               <img
                 src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=800&auto=format&fit=crop"
                 alt="Product and Jewelry Photography"
@@ -58,7 +58,7 @@ export default function FlolapoHero() {
             </div>
 
             {/* Right Photo: Fashion Model in Green Studio */}
-            <div className="w-24 sm:w-36 md:w-44 aspect-[3/4] bg-black border-[3px] sm:border-4 border-black rounded-xs overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-300">
+            <div className="w-20 xs:w-24 sm:w-36 md:w-44 aspect-[3/4] bg-black border-2 sm:border-4 border-black rounded-xs overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-300">
               <img
                 src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop"
                 alt="Editorial Fashion Model Photography"
@@ -68,7 +68,7 @@ export default function FlolapoHero() {
           </div>
 
           {/* Center Main Feature Photo: Black & White Editorial Woman Portrait */}
-          <div className="relative z-20 w-64 sm:w-96 md:w-[480px] aspect-[16/10] bg-black border-4 sm:border-[5px] border-black rounded-xs overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.75)] hover:scale-102 transition-transform duration-300">
+          <div className="relative z-20 w-56 xs:w-64 sm:w-96 md:w-[480px] aspect-[16/10] bg-black border-[3px] sm:border-[5px] border-black rounded-xs overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.75)] hover:scale-102 transition-transform duration-300">
             <img
               src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=85&w=1200&auto=format&fit=crop"
               alt="Editorial Portrait Photography"
@@ -77,17 +77,23 @@ export default function FlolapoHero() {
           </div>
 
           {/* Bottom Peeking Photo: Silk Drape Saree */}
-          <div className="relative z-10 w-24 sm:w-32 md:w-36 aspect-[3/4] bg-black border-[3px] sm:border-4 border-black rounded-xs overflow-hidden shadow-xl -mt-6 sm:-mt-10 hover:scale-105 transition-transform duration-300">
+          <div className="relative z-10 w-20 xs:w-24 sm:w-32 md:w-36 aspect-[3/4] bg-black border-2 sm:border-4 border-black rounded-xs overflow-hidden shadow-xl -mt-4 sm:-mt-10 hover:scale-105 transition-transform duration-300">
             <img
-              src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
-              alt="Silk and Textile Photography"
+              src="https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=800&auto=format&fit=crop"
+              alt="Silk and Product Photography"
               className="w-full h-full object-cover"
             />
           </div>
 
-          {/* Giant Condensed "PHOTOGRAPHY" Title Overlay (Exact Match to Image 2) */}
-          <div className="relative z-30 -mt-10 sm:-mt-16 md:-mt-20 text-center pointer-events-none">
-            <h1 className="font-sixcaps text-7xl xs:text-8xl sm:text-9xl md:text-[140px] lg:text-[170px] xl:text-[200px] font-normal uppercase tracking-wider text-white drop-shadow-[0_8px_24px_rgba(0,0,0,0.6)] leading-none">
+          {/* Sized "PHOTOGRAPHY" Title Overlay (100% Contained on all Viewports) */}
+          <div className="relative z-30 -mt-6 sm:-mt-12 md:-mt-16 text-center pointer-events-none w-full max-w-full px-1">
+            <h1
+              className="font-bold uppercase text-white drop-shadow-[0_8px_24px_rgba(0,0,0,0.75)] leading-none select-none tracking-normal sm:tracking-[0.04em]"
+              style={{
+                fontFamily: "'Bebas Neue', 'Oswald', 'Six Caps', sans-serif",
+                fontSize: "clamp(2.3rem, 13vw, 10.5rem)",
+              }}
+            >
               PHOTOGRAPHY
             </h1>
           </div>

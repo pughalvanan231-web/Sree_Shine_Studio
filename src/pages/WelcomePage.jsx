@@ -146,16 +146,17 @@ export default function WelcomePage() {
     setIsVideoFading(true);
     setTimeout(() => {
       setIsVideoPlaying(false);
-    }, 600); // smooth fade transition
+    }, 500); // smooth fade transition
   }, []);
 
-  // Ensure autoplay triggers properly
+  // Ensure video plays automatically upon mounting or replaying
   useEffect(() => {
-    if (videoRef.current && isVideoPlaying) {
+    if (isVideoPlaying && videoRef.current) {
+      videoRef.current.currentTime = 0;
       const playPromise = videoRef.current.play();
       if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          // Autoplay was prevented by browser policy, keep video accessible or skip
+        playPromise.catch((err) => {
+          console.warn("Video autoplay notice:", err);
         });
       }
     }
@@ -210,28 +211,31 @@ export default function WelcomePage() {
       {/* 1. Cinematic Intro Video Overlay */}
       {isVideoPlaying && (
         <div 
-          className={`fixed inset-0 z-50 bg-[#0a0a0a] flex items-center justify-center transition-opacity duration-700 ease-in-out ${isVideoFading ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+          className={`fixed inset-0 z-50 bg-[#0a0a0a] flex items-center justify-center p-2 sm:p-0 transition-opacity duration-500 ease-in-out ${isVideoFading ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
         >
           <video
             ref={videoRef}
+            src="/videos/intro.mp4"
             autoPlay
             muted
             playsInline
             onEnded={handleVideoEnd}
-            onError={handleVideoEnd}
-            className="w-full h-full object-cover scale-105"
+            className="w-full h-full max-w-[94vw] sm:max-w-none max-h-[85vh] sm:max-h-none object-contain md:object-cover md:scale-105"
           >
             <source src="/videos/intro.mp4" type="video/mp4" />
             <source src="/assets/intro.mp4" type="video/mp4" />
             <source src="/assets/final logo ind.mp4" type="video/mp4" />
-            <source src="/assets/final%20logo%20ind.mp4" type="video/mp4" />
           </video>
 
-          {/* Floating Skip Intro Button */}
+          {/* Floating Skip Intro Button with Safe Area Awareness */}
           <button
             type="button"
             onClick={handleVideoEnd}
-            className="absolute top-6 right-6 sm:top-8 sm:right-8 z-50 px-4 py-2 rounded-full bg-black/60 hover:bg-[#C8A25D] text-white hover:text-black border border-white/20 hover:border-[#C8A25D] text-xs uppercase tracking-widest font-semibold backdrop-blur-md transition-all inline-flex items-center gap-2 cursor-pointer shadow-lg active:scale-95"
+            className="absolute top-4 right-4 sm:top-8 sm:right-8 z-50 px-4 py-2 rounded-full bg-black/70 hover:bg-[#C8A25D] text-white hover:text-black border border-white/20 hover:border-[#C8A25D] text-[11px] sm:text-xs uppercase tracking-widest font-semibold backdrop-blur-md transition-all inline-flex items-center gap-1.5 cursor-pointer shadow-lg active:scale-95"
+            style={{
+              top: "max(16px, env(safe-area-inset-top, 16px))",
+              right: "max(16px, env(safe-area-inset-right, 16px))",
+            }}
             aria-label="Skip Introduction Video"
           >
             <span>Skip Intro</span>

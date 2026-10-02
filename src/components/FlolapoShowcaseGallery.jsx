@@ -55,7 +55,7 @@ const SHOWCASE_ITEMS = [
     bgGradient: "from-[#221c2b] via-[#17131e] to-[#0f0c14]",
     accentBorder: "border-[#c084fc]/20",
     mainImage: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=85&w=1200&auto=format&fit=crop",
-    subImage1: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=600&auto=format&fit=crop",
+    subImage1: "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=600&auto=format&fit=crop",
     subImage2: "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=600&auto=format&fit=crop",
     summary: "From intricate surface pattern repeats to conceptual collection styling, we merge artisanal sensibilities with contemporary fashion aesthetics.",
     deliverables: [
@@ -149,7 +149,7 @@ export default function FlolapoShowcaseGallery() {
 
     const timeoutId = setTimeout(() => {
       ScrollTrigger.refresh();
-    }, 200);
+    }, 250);
 
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray(".editorial-showcase-canvas");
@@ -167,10 +167,10 @@ export default function FlolapoShowcaseGallery() {
                 end: "top 20%",
                 scrub: 0.5,
               },
-              scale: 0.94,
+              scale: 0.92,
               filter: "blur(4px)",
-              opacity: 0.5,
-              y: -15,
+              opacity: 0.45,
+              y: -25,
               ease: "none",
             });
           }
@@ -178,8 +178,22 @@ export default function FlolapoShowcaseGallery() {
       });
     }, containerRef);
 
+    let resizeTimer;
+    const handleResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        window.requestAnimationFrame(() => {
+          ScrollTrigger.refresh();
+        });
+      }, 200);
+    };
+
+    window.addEventListener("resize", handleResize, { passive: true });
+
     return () => {
       clearTimeout(timeoutId);
+      clearTimeout(resizeTimer);
+      window.removeEventListener("resize", handleResize);
       ctx.revert();
     };
   }, []);
@@ -222,7 +236,7 @@ export default function FlolapoShowcaseGallery() {
                 style={{ zIndex: 10 + index }}
               >
                 {/* Inner Transform Wrapper (Stacking Scroll Depth Animation) */}
-                <div className="editorial-canvas-inner will-change-transform origin-top transform transition-all duration-300">
+                <div className="editorial-canvas-inner will-change-transform origin-top">
                   <div
                     onClick={() => setSelectedItem(item)}
                     role="button"

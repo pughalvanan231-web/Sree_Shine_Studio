@@ -12,7 +12,7 @@ export default function MainLayout() {
       <ScrollToTop />
       <Navbar />
       
-      <main id="main-content" className="flex-1 focus:outline-none overflow-x-hidden">
+      <main id="main-content" className="flex-1 focus:outline-none overflow-x-clip">
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
