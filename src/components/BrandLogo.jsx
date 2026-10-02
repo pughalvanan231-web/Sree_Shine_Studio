@@ -19,10 +19,10 @@ export default function BrandLogo({
   size = "md", // "sm" | "md" | "lg" | "xl"
 }) {
   const sizeClasses = {
-    sm: "h-10 sm:h-12 w-auto",
-    md: "h-14 sm:h-16 w-auto",
-    lg: "h-24 sm:h-28 w-auto",
-    xl: "h-36 sm:h-48 md:h-60 w-auto",
+    sm: "h-8 sm:h-10 w-auto",
+    md: "h-10 sm:h-12 md:h-14 w-auto",
+    lg: "h-20 sm:h-24 md:h-28 w-auto",
+    xl: "h-32 sm:h-44 md:h-60 w-auto",
   };
 
   const currentSizeClass = sizeClasses[size] || sizeClasses.md;
@@ -31,7 +31,7 @@ export default function BrandLogo({
     <div className={`inline-flex items-center select-none ${className}`}>
       {/* 1. ICON VARIANT */}
       {variant === "icon" && (
-        <div className="w-10 h-10 flex items-center justify-center overflow-hidden">
+        <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center overflow-hidden">
           <img
             src="/assets/sree-shine-logo.png"
             alt="Sree Shine Studio"
@@ -41,13 +41,13 @@ export default function BrandLogo({
         </div>
       )}
 
-      {/* 2. HEADER & COMPACT VARIANT: The Complete Official Sree Shine Studio Logo */}
+      {/* 2. HEADER & COMPACT VARIANT */}
       {(variant === "compact" || variant === "header") && (
         <div className={`relative flex items-center ${currentSizeClass}`}>
           <img
             src="/assets/sree-shine-logo.png"
             alt="Sree Shine Studio"
-            className="h-full w-auto object-contain max-h-[64px]"
+            className="h-full w-auto object-contain max-h-[44px] sm:max-h-[56px] md:max-h-[64px]"
             loading="eager"
           />
         </div>
@@ -55,11 +55,11 @@ export default function BrandLogo({
 
       {/* 3. FULL VARIANT */}
       {variant === "full" && (
-        <div className="relative w-full max-w-[650px] flex items-center justify-center">
+        <div className="relative w-full max-w-[650px] flex items-center justify-center px-4">
           <img
             src="/assets/sree-shine-logo.png"
             alt="Sree Shine Studio Logo"
-            className="w-full h-auto max-h-[380px] object-contain drop-shadow-sm"
+            className="w-full h-auto max-h-[260px] sm:max-h-[380px] object-contain drop-shadow-sm"
             loading="eager"
           />
         </div>

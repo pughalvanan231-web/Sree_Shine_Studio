@@ -46,7 +46,7 @@ export default function FlolapoMovingGallery() {
       gsap.to(row1Ref.current, {
         x: "-50%",
         ease: "none",
-        duration: 40,
+        duration: 38,
         repeat: -1,
       });
 
@@ -57,7 +57,7 @@ export default function FlolapoMovingGallery() {
         {
           x: "0%",
           ease: "none",
-          duration: 45,
+          duration: 42,
           repeat: -1,
         }
       );
@@ -66,7 +66,7 @@ export default function FlolapoMovingGallery() {
       gsap.to(row3Ref.current, {
         x: "-50%",
         ease: "none",
-        duration: 42,
+        duration: 40,
         repeat: -1,
       });
     }, sectionRef);
@@ -75,22 +75,22 @@ export default function FlolapoMovingGallery() {
   }, []);
 
   const renderRowItems = (items) => {
-    // Quadruple items to prevent blank edges during scroll
+    // Quadruple items to prevent blank edges during continuous scroll
     const combined = [...items, ...items, ...items, ...items, ...items, ...items];
     return combined.map((item, idx) => (
       <div
         key={idx}
-        className="px-6 sm:px-10 py-5 sm:py-7 mx-4 rounded-2xl bg-[#121212] text-[#ECE5D8] border border-white/10 shadow-sm shrink-0 flex items-center justify-between gap-6 min-w-[240px] sm:min-w-[300px] hover:border-[#C8A25D] transition-colors group cursor-default"
+        className="px-4 xs:px-6 sm:px-8 py-3.5 xs:py-5 sm:py-6 mx-2 sm:mx-4 rounded-xl sm:rounded-2xl bg-[#121212] text-[#ECE5D8] border border-white/10 shadow-sm shrink-0 flex items-center justify-between gap-4 sm:gap-6 min-w-[200px] xs:min-w-[240px] sm:min-w-[280px] lg:min-w-[320px] hover:border-[#C8A25D] transition-colors group cursor-default"
       >
         <div>
-          <h4 className="font-syne text-base sm:text-lg font-bold uppercase tracking-wider text-[#ECE5D8] group-hover:text-[#C8A25D] transition-colors">
+          <h4 className="font-syne text-sm xs:text-base sm:text-lg font-bold uppercase tracking-wider text-[#ECE5D8] group-hover:text-[#C8A25D] transition-colors">
             {item.name}
           </h4>
-          <span className="text-[11px] uppercase tracking-widest text-[#9CA3AF] block mt-0.5 font-sans">
+          <span className="text-[10px] sm:text-[11px] uppercase tracking-widest text-[#9CA3AF] block mt-0.5 font-sans">
             {item.category}
           </span>
         </div>
-        <span className="text-[#C8A25D] text-xs font-semibold opacity-60 group-hover:opacity-100 transition-opacity">
+        <span className="text-[#C8A25D] text-xs font-semibold opacity-60 group-hover:opacity-100 transition-opacity shrink-0">
           ✦
         </span>
       </div>
@@ -100,19 +100,19 @@ export default function FlolapoMovingGallery() {
   return (
     <section
       ref={sectionRef}
-      className="py-24 sm:py-36 bg-black text-[#ECE5D8] overflow-hidden"
+      className="py-16 sm:py-24 md:py-32 bg-black text-[#ECE5D8] overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 text-center">
-        <span className="text-xs uppercase tracking-[0.3em] text-[#C8A25D] font-semibold block mb-3 font-sans">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16 md:mb-20 text-center">
+        <span className="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-[#C8A25D] font-semibold block mb-2 sm:mb-3 font-sans">
           TRUSTED COLLABORATIONS & ATELIER PARTNERS
         </span>
-        <h2 className="font-syne text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight text-[#ECE5D8]">
+        <h2 className="font-syne text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight text-[#ECE5D8]">
           Brands We’ve Empowered
         </h2>
       </div>
 
       {/* 3 Continuous Slow-Motion Rows */}
-      <div className="space-y-12 will-change-transform">
+      <div className="space-y-4 sm:space-y-8 md:space-y-10 will-change-transform">
         {/* Row 1: Left */}
         <div className="w-full overflow-hidden">
           <div ref={row1Ref} className="flex w-max will-change-transform">

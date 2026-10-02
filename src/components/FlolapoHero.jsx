@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Sparkles } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -52,7 +52,7 @@ export default function FlolapoHero() {
           end: "bottom top",
           scrub: 0.6,
         },
-        y: -70,
+        y: -60,
         opacity: 0.15,
         ease: "none",
       });
@@ -71,36 +71,42 @@ export default function FlolapoHero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[92vh] sm:min-h-screen w-full flex flex-col justify-between pt-28 sm:pt-36 pb-8 sm:pb-12 px-4 sm:px-8 lg:px-14 bg-black text-[#ECE5D8] overflow-hidden"
+      className="relative min-h-[90svh] sm:min-h-screen w-full flex flex-col justify-between pt-24 sm:pt-32 md:pt-36 pb-8 sm:pb-12 px-4 sm:px-8 lg:px-14 bg-black text-[#ECE5D8] overflow-hidden"
     >
       {/* Background Image with Dark Overlay */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=2000&auto=format&fit=crop")' }}
       />
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/60 via-black/40 to-black/90 pointer-events-none" />
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/70 via-black/50 to-black/95 pointer-events-none" />
 
       {/* Main Hero Center Caption with Parallax Container */}
       <div
         ref={captionRef}
-        className="relative z-10 my-auto flex flex-col items-center text-center max-w-6xl mx-auto w-full will-change-transform"
+        className="relative z-10 my-auto flex flex-col items-center text-center max-w-6xl mx-auto w-full will-change-transform py-8 sm:py-12"
       >
-        {/* Massive Agency Title */}
+        {/* Top Studio Badge */}
+        <div className="mb-4 sm:mb-6 inline-flex items-center gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-[#121212]/80 border border-white/10 text-[10px] sm:text-xs font-medium text-[#C8A25D] backdrop-blur-sm shadow-sm">
+          <Sparkles className="w-3 h-3 text-[#C8A25D]" />
+          <span>Multidisciplinary Creative Studio & Agency</span>
+        </div>
+
+        {/* Agency Title with Fluid Responsive Scale */}
         <div ref={titleRef} className="w-full">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading uppercase text-[#ECE5D8]">
+          <h1 className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold font-heading uppercase text-[#ECE5D8] tracking-tight leading-[1.08] sm:leading-none">
             Sree Shine Studio
           </h1>
         </div>
 
         {/* Uppercase Cinematic Manifesto Subtitle */}
-        <div ref={subtitleRef} className="mt-6 sm:mt-8 max-w-3xl px-2">
-          <p className="text-xs sm:text-sm md:text-base text-[#9CA3AF] uppercase tracking-widest leading-relaxed font-light font-sans">
-            WE ARE A CREATIVE STUDIO, SPECIALIZED IN STRATEGY, BRANDING DESIGN, COMMERCIAL PHOTOGRAPHY, AND DEVELOPMENT.
+        <div ref={subtitleRef} className="mt-4 sm:mt-6 md:mt-8 max-w-3xl px-2">
+          <p className="text-xs xs:text-sm sm:text-base md:text-lg text-[#9CA3AF] uppercase tracking-wider sm:tracking-widest leading-relaxed font-light font-sans">
+            WE ARE A CREATIVE STUDIO, SPECIALIZED IN STRATEGY, BRANDING DESIGN, COMMERCIAL PHOTOGRAPHY, AND DIGITAL EXPERIENCES.
             <br className="hidden sm:inline" />
-            <span className="block mt-2 text-[#C8A25D] font-medium tracking-wider">
+            <span className="block mt-2 sm:mt-3 text-[#C8A25D] font-medium tracking-wide sm:tracking-wider">
               OUR WORK IS ALWAYS AT THE INTERSECTION OF ARTISTRY AND TECHNOLOGY.
             </span>
-            <span className="block mt-3 text-xs sm:text-sm text-[#ECE5D8] tracking-[0.2em] font-normal">
+            <span className="block mt-2 sm:mt-3 text-[11px] sm:text-xs md:text-sm text-[#ECE5D8] tracking-[0.15em] sm:tracking-[0.2em] font-normal">
               Where creativity comes to life · We take your Brand Flight!
             </span>
           </p>
@@ -110,25 +116,25 @@ export default function FlolapoHero() {
       {/* Hero Footer Bar */}
       <div
         ref={footerRef}
-        className="relative z-10 flex items-center justify-between w-full pt-8 border-t border-white/10 text-xs text-[#9CA3AF] uppercase tracking-wider font-sans"
+        className="relative z-10 flex flex-row items-center justify-between w-full pt-4 sm:pt-6 border-t border-white/10 text-xs text-[#9CA3AF] uppercase tracking-wider font-sans"
       >
         {/* Left: Scroll to Explore Button */}
         <button
           type="button"
           onClick={handleScrollToExplore}
-          className="group inline-flex items-center gap-3 cursor-pointer text-[#9CA3AF] hover:text-[#C8A25D] transition-colors focus-visible:outline-none"
+          className="group inline-flex items-center gap-2.5 sm:gap-3 cursor-pointer text-[#9CA3AF] hover:text-[#C8A25D] transition-colors focus-visible:outline-none"
           aria-label="Scroll to Explore Projects"
         >
-          <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:border-[#C8A25D] group-hover:bg-[#C8A25D]/10 transition-all">
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:border-[#C8A25D] group-hover:bg-[#C8A25D]/10 transition-all">
             <ArrowDown className="w-3.5 h-3.5 text-[#C8A25D] transform group-hover:translate-y-0.5 transition-transform" />
           </div>
-          <span className="font-medium tracking-widest">Scroll to Explore</span>
+          <span className="text-[10px] sm:text-xs font-medium tracking-widest">Scroll to Explore</span>
         </button>
 
         {/* Right: Info Tag */}
-        <div className="hidden sm:flex items-center gap-2">
+        <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-[#C8A25D] animate-pulse" />
-          <span className="text-[#ECE5D8] tracking-widest font-medium">Featured Disciplines</span>
+          <span className="text-[10px] sm:text-xs text-[#ECE5D8] tracking-widest font-medium">Featured Disciplines</span>
         </div>
       </div>
     </section>

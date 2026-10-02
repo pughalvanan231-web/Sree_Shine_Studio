@@ -41,7 +41,7 @@ export default function LightboxModal({ images, activeIndex, isOpen, onClose, on
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
-        className="fixed inset-0 z-50 bg-[#121315]/95 backdrop-blur-md flex flex-col justify-between p-4 sm:p-6"
+        className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex flex-col justify-between p-3 sm:p-6"
       >
         {/* Top bar controls */}
         <div className="flex items-center justify-between z-10 w-full max-w-7xl mx-auto">
@@ -53,7 +53,7 @@ export default function LightboxModal({ images, activeIndex, isOpen, onClose, on
             ref={closeBtnRef}
             type="button"
             onClick={onClose}
-            className="p-2.5 rounded-full bg-[#22252A] text-[#FBF9F5] hover:bg-[#C4A47C] hover:text-[#121315] transition-colors focus:outline-none focus:ring-2 focus:ring-[#C4A47C]"
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#121212] text-[#ECE5D8] hover:bg-[#C8A25D] hover:text-black transition-colors flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-[#C8A25D]"
             aria-label="Close image viewer (Press Escape)"
           >
             <X className="w-5 h-5" />
@@ -61,13 +61,13 @@ export default function LightboxModal({ images, activeIndex, isOpen, onClose, on
         </div>
 
         {/* Center Stage & Image */}
-        <div className="relative flex-1 flex items-center justify-center max-w-6xl mx-auto w-full my-4">
+        <div className="relative flex-1 flex items-center justify-center max-w-6xl mx-auto w-full my-2 sm:my-4">
           {/* Previous Button */}
           {images.length > 1 && (
             <button
               type="button"
               onClick={onPrev}
-              className="absolute left-2 sm:left-4 z-10 p-3 rounded-full bg-[#191B1E]/80 border border-[#33383F] text-[#FBF9F5] hover:bg-[#C4A47C] hover:text-[#121315] transition-colors focus:outline-none focus:ring-2 focus:ring-[#C4A47C]"
+              className="absolute left-1 sm:left-4 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/80 border border-white/20 text-[#ECE5D8] hover:bg-[#C8A25D] hover:text-black transition-colors flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-[#C8A25D]"
               aria-label="Previous image (Left arrow key)"
             >
               <ChevronLeft className="w-6 h-6" />
@@ -75,7 +75,7 @@ export default function LightboxModal({ images, activeIndex, isOpen, onClose, on
           )}
 
           {/* Main Image Container */}
-          <div className="max-h-[75vh] max-w-full flex items-center justify-center overflow-hidden">
+          <div className="max-h-[70vh] sm:max-h-[80vh] max-w-full flex items-center justify-center overflow-hidden px-2 sm:px-0">
             <motion.img
               key={activeIndex}
               src={currentImg.url}
@@ -84,7 +84,7 @@ export default function LightboxModal({ images, activeIndex, isOpen, onClose, on
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="max-h-[75vh] max-w-full object-contain rounded-lg shadow-lg"
+              className="max-h-[70vh] sm:max-h-[80vh] max-w-full object-contain rounded-lg shadow-2xl"
             />
           </div>
 
@@ -93,7 +93,7 @@ export default function LightboxModal({ images, activeIndex, isOpen, onClose, on
             <button
               type="button"
               onClick={onNext}
-              className="absolute right-2 sm:right-4 z-10 p-3 rounded-full bg-[#191B1E]/80 border border-[#33383F] text-[#FBF9F5] hover:bg-[#C4A47C] hover:text-[#121315] transition-colors focus:outline-none focus:ring-2 focus:ring-[#C4A47C]"
+              className="absolute right-1 sm:right-4 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/80 border border-white/20 text-[#ECE5D8] hover:bg-[#C8A25D] hover:text-black transition-colors flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-[#C8A25D]"
               aria-label="Next image (Right arrow key)"
             >
               <ChevronRight className="w-6 h-6" />
@@ -102,9 +102,9 @@ export default function LightboxModal({ images, activeIndex, isOpen, onClose, on
         </div>
 
         {/* Bottom Caption */}
-        <div className="max-w-3xl mx-auto text-center z-10 w-full">
+        <div className="max-w-3xl mx-auto text-center z-10 w-full px-4">
           {currentImg.caption && (
-            <p className="text-sm text-[#C1C4CC] font-sans">
+            <p className="text-xs sm:text-sm text-[#9CA3AF] font-sans">
               {currentImg.caption}
             </p>
           )}

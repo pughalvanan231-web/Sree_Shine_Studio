@@ -52,9 +52,10 @@
     font-family: var(--font-heading);
   }
 
-  /* Custom scrollbar */
+/* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
+    height: 6px;
   }
   ::-webkit-scrollbar-track {
     background: #0a0a0a;
@@ -68,7 +69,20 @@
   }
 }
 
+/* Hide scrollbars for slick mobile horizontal sliders */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
+/* Mobile viewport adjustments */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
 
 /* Respect reduced motion without breaking JS animations */
 @media (prefers-reduced-motion: reduce) {

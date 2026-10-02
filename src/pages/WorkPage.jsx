@@ -28,11 +28,11 @@ export default function WorkPage() {
       />
 
       {/* Filter Bar & Gallery */}
-      <section className="py-16 bg-black">
+      <section className="py-12 sm:py-16 md:py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-14">
+          {/* Category Filter Pills - Horizontally scrollable on mobile, centered wrapped on tablet/desktop */}
+          <div className="flex items-center gap-2 sm:gap-3 mb-10 sm:mb-14 overflow-x-auto pb-3 sm:pb-0 sm:flex-wrap sm:justify-center scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
             {CATEGORIES.map((cat) => {
               const isActive = selectedCategory === cat.id;
               return (
@@ -41,10 +41,10 @@ export default function WorkPage() {
                   type="button"
                   onClick={() => setSelectedCategory(cat.id)}
                   className={cn(
-                    "relative px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C4A47C]",
+                    "relative px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C8A25D] shrink-0",
                     isActive
-                      ? "bg-[#191B1E] text-[#FBF9F5] shadow-md"
-                      : "bg-[#121212] text-[#9CA3AF] hover:text-[#ECE5D8] hover:bg-[#ECE5D8] border border-white/10"
+                      ? "bg-[#C8A25D] text-black shadow-md font-semibold"
+                      : "bg-[#121212] text-[#9CA3AF] hover:text-[#ECE5D8] hover:bg-[#1a1a1a] border border-white/10"
                   )}
                   aria-pressed={isActive}
                 >
@@ -52,7 +52,7 @@ export default function WorkPage() {
                   {isActive && (
                     <motion.div
                       layoutId="activeFilterBg"
-                      className="absolute inset-0 bg-[#191B1E] rounded-full -z-10"
+                      className="absolute inset-0 bg-[#C8A25D] rounded-full -z-10"
                       transition={{ type: "spring", stiffness: 400, damping: 35 }}
                     />
                   )}
@@ -64,7 +64,7 @@ export default function WorkPage() {
           {/* Filtered Grid with Layout Animation */}
           <motion.div 
             layout 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
           >
             <AnimatePresence>
               {filteredProjects.map((project, index) => (
@@ -84,7 +84,7 @@ export default function WorkPage() {
           )}
 
           {/* Disclaimer Note */}
-          <div className="mt-16 text-center text-xs text-[#848994] max-w-xl mx-auto">
+          <div className="mt-14 sm:mt-16 text-center text-xs text-[#848994] max-w-xl mx-auto px-4">
             All sample projects are clearly cataloged for demonstration of Sree Shine Studio capabilities and are centrally configurable in the project repository.
           </div>
 

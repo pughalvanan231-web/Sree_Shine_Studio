@@ -45,7 +45,7 @@ export default function ServicesPage() {
       // 2. White Services Section Inset Rounded Reveal
       gsap.fromTo(
         whiteWrapperRef.current,
-        { clipPath: "inset(4% 8% 4% 8% round 40px)" },
+        { clipPath: "inset(3% 5% 3% 5% round 28px)" },
         {
           clipPath: "inset(0% 0% 0% 0% round 0px)",
           ease: "none",
@@ -76,14 +76,14 @@ export default function ServicesPage() {
       <div className="bg-black text-[#ECE5D8] min-h-screen">
         
         {/* Header Intro Title */}
-        <section className="pt-32 sm:pt-44 pb-16 px-4 sm:px-8 lg:px-14 max-w-7xl mx-auto">
-          <span className="text-xs uppercase tracking-[0.3em] text-[#C8A25D] font-semibold block mb-4 font-sans">
+        <section className="pt-28 sm:pt-36 md:pt-44 pb-12 sm:pb-16 px-4 sm:px-8 lg:px-14 max-w-7xl mx-auto">
+          <span className="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-[#C8A25D] font-semibold block mb-3 sm:mb-4 font-sans">
             DISCIPLINES & CAPABILITIES
           </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading uppercase text-[#ECE5D8]">
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold font-heading uppercase text-[#ECE5D8]">
             Our Services
           </h1>
-          <p className="max-w-2xl text-sm sm:text-base text-[#9CA3AF] uppercase tracking-wider mt-4 font-light">
+          <p className="max-w-2xl text-xs sm:text-sm md:text-base text-[#9CA3AF] uppercase tracking-wider mt-3 sm:mt-4 font-light">
             Comprehensive creative solutions built with precision, artistry, and technical excellence.
           </p>
         </section>
@@ -91,7 +91,7 @@ export default function ServicesPage() {
         {/* 1. Circular Media Presentation Section (Sticky Scroll Container) */}
         <div
           ref={circularContainerRef}
-          className="relative w-full h-[220vh] bg-black"
+          className="relative w-full h-[180vh] sm:h-[220vh] bg-black"
         >
           <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
             <div
@@ -107,10 +107,10 @@ export default function ServicesPage() {
                 />
                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
                   <div className="text-center px-4">
-                    <span className="text-xs uppercase tracking-[0.35em] text-[#C8A25D] font-semibold block mb-2 font-sans">
+                    <span className="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-[#C8A25D] font-semibold block mb-2 font-sans">
                       ATELIER OF CREATION
                     </span>
-                    <h2 className="font-syne text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white">
+                    <h2 className="font-syne text-2xl xs:text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white">
                       Where Vision Takes Form
                     </h2>
                   </div>
@@ -123,29 +123,29 @@ export default function ServicesPage() {
         {/* 2. White Inset Rounded Services Accordion Section */}
         <section
           ref={whiteSectionRef}
-          className="relative py-20 sm:py-32 bg-black"
+          className="relative py-16 sm:py-24 md:py-32 bg-black"
         >
           <div
             ref={whiteWrapperRef}
-            className="w-full bg-[#ffffff] text-[#111111] py-20 sm:py-32 px-4 sm:px-8 lg:px-16 will-change-transform shadow-lg"
+            className="w-full bg-[#ffffff] text-[#111111] py-14 sm:py-20 md:py-28 px-4 sm:px-8 lg:px-16 will-change-transform shadow-lg"
           >
-            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
               
               {/* Left Side Large Heading */}
-              <div className="lg:col-span-4 lg:sticky lg:top-36 space-y-6">
-                <span className="text-xs uppercase tracking-[0.3em] text-[#8C6144] font-semibold block font-sans">
+              <div className="lg:col-span-4 lg:sticky lg:top-36 space-y-4 sm:space-y-6">
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-[#8C6144] font-semibold block font-sans">
                   WHAT WE DO
                 </span>
-                <h2 className="font-syne text-4xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight text-[#111111] leading-none">
+                <h2 className="font-syne text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tight text-[#111111] leading-tight sm:leading-none">
                   Tailored Disciplines
                 </h2>
-                <p className="text-sm text-[#555555] leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#555555] leading-relaxed">
                   Every project at Sree Shine Studio is tailored to bridge the gap between creative ambition and tangible commercial success.
                 </p>
-                <div className="pt-4">
+                <div className="pt-2 sm:pt-4">
                   <Link
                     to="/contact"
-                    className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#111111] text-white hover:bg-[#8C6144] text-xs uppercase tracking-widest font-semibold transition-all shadow-md group"
+                    className="inline-flex items-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-[#111111] text-white hover:bg-[#8C6144] text-xs uppercase tracking-widest font-semibold transition-all shadow-md hover:scale-105 active:scale-95 group"
                   >
                     <span>Start a Project</span>
                     <ArrowUpRight className="w-4 h-4 text-[#C8A25D] group-hover:text-white transition-colors" />
@@ -154,33 +154,33 @@ export default function ServicesPage() {
               </div>
 
               {/* Right Side Expandable Accordion Rows */}
-              <div className="lg:col-span-8 space-y-4">
+              <div className="lg:col-span-8 space-y-3 sm:space-y-4">
                 {SERVICES.map((service, index) => {
                   const isOpen = activeAccordion === index;
 
                   return (
                     <div
                       key={service.id}
-                      className="border-b border-white/10 transition-colors pb-4"
+                      className="border-b border-black/10 transition-colors pb-3 sm:pb-4"
                     >
                       {/* Accordion Trigger Button */}
                       <button
                         type="button"
                         onClick={() => toggleAccordion(index)}
-                        className="w-full flex items-center justify-between py-6 text-left cursor-pointer group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#8C6144]"
+                        className="w-full flex items-center justify-between py-4 sm:py-6 text-left cursor-pointer group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#8C6144]"
                         aria-expanded={isOpen}
                         aria-controls={`service-desc-${service.id}`}
                       >
-                        <div className="flex items-baseline gap-4 sm:gap-6">
+                        <div className="flex items-baseline gap-3 sm:gap-6">
                           <span className="text-xs sm:text-sm font-sans tracking-widest text-[#8C6144] font-semibold">
                             0{index + 1}
                           </span>
-                          <h3 className="font-syne text-xl sm:text-2xl md:text-3xl font-bold uppercase tracking-tight text-[#111111] group-hover:text-[#8C6144] transition-colors">
+                          <h3 className="font-syne text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold uppercase tracking-tight text-[#111111] group-hover:text-[#8C6144] transition-colors">
                             {service.title}
                           </h3>
                         </div>
 
-                        <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#8C6144] group-hover:bg-[#8C6144]/10 transition-all shrink-0 ml-4">
+                        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-black/15 flex items-center justify-center group-hover:border-[#8C6144] group-hover:bg-[#8C6144]/10 transition-all shrink-0 ml-3 sm:ml-4">
                           {isOpen ? (
                             <Minus className="w-4 h-4 text-[#8C6144]" />
                           ) : (
@@ -193,16 +193,16 @@ export default function ServicesPage() {
                       {isOpen && (
                         <div
                           id={`service-desc-${service.id}`}
-                          className="pt-2 pb-6 pl-8 sm:pl-12 space-y-6 animate-fadeIn"
+                          className="pt-2 pb-5 sm:pb-6 pl-6 sm:pl-12 space-y-4 sm:space-y-6 animate-fadeIn"
                         >
-                          <p className="text-sm sm:text-base text-[#444444] leading-relaxed max-w-2xl">
+                          <p className="text-xs sm:text-sm md:text-base text-[#444444] leading-relaxed max-w-2xl">
                             {service.description || service.summary}
                           </p>
 
                           {/* Deliverables Pills */}
                           {service.deliverables && (
-                            <div className="space-y-3">
-                              <span className="text-xs uppercase tracking-wider font-semibold text-[#111111] block">
+                            <div className="space-y-2 sm:space-y-3">
+                              <span className="text-[11px] sm:text-xs uppercase tracking-wider font-semibold text-[#111111] block">
                                 Key Deliverables:
                               </span>
                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-w-xl">

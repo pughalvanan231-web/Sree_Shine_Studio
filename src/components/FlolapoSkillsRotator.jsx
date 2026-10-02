@@ -26,6 +26,7 @@ export default function FlolapoSkillsRotator() {
     const ctx = gsap.context(() => {
       const items = itemsRef.current.filter(Boolean);
       const totalItems = items.length;
+      if (totalItems === 0) return;
 
       // ScrollTrigger timeline scrubbed against the tall container height
       const tl = gsap.timeline({
@@ -37,8 +38,10 @@ export default function FlolapoSkillsRotator() {
         },
       });
 
-      // Move track so each item aligns with center
-      const totalDistance = (totalItems - 1) * 85;
+      // Calculate distance based on element heights
+      const isMobile = window.innerWidth < 640;
+      const stepDistance = isMobile ? 65 : 85;
+      const totalDistance = (totalItems - 1) * stepDistance;
 
       tl.to(
         trackRef.current,
@@ -61,7 +64,7 @@ export default function FlolapoSkillsRotator() {
           { opacity: 0.18, scale: 0.92, color: "#6B7280" },
           {
             opacity: 1,
-            scale: 1.06,
+            scale: 1.05,
             color: "#ECE5D8",
             duration: 0.15,
             ease: "power1.inOut",
@@ -89,46 +92,46 @@ export default function FlolapoSkillsRotator() {
   }, []);
 
   return (
-    // Outer scroll container that creates the scroll duration (e.g. 260vh)
+    // Outer scroll container that creates the scroll duration
     <div
       ref={containerRef}
-      className="relative w-full h-[280vh] bg-black text-[#ECE5D8] border-t border-white/5"
+      className="relative w-full h-[220vh] sm:h-[260vh] md:h-[280vh] bg-black text-[#ECE5D8] border-t border-white/5"
     >
-      {/* Sticky Viewport-Height Stage (Zero React DOM mutations) */}
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center overflow-hidden">
+      {/* Sticky Viewport-Height Stage */}
+      <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center overflow-hidden px-4">
         {/* Top & Bottom Fade Overlays */}
-        <div className="absolute top-0 left-0 right-0 h-36 bg-gradient-to-b from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 right-0 h-36 bg-gradient-to-t from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+        <div className="absolute top-0 left-0 right-0 h-24 sm:h-36 bg-gradient-to-b from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 sm:h-36 bg-gradient-to-t from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
 
         {/* Small Section Label */}
-        <div className="absolute top-12 sm:top-16 z-20 text-center">
-          <span className="text-xs uppercase tracking-[0.35em] text-[#C8A25D] font-semibold font-sans">
+        <div className="absolute top-8 sm:top-14 md:top-16 z-20 text-center px-4">
+          <span className="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-[#C8A25D] font-semibold font-sans">
             OUR SKILLS COVER
           </span>
         </div>
 
         {/* Center Viewport Stage for Vertically Moving Typography */}
-        <div className="relative w-full max-w-6xl mx-auto px-4 text-center overflow-visible">
+        <div className="relative w-full max-w-5xl mx-auto text-center overflow-visible">
           <div
             ref={trackRef}
-            className="flex flex-col items-center justify-center space-y-8 sm:space-y-12 py-10 will-change-transform"
+            className="flex flex-col items-center justify-center space-y-6 sm:space-y-10 md:space-y-12 py-8 will-change-transform"
           >
             {SERVICES_LIST.map((service, index) => (
               <div
                 key={service.id}
                 ref={(el) => (itemsRef.current[index] = el)}
-                className="font-syne text-2xl xs:text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight transition-all duration-200 select-none px-4"
+                className="font-syne text-lg xs:text-xl sm:text-3xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tight transition-all duration-200 select-none px-2 sm:px-4 max-w-4xl"
                 style={{ opacity: index === 0 ? 1 : 0.18 }}
               >
-                <span className="text-[#C8A25D] mr-3 inline-block">✦</span>
-                <span>{service.title}</span>
+                <span className="text-[#C8A25D] mr-2 sm:mr-3 inline-block text-xs sm:text-base md:text-xl">✦</span>
+                <span className="break-words">{service.title}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Subtle Scroll Hint */}
-        <div className="absolute bottom-8 z-20 text-[11px] uppercase tracking-[0.25em] text-[#6B7280]">
+        <div className="absolute bottom-6 sm:bottom-8 z-20 text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-[#6B7280] text-center px-4">
           Scroll to Traverse Capabilities
         </div>
       </div>
