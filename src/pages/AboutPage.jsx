@@ -1,124 +1,108 @@
-import PageHeader from "../components/PageHeader";
-import ProcessSection from "../components/ProcessSection";
-import ContactInvitation from "../components/ContactInvitation";
+import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 import SeoMeta from "../components/SeoMeta";
-import { STUDIO_INFO } from "../content/studio";
+
+const PILLARS = [
+  {
+    title: "What We Do",
+    description:
+      "We produce commercial photography, distinctive brand identities, digital platforms, and spatial environments that elevate how brands are perceived.",
+  },
+  {
+    title: "How We Work",
+    description:
+      "We work collaboratively as direct creative partners. Every project is approached with thorough research, intentional design, and meticulous craftsmanship.",
+  },
+  {
+    title: "What We Care About",
+    description:
+      "Simplicity, visual balance, and longevity. We believe the most powerful work comes from stripping away excess and focusing on pure craft.",
+  },
+];
 
 export default function AboutPage() {
   return (
     <>
       <SeoMeta
         title="About Us"
-        description="Learn about Sree Shine Studio's creative approach, multidisciplines, and design philosophy based in Bengaluru & Coimbatore."
+        description="Sree Shine Studio is a creative studio dedicated to craft, aesthetics, and clarity across photography, design, and digital experiences."
       />
 
-      <PageHeader
-        badge="About The Studio"
-        title="Crafting Visual Significance"
-        subtitle="We are a multidisciplinary studio bringing together commercial photography, textile design, spatial exhibitions, and bespoke digital experiences."
-      />
-
-      {/* Foundation & Principles */}
-      <section className="py-20 sm:py-28 bg-[#0a0a0a]">
-        <div className="site-container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
-            {/* Left Column: Narrative */}
-            <div className="lg:col-span-6 space-y-6">
+      <div className="bg-[#0a0a0a] text-[#ECE5D8] min-h-screen">
+        {/* Simple Page Header */}
+        <section className="pt-32 sm:pt-40 pb-12 sm:pb-16 border-b border-white/10">
+          <div className="site-container">
+            <div className="max-w-2xl space-y-3">
               <span className="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-[#C8A25D] font-semibold block">
-                Our Foundation
+                About
               </span>
-              <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-semibold text-[#ECE5D8] leading-tight">
-                Where Clarity Meets Purposeful Design
-              </h2>
-              <p className="text-xs sm:text-sm md:text-base text-[#9CA3AF] leading-relaxed">
-                {STUDIO_INFO.creativePhilosophy.intro}
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold font-heading uppercase tracking-tight text-[#ECE5D8] leading-tight">
+                Who we are.
+              </h1>
+              <p className="text-sm sm:text-base text-[#9CA3AF] leading-relaxed">
+                Sree Shine Studio is an independent creative studio based in Bengaluru and Coimbatore. We partner with forward-thinking brands to craft memorable visual identities, photography, and digital products.
               </p>
-              <p className="text-xs sm:text-sm text-[#9CA3AF] leading-relaxed">
-                Whether creating tactile surface patterns for apparel or framing high-precision photography, our team is unified by a dedication to craft, light, and balance.
-              </p>
-
-              {/* Core Principles 2x2 Grid */}
-              <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {STUDIO_INFO.creativePhilosophy.pillars.map((pillar, idx) => (
-                  <div key={idx} className="p-4 rounded-xl bg-[#121212] border border-white/10">
-                    <h4 className="text-xs sm:text-sm font-semibold text-[#ECE5D8] mb-1 font-heading">{pillar.title}</h4>
-                    <p className="text-xs text-[#9CA3AF] leading-relaxed">{pillar.description}</p>
-                  </div>
-                ))}
-              </div>
             </div>
-
-            {/* Right Column: Studio Emblem & Gallery */}
-            <div className="lg:col-span-6 space-y-6">
-              <div className="rounded-2xl overflow-hidden border border-white/10 bg-[#121212] p-8 flex items-center justify-center aspect-[16/10]">
-                <img
-                  src="/assets/sree-shine-logo.png"
-                  alt="Sree Shine Studio Emblem"
-                  className="w-full max-w-[340px] h-auto object-contain"
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div className="rounded-xl overflow-hidden border border-white/10 aspect-[4/3]">
-                  <img
-                    src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop"
-                    alt="Exhibition and spatial craft"
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="rounded-xl overflow-hidden border border-white/10 aspect-[4/3]">
-                  <img
-                    src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=800&auto=format&fit=crop"
-                    alt="Commercial photography craft"
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-            </div>
-
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Process Section */}
-      <ProcessSection />
+        {/* Studio Image & Core Narrative */}
+        <section className="py-14 sm:py-20">
+          <div className="site-container space-y-12 sm:space-y-16">
+            {/* Visual Feature Image */}
+            <div className="rounded-2xl overflow-hidden border border-white/10 aspect-[16/9] sm:aspect-[21/9] bg-[#121212] relative">
+              <img
+                src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=85&w=1800&auto=format&fit=crop"
+                alt="Sree Shine Studio Craft and Atmosphere"
+                loading="lazy"
+                className="w-full h-full object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+            </div>
 
-      {/* Concise Studio FAQs Section */}
-      <section className="py-20 sm:py-28 bg-[#0a0a0a]">
-        <div className="site-container max-w-3xl">
-          <div className="text-center mb-12 sm:mb-16 space-y-3">
-            <span className="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-[#C8A25D] font-semibold block">
-              Inquiries & Process
-            </span>
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-semibold text-[#ECE5D8]">
-              Frequently Asked Questions
+            {/* 3 Pillars: What we do, How we work, What we care about */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+              {PILLARS.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="p-6 sm:p-8 rounded-2xl bg-[#121212] border border-white/10 space-y-3"
+                >
+                  <span className="text-xs font-mono text-[#C8A25D]">
+                    0{idx + 1}
+                  </span>
+                  <h2 className="font-heading text-lg sm:text-xl font-semibold text-[#ECE5D8]">
+                    {item.title}
+                  </h2>
+                  <p className="text-xs sm:text-sm text-[#9CA3AF] leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Minimal Bottom CTA */}
+        <section className="py-16 sm:py-20 border-t border-white/10 bg-[#0d0d0d]">
+          <div className="site-container text-center max-w-xl mx-auto space-y-5">
+            <h2 className="font-heading text-2xl sm:text-3xl font-semibold text-[#ECE5D8]">
+              Let’s work together.
             </h2>
-          </div>
-
-          <div className="space-y-4">
-            {STUDIO_INFO.studioFaqs.map((faq, idx) => (
-              <div
-                key={idx}
-                className="p-6 rounded-2xl bg-[#121212] border border-white/10"
+            <p className="text-xs sm:text-sm text-[#9CA3AF] leading-relaxed">
+              Have an idea or need creative direction? Reach out and let’s talk.
+            </p>
+            <div className="pt-2">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#C8A25D] hover:bg-[#DFB873] text-black font-semibold text-xs sm:text-sm uppercase tracking-wider rounded-full transition-all duration-200 shadow-md"
               >
-                <h3 className="font-heading text-base sm:text-lg font-semibold text-[#ECE5D8] mb-2">
-                  {faq.question}
-                </h3>
-                <p className="text-xs sm:text-sm text-[#9CA3AF] leading-relaxed">
-                  {faq.answer}
-                </p>
-              </div>
-            ))}
+                <span>Get in Touch</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* Contact Banner */}
-      <ContactInvitation />
+        </section>
+      </div>
     </>
   );
 }
-
