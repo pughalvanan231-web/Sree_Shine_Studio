@@ -2,12 +2,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import ProjectCard from "../components/ProjectCard";
+import DetailModal from "../components/DetailModal";
 import SeoMeta from "../components/SeoMeta";
 import { PROJECTS, CATEGORIES } from "../content/projects";
 import { cn } from "../utils/cn";
 
 export default function WorkPage() {
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedProject, setSelectedProject] = useState(null);
 
   const filteredProjects = selectedCategory === "all"
     ? PROJECTS
@@ -51,7 +53,7 @@ export default function WorkPage() {
                     type="button"
                     onClick={() => setSelectedCategory(cat.id)}
                     className={cn(
-                      "px-4 py-2 rounded-full text-xs font-medium whitespace-nowrap transition-all duration-200 shrink-0",
+                      "px-4 py-2 rounded-full text-xs font-medium whitespace-nowrap transition-all duration-200 shrink-0 cursor-pointer",
                       isActive
                         ? "bg-[#C8A25D] text-black font-semibold shadow-sm"
                         : "bg-[#121212] text-[#9CA3AF] hover:text-[#ECE5D8] border border-white/10"
@@ -70,6 +72,7 @@ export default function WorkPage() {
                 <ProjectCard
                   key={project.id}
                   project={project}
+                  onSelect={(p) => setSelectedProject(p)}
                 />
               ))}
             </div>
@@ -103,6 +106,14 @@ export default function WorkPage() {
           </div>
         </section>
       </div>
+
+      {/* Smooth Project Detail Popup Modal */}
+      <DetailModal
+        isOpen={Boolean(selectedProject)}
+        onClose={() => setSelectedProject(null)}
+        item={selectedProject}
+        type="project"
+      />
     </>
   );
 }

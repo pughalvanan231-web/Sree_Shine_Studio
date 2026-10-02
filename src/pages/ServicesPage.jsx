@@ -1,35 +1,16 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import SeoMeta from "../components/SeoMeta";
-
-const CORE_SERVICES = [
-  {
-    id: "photography",
-    slug: "product-lifestyle-photography",
-    title: "Photography & Videography",
-    description: "High-fidelity commercial imagery and lifestyle narratives capturing texture, light, and form.",
-  },
-  {
-    id: "branding",
-    slug: "branding-visual-identity",
-    title: "Brand & Visual Identity",
-    description: "Enduring identity systems, typography, and visual guidelines built for distinction.",
-  },
-  {
-    id: "digital",
-    slug: "website-app-development",
-    title: "Web & Digital Experiences",
-    description: "Bespoke digital platforms combining editorial typography with buttery-smooth interactions.",
-  },
-  {
-    id: "merchandising",
-    slug: "visual-merchandising",
-    title: "Visual Merchandising & Spatial",
-    description: "Immersive retail environments, window displays, and exhibition pavilions that engage audiences.",
-  },
-];
+import DetailModal from "../components/DetailModal";
+import { SERVICES } from "../content/services";
 
 export default function ServicesPage() {
+  const [selectedService, setSelectedService] = useState(null);
+
+  // Focus on 4 primary services for simplicity
+  const primaryServices = SERVICES.slice(0, 4);
+
   return (
     <>
       <SeoMeta
@@ -55,35 +36,48 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* Minimal 3–4 Service Cards Grid */}
+        {/* Minimal 4 Service Cards Grid with Popup Trigger */}
         <section className="py-16 sm:py-24">
           <div className="site-container">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {CORE_SERVICES.map((service, index) => (
+              {primaryServices.map((service, index) => (
                 <div
                   key={service.id}
-                  className="p-6 sm:p-7 rounded-2xl bg-[#121212] border border-white/10 flex flex-col justify-between hover:border-[#C8A25D]/40 transition-all duration-200 group"
+                  onClick={() => setSelectedService(service)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setSelectedService(service);
+                    }
+                  }}
+                  className="p-6 sm:p-7 rounded-2xl bg-[#121212] border border-white/10 flex flex-col justify-between hover:border-[#C8A25D]/40 transition-all duration-200 group cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#C8A25D]"
                 >
                   <div className="space-y-4">
                     <span className="text-xs font-mono text-[#C8A25D]">
                       0{index + 1}
                     </span>
                     <h2 className="font-heading text-xl sm:text-2xl font-semibold text-[#ECE5D8] leading-snug group-hover:text-[#C8A25D] transition-colors">
-                      {service.title}
+                      {service.shortTitle || service.title}
                     </h2>
                     <p className="text-xs sm:text-sm text-[#9CA3AF] leading-relaxed">
-                      {service.description}
+                      {service.summary || service.tagline}
                     </p>
                   </div>
 
                   <div className="pt-6 mt-4 border-t border-white/5">
-                    <Link
-                      to={`/services/${service.slug}`}
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#C8A25D] hover:text-[#DFB873] transition-colors"
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedService(service);
+                      }}
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#C8A25D] group-hover:text-[#DFB873] transition-colors cursor-pointer"
                     >
                       <span>Learn more</span>
                       <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
+                    </button>
                   </div>
                 </div>
               ))}
@@ -112,6 +106,14 @@ export default function ServicesPage() {
           </div>
         </section>
       </div>
+
+      {/* Smooth Reusable Detail Popup Modal */}
+      <DetailModal
+        isOpen={Boolean(selectedService)}
+        onClose={() => setSelectedService(null)}
+        item={selectedService}
+        type="service"
+      />
     </>
   );
 }
