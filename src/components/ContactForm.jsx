@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { SERVICES } from "../content/services";
 import { STUDIO_INFO } from "../content/studio";
@@ -19,17 +18,17 @@ export default function ContactForm({ initialService = "" }) {
 
   const validate = () => {
     const errs = {};
-    if (!formData.name.trim()) errs.name = "Please enter your full name.";
+    if (!formData.name.trim()) errs.name = "Please enter your name.";
     if (!formData.email.trim()) {
       errs.email = "Please provide your email address.";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       errs.email = "Please enter a valid email format.";
     }
     if (!formData.service) {
-      errs.service = "Please select a service of interest.";
+      errs.service = "Please select a discipline.";
     }
     if (!formData.message.trim() || formData.message.trim().length < 10) {
-      errs.message = "Please share a brief summary of your project (min 10 characters).";
+      errs.message = "Please share a brief summary of your project.";
     }
     setErrors(errs);
     return Object.keys(errs).length === 0;
@@ -50,33 +49,29 @@ export default function ContactForm({ initialService = "" }) {
     setStatus("submitting");
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 800));
+      await new Promise((resolve) => setTimeout(resolve, 600));
       setStatus("success");
-      setStatusMessage("Thank you! Your project inquiry has been received. Our creative team will get back to you within 24–48 hours.");
+      setStatusMessage("Thank you. Your inquiry has been received. Our team will get back to you within 24 hours.");
     } catch {
       setStatus("error");
-      setStatusMessage("Unable to dispatch automatically right now. Please email us directly at " + STUDIO_INFO.contact.email);
+      setStatusMessage("Unable to send inquiry. Please email us directly at " + STUDIO_INFO.contact.email);
     }
   };
 
   return (
-    <div className="bg-[#121212] p-5 sm:p-8 lg:p-10 rounded-2xl border border-white/10 shadow-md">
+    <div className="bg-[#121212] p-6 sm:p-8 lg:p-10 rounded-2xl border border-white/10 shadow-sm">
       {status === "success" ? (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="text-center py-10 sm:py-12 space-y-4 sm:space-y-5"
-        >
-          <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#C8A25D]/15 text-[#C8A25D] rounded-full flex items-center justify-center mx-auto">
-            <CheckCircle2 className="w-7 h-7 sm:w-8 sm:h-8" />
+        <div className="text-center py-10 space-y-4">
+          <div className="w-14 h-14 bg-[#C8A25D]/15 text-[#C8A25D] rounded-full flex items-center justify-center mx-auto">
+            <CheckCircle2 className="w-7 h-7" />
           </div>
-          <h3 className="font-heading text-2xl sm:text-3xl font-semibold text-[#ECE5D8]">
+          <h3 className="font-heading text-2xl font-semibold text-[#ECE5D8]">
             Inquiry Received
           </h3>
           <p className="text-xs sm:text-sm text-[#9CA3AF] max-w-md mx-auto leading-relaxed">
             {statusMessage}
           </p>
-          <div className="pt-3 sm:pt-4">
+          <div className="pt-2">
             <button
               type="button"
               onClick={() => {
@@ -88,21 +83,21 @@ export default function ContactForm({ initialService = "" }) {
               Send Another Message
             </button>
           </div>
-        </motion.div>
+        </div>
       ) : (
-        <form onSubmit={handleSubmit} noValidate className="space-y-5 sm:space-y-6">
+        <form onSubmit={handleSubmit} noValidate className="space-y-5">
           <div className="space-y-1">
             <h3 className="font-heading text-xl sm:text-2xl font-semibold text-[#ECE5D8]">
-              Tell Us About Your Project
+              Project Details
             </h3>
-            <p className="text-xs text-[#848994]">
-              Fill in the details below and we will craft a tailored creative proposal.
+            <p className="text-xs text-[#9CA3AF]">
+              Tell us about your brand goals and timeline.
             </p>
           </div>
 
           {/* Name Field */}
           <div>
-            <label htmlFor="name" className="block text-xs font-semibold uppercase tracking-wider text-[#ECE5D8] mb-1.5 sm:mb-2">
+            <label htmlFor="name" className="block text-xs font-semibold uppercase tracking-wider text-[#ECE5D8] mb-1.5">
               Full Name <span className="text-[#C8A25D]">*</span>
             </label>
             <input
@@ -112,12 +107,12 @@ export default function ContactForm({ initialService = "" }) {
               value={formData.name}
               onChange={handleChange}
               placeholder="e.g., Alistair Vance"
-              className={`w-full px-4 py-3 rounded-xl border text-base sm:text-sm bg-black focus:bg-[#121212] text-[#ECE5D8] placeholder-[#848994] transition-colors focus:outline-none focus:ring-2 focus:ring-[#C8A25D] ${
-                errors.name ? "border-red-500 bg-red-950/20" : "border-white/10"
+              className={`w-full px-4 py-3 rounded-xl border text-sm bg-black text-[#ECE5D8] placeholder-[#6B7280] transition-colors focus:outline-none focus:ring-1 focus:ring-[#C8A25D] ${
+                errors.name ? "border-red-500" : "border-white/10"
               }`}
             />
             {errors.name && (
-              <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
+              <p className="mt-1 text-xs text-red-400 flex items-center gap-1">
                 <AlertCircle className="w-3.5 h-3.5" />
                 {errors.name}
               </p>
@@ -125,9 +120,9 @@ export default function ContactForm({ initialService = "" }) {
           </div>
 
           {/* Email & Phone Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-wider text-[#ECE5D8] mb-1.5 sm:mb-2">
+              <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-wider text-[#ECE5D8] mb-1.5">
                 Email Address <span className="text-[#C8A25D]">*</span>
               </label>
               <input
@@ -137,12 +132,12 @@ export default function ContactForm({ initialService = "" }) {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="you@company.com"
-                className={`w-full px-4 py-3 rounded-xl border text-base sm:text-sm bg-black focus:bg-[#121212] text-[#ECE5D8] placeholder-[#848994] transition-colors focus:outline-none focus:ring-2 focus:ring-[#C8A25D] ${
-                  errors.email ? "border-red-500 bg-red-950/20" : "border-white/10"
+                className={`w-full px-4 py-3 rounded-xl border text-sm bg-black text-[#ECE5D8] placeholder-[#6B7280] transition-colors focus:outline-none focus:ring-1 focus:ring-[#C8A25D] ${
+                  errors.email ? "border-red-500" : "border-white/10"
                 }`}
               />
               {errors.email && (
-                <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
+                <p className="mt-1 text-xs text-red-400 flex items-center gap-1">
                   <AlertCircle className="w-3.5 h-3.5" />
                   {errors.email}
                 </p>
@@ -150,8 +145,8 @@ export default function ContactForm({ initialService = "" }) {
             </div>
 
             <div>
-              <label htmlFor="phone" className="block text-xs font-semibold uppercase tracking-wider text-[#ECE5D8] mb-1.5 sm:mb-2">
-                Phone Number <span className="text-xs text-[#848994] lowercase font-normal">(optional)</span>
+              <label htmlFor="phone" className="block text-xs font-semibold uppercase tracking-wider text-[#ECE5D8] mb-1.5">
+                Phone <span className="text-xs text-[#6B7280] lowercase font-normal">(optional)</span>
               </label>
               <input
                 type="tel"
@@ -160,23 +155,23 @@ export default function ContactForm({ initialService = "" }) {
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="+91 98765 43210"
-                className="w-full px-4 py-3 rounded-xl border border-white/10 text-base sm:text-sm bg-black focus:bg-[#121212] text-[#ECE5D8] placeholder-[#848994] transition-colors focus:outline-none focus:ring-2 focus:ring-[#C8A25D]"
+                className="w-full px-4 py-3 rounded-xl border border-white/10 text-sm bg-black text-[#ECE5D8] placeholder-[#6B7280] transition-colors focus:outline-none focus:ring-1 focus:ring-[#C8A25D]"
               />
             </div>
           </div>
 
           {/* Service Selector */}
           <div>
-            <label htmlFor="service" className="block text-xs font-semibold uppercase tracking-wider text-[#ECE5D8] mb-1.5 sm:mb-2">
-              Primary Service Needed <span className="text-[#C8A25D]">*</span>
+            <label htmlFor="service" className="block text-xs font-semibold uppercase tracking-wider text-[#ECE5D8] mb-1.5">
+              Discipline Needed <span className="text-[#C8A25D]">*</span>
             </label>
             <select
               id="service"
               name="service"
               value={formData.service}
               onChange={handleChange}
-              className={`w-full px-4 py-3 rounded-xl border text-base sm:text-sm bg-black focus:bg-[#121212] text-[#ECE5D8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#C8A25D] ${
-                errors.service ? "border-red-500 bg-red-950/20" : "border-white/10"
+              className={`w-full px-4 py-3 rounded-xl border text-sm bg-black text-[#ECE5D8] transition-colors focus:outline-none focus:ring-1 focus:ring-[#C8A25D] ${
+                errors.service ? "border-red-500" : "border-white/10"
               }`}
             >
               <option value="">Select a discipline...</option>
@@ -185,12 +180,12 @@ export default function ContactForm({ initialService = "" }) {
                   {s.title}
                 </option>
               ))}
-              <option value="Comprehensive 360° Studio Package">
-                Comprehensive 360° Multidisciplinary Package
+              <option value="Comprehensive Studio Package">
+                Comprehensive Multidisciplinary Package
               </option>
             </select>
             {errors.service && (
-              <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
+              <p className="mt-1 text-xs text-red-400 flex items-center gap-1">
                 <AlertCircle className="w-3.5 h-3.5" />
                 {errors.service}
               </p>
@@ -199,8 +194,8 @@ export default function ContactForm({ initialService = "" }) {
 
           {/* Project Message */}
           <div>
-            <label htmlFor="message" className="block text-xs font-semibold uppercase tracking-wider text-[#ECE5D8] mb-1.5 sm:mb-2">
-              Project Summary & Scope <span className="text-[#C8A25D]">*</span>
+            <label htmlFor="message" className="block text-xs font-semibold uppercase tracking-wider text-[#ECE5D8] mb-1.5">
+              Project Summary <span className="text-[#C8A25D]">*</span>
             </label>
             <textarea
               id="message"
@@ -208,13 +203,13 @@ export default function ContactForm({ initialService = "" }) {
               rows={4}
               value={formData.message}
               onChange={handleChange}
-              placeholder="Tell us about your brand, deliverables needed, target timelines, and any visual inspirations..."
-              className={`w-full px-4 py-3 rounded-xl border text-base sm:text-sm bg-black focus:bg-[#121212] text-[#ECE5D8] placeholder-[#848994] transition-colors focus:outline-none focus:ring-2 focus:ring-[#C8A25D] resize-y ${
-                errors.message ? "border-red-500 bg-red-950/20" : "border-white/10"
+              placeholder="Tell us about your brand, deliverables needed, and timeline..."
+              className={`w-full px-4 py-3 rounded-xl border text-sm bg-black text-[#ECE5D8] placeholder-[#6B7280] transition-colors focus:outline-none focus:ring-1 focus:ring-[#C8A25D] resize-y ${
+                errors.message ? "border-red-500" : "border-white/10"
               }`}
             />
             {errors.message && (
-              <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
+              <p className="mt-1 text-xs text-red-400 flex items-center gap-1">
                 <AlertCircle className="w-3.5 h-3.5" />
                 {errors.message}
               </p>
@@ -233,16 +228,16 @@ export default function ContactForm({ initialService = "" }) {
           <button
             type="submit"
             disabled={status === "submitting"}
-            className="w-full py-3.5 sm:py-4 px-6 rounded-xl bg-[#C8A25D] hover:bg-[#DFB873] text-black font-semibold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2.5 shadow-md hover:shadow-lg transition-all active:scale-[0.99] disabled:opacity-70 focus:outline-none focus:ring-2 focus:ring-[#C8A25D]"
+            className="w-full py-3.5 px-6 rounded-full bg-[#C8A25D] hover:bg-[#DFB873] text-black font-semibold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all active:scale-[0.99] disabled:opacity-70 focus:outline-none"
           >
             {status === "submitting" ? (
               <>
                 <Loader2 className="w-4 h-4 animate-spin text-black" />
-                <span>Transmitting Inquiry...</span>
+                <span>Transmitting...</span>
               </>
             ) : (
               <>
-                <span>Send Project Inquiry</span>
+                <span>Send Inquiry</span>
                 <Send className="w-4 h-4 text-black" />
               </>
             )}
@@ -252,3 +247,4 @@ export default function ContactForm({ initialService = "" }) {
     </div>
   );
 }
+

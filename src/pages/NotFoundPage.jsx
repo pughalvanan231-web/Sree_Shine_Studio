@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Compass } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import SeoMeta from "../components/SeoMeta";
 
 export default function NotFoundPage() {
@@ -10,33 +10,25 @@ export default function NotFoundPage() {
         description="The page you are looking for does not exist."
       />
 
-      <div className="min-h-[80vh] flex items-center justify-center pt-24 pb-16 px-4">
-        <div className="max-w-lg mx-auto text-center space-y-6">
-          <span className="font-heading text-8xl font-bold text-[#C4A47C]">404</span>
+      <div className="min-h-[80vh] flex items-center justify-center pt-28 pb-16 bg-[#0a0a0a]">
+        <div className="site-container max-w-lg text-center space-y-6">
+          <span className="font-heading text-7xl sm:text-8xl font-bold text-[#C8A25D] block">404</span>
           
-          <h1 className="font-heading text-3xl sm:text-4xl font-semibold text-[#ECE5D8]">
+          <h1 className="font-heading text-2xl sm:text-3xl font-semibold text-[#ECE5D8]">
             Page Not Found
           </h1>
 
-          <p className="text-sm sm:text-base text-[#9CA3AF] leading-relaxed">
-            The creative canvas you are looking for may have moved or is no longer available.
+          <p className="text-xs sm:text-sm text-[#9CA3AF] leading-relaxed">
+            The page you are looking for may have been moved, updated, or is no longer available.
           </p>
 
-          <div className="pt-4 flex flex-wrap justify-center gap-3">
+          <div className="pt-2 flex justify-center">
             <Link
               to="/home"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#191B1E] hover:bg-[#2C2F33] text-[#FBF9F5] text-sm font-medium rounded-full shadow transition-colors"
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#C8A25D] hover:bg-[#DFB873] text-black text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-full shadow-md transition-all active:scale-95"
             >
-              <ArrowLeft className="w-4 h-4 text-[#C4A47C]" />
+              <ArrowLeft className="w-4 h-4" />
               <span>Return Home</span>
-            </Link>
-
-            <Link
-              to="/work"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#121212] hover:bg-[#ECE5D8] text-[#ECE5D8] border border-white/10 text-sm font-medium rounded-full transition-colors"
-            >
-              <Compass className="w-4 h-4 text-[#C8A25D]" />
-              <span>Explore Our Work</span>
             </Link>
           </div>
         </div>
@@ -44,3 +36,4 @@ export default function NotFoundPage() {
     </>
   );
 }
+

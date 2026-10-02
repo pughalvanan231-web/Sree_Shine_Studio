@@ -47,7 +47,7 @@ export default function BrandLogo({
           <img
             src="/assets/sree-shine-logo.png"
             alt="Sree Shine Studio"
-            className="h-full w-auto object-contain max-h-[44px] sm:max-h-[56px] md:max-h-[64px]"
+            className="h-full w-auto object-contain max-h-[36px] sm:max-h-[44px]"
             loading="eager"
           />
         </div>

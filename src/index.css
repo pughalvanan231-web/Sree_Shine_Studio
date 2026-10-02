@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Poppins", "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-sans: "Plus Jakarta Sans", "Poppins", system-ui, -apple-system, sans-serif;
   --font-serif: "Cormorant Garamond", Georgia, serif;
-  --font-display: "Six Caps", sans-serif;
-  --font-heading: "Syne", "Poppins", sans-serif;
+  --font-display: "Syne", "Six Caps", sans-serif;
+  --font-heading: "Syne", "Plus Jakarta Sans", sans-serif;
   
   --color-dark-bg: #0a0a0a;
-  --color-dark-surface: #0c0c0c;
-  --color-dark-card: #121212;
+  --color-dark-surface: #121212;
+  --color-dark-card: #151515;
   --color-dark-border: rgba(255, 255, 255, 0.08);
   
   --color-warm-ivory: #FAF7F2;
@@ -21,38 +21,56 @@
   
   /* Antique Gold System */
   --color-antique-gold: #C8A25D;
-  --color-antique-gold-light: #F9E29D;
+  --color-antique-gold-light: #DFB873;
   --color-antique-gold-dark: #A67C1E;
 }
 
 :root {
   --bg-primary: #0a0a0a;
   --bg-secondary: #121212;
-  --bg-card: #0c0c0c;
+  --bg-card: #151515;
   --text-primary: #ECE5D8;
   --text-secondary: #9CA3AF;
   --text-muted: #6B7280;
   --accent-gold: #C8A25D;
+  --accent-gold-hover: #DFB873;
   --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(200, 162, 93, 0.4);
 }
 
 @layer base {
-  * {
+  *, *::before, *::after {
     border-color: var(--border-subtle);
+    box-sizing: border-box;
   }
   
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+  }
+
   body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     font-family: var(--font-sans);
     letter-spacing: -0.01em;
+    min-height: 100vh;
+    overflow-x: hidden;
+    cursor: default;
   }
 
-  h1, h2, h3, h4 {
+  h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
   }
 
-/* Custom scrollbar */
+  button, a {
+    cursor: pointer;
+  }
+
+  /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -69,7 +87,36 @@
   }
 }
 
-/* Hide scrollbars for slick mobile horizontal sliders */
+/* Global Content Container for Perfect Alignment */
+.site-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.25rem; /* 20px on mobile */
+}
+
+@media (min-width: 640px) {
+  .site-container {
+    padding-inline: 1.75rem; /* 28px on tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-container {
+    padding-inline: 2rem; /* 32px on desktop */
+  }
+}
+
+/* Readable Paragraph Maximum Widths */
+.prose-readable {
+  max-width: 620px;
+}
+
+.prose-hero {
+  max-width: 560px;
+}
+
+/* Hide scrollbars for clean horizontal pills */
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
@@ -78,19 +125,15 @@
   scrollbar-width: none;
 }
 
-/* Mobile viewport adjustments */
-html, body {
-  overflow-x: hidden;
-  max-width: 100vw;
-}
-
-/* Respect reduced motion without breaking JS animations */
+/* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto !important;
   }
-  .animate-marquee-left,
-  .animate-marquee-right {
-    animation: none !important;
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
+

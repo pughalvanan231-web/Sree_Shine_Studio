@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-import { Mail, Phone, MapPin, Clock, ArrowUpRight, Sparkles } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, ArrowUpRight } from "lucide-react";
 import PageHeader from "../components/PageHeader";
 import ContactForm from "../components/ContactForm";
 import SeoMeta from "../components/SeoMeta";
@@ -18,26 +18,26 @@ export default function ContactPage() {
 
       <PageHeader
         badge="Inquiries & Collaborations"
-        title="Let’s Create Something Worth Noticing"
-        subtitle="Share your vision, project timeline, and required disciplines. Our creative directors will respond with a tailored proposal."
+        title="Start a Conversation"
+        subtitle="Share your vision, required disciplines, and timeline. Our creative team will respond with a tailored proposal."
       />
 
-      <section className="py-14 sm:py-20 bg-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-start">
+      <section className="py-16 sm:py-24 bg-[#0a0a0a]">
+        <div className="site-container">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             
             {/* Form Column */}
             <div className="lg:col-span-7">
               <ContactForm initialService={initialService} />
             </div>
 
-            {/* Studio Contact Info & Direct Links */}
-            <div className="lg:col-span-5 space-y-6 sm:space-y-8">
+            {/* Studio Info Column */}
+            <div className="lg:col-span-5 space-y-6">
               
-              {/* Studio Card */}
-              <div className="bg-[#121212] p-6 sm:p-8 rounded-2xl border border-white/10 space-y-5 sm:space-y-6 shadow-sm">
+              {/* Studio Details Card */}
+              <div className="bg-[#121212] p-6 sm:p-8 rounded-2xl border border-white/10 space-y-6 shadow-sm">
                 <div>
-                  <span className="text-xs uppercase tracking-widest text-[#C8A25D] font-semibold block mb-1">
+                  <span className="text-[11px] sm:text-xs uppercase tracking-wider text-[#C8A25D] font-semibold block mb-1">
                     Direct Contact
                   </span>
                   <h3 className="font-heading text-xl sm:text-2xl font-semibold text-[#ECE5D8]">
@@ -45,24 +45,24 @@ export default function ContactPage() {
                   </h3>
                 </div>
 
-                <div className="space-y-4 text-sm text-[#ECE5D8]">
+                <div className="space-y-4 text-xs sm:text-sm text-[#ECE5D8]">
                   <div className="flex items-start gap-3">
-                    <MapPin className="w-5 h-5 text-[#C8A25D] shrink-0 mt-0.5" />
+                    <MapPin className="w-4 h-4 text-[#C8A25D] shrink-0 mt-1" />
                     <div>
-                      <span className="font-semibold block text-xs uppercase tracking-wider text-[#848994]">Studio Location</span>
-                      <p className="mt-0.5 text-xs sm:text-sm text-[#9CA3AF] leading-relaxed">
+                      <span className="font-semibold block text-xs uppercase tracking-wider text-[#6B7280]">Studio Location</span>
+                      <p className="mt-0.5 text-[#9CA3AF] leading-relaxed">
                         {STUDIO_INFO.location.address}
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <Mail className="w-5 h-5 text-[#C8A25D] shrink-0 mt-0.5" />
+                    <Mail className="w-4 h-4 text-[#C8A25D] shrink-0 mt-1" />
                     <div>
-                      <span className="font-semibold block text-xs uppercase tracking-wider text-[#848994]">Email Inquiries</span>
+                      <span className="font-semibold block text-xs uppercase tracking-wider text-[#6B7280]">Email</span>
                       <a
                         href={`mailto:${STUDIO_INFO.contact.email}`}
-                        className="mt-0.5 text-xs sm:text-sm text-[#ECE5D8] font-medium hover:text-[#C8A25D] transition-colors break-all sm:break-normal"
+                        className="mt-0.5 block text-[#ECE5D8] font-medium hover:text-[#C8A25D] transition-colors break-all"
                       >
                         {STUDIO_INFO.contact.email}
                       </a>
@@ -70,12 +70,12 @@ export default function ContactPage() {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <Phone className="w-5 h-5 text-[#C8A25D] shrink-0 mt-0.5" />
+                    <Phone className="w-4 h-4 text-[#C8A25D] shrink-0 mt-1" />
                     <div>
-                      <span className="font-semibold block text-xs uppercase tracking-wider text-[#848994]">Studio Line</span>
+                      <span className="font-semibold block text-xs uppercase tracking-wider text-[#6B7280]">Phone</span>
                       <a
                         href={`tel:${STUDIO_INFO.contact.phone.replace(/\s+/g, '')}`}
-                        className="mt-0.5 text-xs sm:text-sm text-[#ECE5D8] font-medium hover:text-[#C8A25D] transition-colors"
+                        className="mt-0.5 block text-[#ECE5D8] font-medium hover:text-[#C8A25D] transition-colors"
                       >
                         {STUDIO_INFO.contact.formattedPhone}
                       </a>
@@ -83,10 +83,10 @@ export default function ContactPage() {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <Clock className="w-5 h-5 text-[#C8A25D] shrink-0 mt-0.5" />
+                    <Clock className="w-4 h-4 text-[#C8A25D] shrink-0 mt-1" />
                     <div>
-                      <span className="font-semibold block text-xs uppercase tracking-wider text-[#848994]">Studio Hours</span>
-                      <p className="mt-0.5 text-xs sm:text-sm text-[#9CA3AF]">
+                      <span className="font-semibold block text-xs uppercase tracking-wider text-[#6B7280]">Hours</span>
+                      <p className="mt-0.5 text-[#9CA3AF]">
                         {STUDIO_INFO.contact.hours}
                       </p>
                     </div>
@@ -95,7 +95,7 @@ export default function ContactPage() {
 
                 {/* Social Channels */}
                 <div className="pt-4 border-t border-white/10">
-                  <span className="font-semibold block text-xs uppercase tracking-wider text-[#848994] mb-3">
+                  <span className="font-semibold block text-xs uppercase tracking-wider text-[#6B7280] mb-3">
                     Social & Portfolios
                   </span>
                   <div className="flex flex-wrap gap-2">
@@ -105,7 +105,7 @@ export default function ContactPage() {
                         href={social.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-3 py-1.5 rounded-lg bg-black border border-white/10 text-xs font-medium text-[#ECE5D8] hover:border-[#C8A25D] hover:text-[#C8A25D] transition-colors inline-flex items-center gap-1.5 shadow-2xs"
+                        className="px-3 py-1.5 rounded-lg bg-black/60 border border-white/10 text-xs font-medium text-[#ECE5D8] hover:border-[#C8A25D] hover:text-[#C8A25D] transition-colors inline-flex items-center gap-1.5"
                       >
                         <span>{social.name}</span>
                         <ArrowUpRight className="w-3 h-3 opacity-60" />
@@ -113,19 +113,6 @@ export default function ContactPage() {
                     ))}
                   </div>
                 </div>
-              </div>
-
-              {/* What Happens Next Card */}
-              <div className="bg-[#121212] p-5 sm:p-7 rounded-2xl border border-white/10 shadow-sm space-y-3">
-                <h4 className="font-heading text-base sm:text-lg font-semibold text-[#ECE5D8] flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-[#C8A25D]" />
-                  <span>What to Expect Next</span>
-                </h4>
-                <ul className="text-xs text-[#9CA3AF] space-y-2 leading-relaxed">
-                  <li>• Initial scope assessment within 24 business hours.</li>
-                  <li>• Scheduling of a 30-minute creative alignment session.</li>
-                  <li>• Delivery of a comprehensive proposal & timeline roadmap.</li>
-                </ul>
               </div>
 
             </div>
@@ -136,3 +123,4 @@ export default function ContactPage() {
     </>
   );
 }
+
