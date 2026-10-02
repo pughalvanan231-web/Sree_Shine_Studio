@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { ArrowRight, Compass, RotateCcw } from "lucide-react";
+import { ArrowRight, Compass, RotateCcw, FastForward } from "lucide-react";
 import gsap from "gsap";
 import SeoMeta from "../components/SeoMeta";
 import BrandLogo from "../components/BrandLogo";
@@ -142,6 +142,25 @@ export default function WelcomePage() {
     );
   }, []);
 
+  const handleVideoEnd = useCallback(() => {
+    setIsVideoFading(true);
+    setTimeout(() => {
+      setIsVideoPlaying(false);
+    }, 600); // smooth fade transition
+  }, []);
+
+  // Ensure autoplay triggers properly
+  useEffect(() => {
+    if (videoRef.current && isVideoPlaying) {
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Autoplay was prevented by browser policy, keep video accessible or skip
+        });
+      }
+    }
+  }, [isVideoPlaying]);
+
   useEffect(() => {
     if (!isVideoPlaying) {
       playEntranceAnimation();
@@ -150,13 +169,6 @@ export default function WelcomePage() {
       if (timelineRef.current) timelineRef.current.kill();
     };
   }, [playEntranceAnimation, isVideoPlaying]);
-
-  const handleVideoEnd = useCallback(() => {
-    setIsVideoFading(true);
-    setTimeout(() => {
-      setIsVideoPlaying(false);
-    }, 1000); // 1000ms fade duration
-  }, []);
 
   const handleEnterWebsite = useCallback(
     (e) => {
@@ -195,22 +207,40 @@ export default function WelcomePage() {
         description="Sree Shine Studio — Photography. Branding. Design. Digital experiences. Where creativity comes to life."
       />
 
+      {/* 1. Cinematic Intro Video Overlay */}
       {isVideoPlaying && (
         <div 
-          className={`fixed inset-0 z-50 bg-[#0E1111] flex items-center justify-center transition-opacity duration-1000 ease-in-out ${isVideoFading ? 'opacity-0' : 'opacity-100'}`}
+          className={`fixed inset-0 z-50 bg-[#0a0a0a] flex items-center justify-center transition-opacity duration-700 ease-in-out ${isVideoFading ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
         >
           <video
             ref={videoRef}
-            src="/videos/intro.mp4"
             autoPlay
             muted
             playsInline
             onEnded={handleVideoEnd}
-            className="w-full h-full object-cover scale-110 -translate-y-[8%] translate-x-[2%]"
-          />
+            onError={handleVideoEnd}
+            className="w-full h-full object-cover scale-105"
+          >
+            <source src="/videos/intro.mp4" type="video/mp4" />
+            <source src="/assets/intro.mp4" type="video/mp4" />
+            <source src="/assets/final logo ind.mp4" type="video/mp4" />
+            <source src="/assets/final%20logo%20ind.mp4" type="video/mp4" />
+          </video>
+
+          {/* Floating Skip Intro Button */}
+          <button
+            type="button"
+            onClick={handleVideoEnd}
+            className="absolute top-6 right-6 sm:top-8 sm:right-8 z-50 px-4 py-2 rounded-full bg-black/60 hover:bg-[#C8A25D] text-white hover:text-black border border-white/20 hover:border-[#C8A25D] text-xs uppercase tracking-widest font-semibold backdrop-blur-md transition-all inline-flex items-center gap-2 cursor-pointer shadow-lg active:scale-95"
+            aria-label="Skip Introduction Video"
+          >
+            <span>Skip Intro</span>
+            <FastForward className="w-3.5 h-3.5" />
+          </button>
         </div>
       )}
 
+      {/* 2. Main Central Welcome Landing Stage */}
       <div
         ref={containerRef}
         className="relative min-h-[100dvh] w-full bg-[#0a0a0a] text-[#ECE5D8] flex flex-col justify-between p-6 sm:p-10 md:p-14 overflow-x-hidden select-none"
@@ -224,18 +254,16 @@ export default function WelcomePage() {
           }}
         />
 
-        {/* 1. Top Minimal Bar */}
+        {/* Top Minimal Bar */}
         <header className="relative z-20 w-full max-w-7xl mx-auto flex items-center justify-between">
-          {/* Top Left: Compact Brand Mark */}
           <div className="flex items-center gap-3">
             <BrandLogo variant="compact" size="sm" asLink={false} />
           </div>
 
-          {/* Top Right: Accessible Enter Website Quick Link */}
           <button
             type="button"
             onClick={handleEnterWebsite}
-            className="flolapo-pill-btn px-4 py-2 text-xs uppercase tracking-widest text-[#ECE5D8] hover:text-black hover:bg-[#C8A25D] hover:border-[#C8A25D] transition-all cursor-pointer inline-flex items-center gap-2 font-medium"
+            className="px-5 py-2.5 rounded-full border border-white/20 text-xs uppercase tracking-widest text-[#ECE5D8] hover:text-black hover:bg-[#C8A25D] hover:border-[#C8A25D] transition-all cursor-pointer inline-flex items-center gap-2 font-medium shadow-sm active:scale-95"
             aria-label="Enter Sree Shine Studio Website"
           >
             <span>Enter Website</span>
@@ -243,31 +271,29 @@ export default function WelcomePage() {
           </button>
         </header>
 
-        {/* 2. Main Central Typographic Composition */}
+        {/* Main Central Typographic Composition */}
         <main
           id="main-welcome-content"
           className="relative z-10 my-auto w-full max-w-5xl mx-auto flex flex-col items-center justify-center text-center py-6 sm:py-12"
         >
-          {/* Transparent Peacock Emblem (Subtle Mask Reveal) */}
+          {/* Transparent Brand Emblem */}
           <div
             ref={peacockRef}
             className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mb-6 sm:mb-8 flex items-center justify-center pointer-events-none"
           >
             <img
-              src="/assets/layers/layer-2-peacock-body.png"
-              alt=""
-              aria-hidden="true"
-              className="w-full h-full object-contain filter drop-shadow-[0_4px_16px_rgba(200,162,93,0.25)]"
+              src="/logo.png"
+              alt="Sree Shine Studio"
+              className="w-full h-full object-contain filter drop-shadow-[0_4px_16px_rgba(200,162,93,0.35)]"
             />
           </div>
 
-          {/* Large Typographic Title: SREE SHINE */}
-          <h1
-            className="sr-only"
-          >
+          {/* Screen Reader Title */}
+          <h1 className="sr-only">
             Sree Shine Studio
           </h1>
 
+          {/* Large Typographic Title: SREE SHINE */}
           <div
             aria-hidden="true"
             className="flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-8 text-center leading-none"
@@ -324,24 +350,22 @@ export default function WelcomePage() {
             ref={actionsRef}
             className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full px-4"
           >
-            {/* Enter Website Primary CTA */}
             <button
               type="button"
               id="enter-website-main-btn"
               onClick={handleEnterWebsite}
               disabled={isNavigating}
-              className="flolapo-pill-btn w-full sm:w-auto min-h-[50px] px-9 py-3.5 bg-[#C8A25D] text-black hover:bg-[#DFB873] border-[#C8A25D] font-syne font-bold text-xs sm:text-sm uppercase tracking-widest cursor-pointer shadow-lg hover:shadow-xl transition-all inline-flex items-center justify-center gap-2.5"
+              className="w-full sm:w-auto min-h-[50px] px-9 py-3.5 bg-[#C8A25D] text-black hover:bg-[#DFB873] border border-[#C8A25D] font-syne font-bold text-xs sm:text-sm uppercase tracking-widest cursor-pointer shadow-lg hover:shadow-xl transition-all inline-flex items-center justify-center gap-2.5 rounded-full active:scale-95"
               aria-label="Enter Website — Opens Main Homepage"
             >
               <span>Enter Website</span>
               <ArrowRight className="w-4 h-4 text-black" />
             </button>
 
-            {/* View Our Work Secondary Link */}
             <Link
               to="/work"
               id="view-our-work-btn"
-              className="flolapo-pill-btn w-full sm:w-auto min-h-[50px] px-8 py-3.5 text-[#ECE5D8] hover:text-black text-xs sm:text-sm uppercase tracking-widest font-medium cursor-pointer transition-all inline-flex items-center justify-center gap-2"
+              className="w-full sm:w-auto min-h-[50px] px-8 py-3.5 text-[#ECE5D8] hover:text-black hover:bg-white/10 rounded-full border border-white/20 text-xs sm:text-sm uppercase tracking-widest font-medium cursor-pointer transition-all inline-flex items-center justify-center gap-2"
               aria-label="View Portfolio & Case Studies"
             >
               <Compass className="w-4 h-4 text-[#C8A25D]" />
@@ -350,17 +374,19 @@ export default function WelcomePage() {
           </div>
         </main>
 
-        {/* 3. Bottom Minimal Bar & Replay Control */}
+        {/* Bottom Minimal Bar & Replay Control */}
         <footer className="relative z-20 w-full max-w-7xl mx-auto flex items-center justify-between text-xs text-[#6B7280] uppercase tracking-wider pt-4 border-t border-white/5">
           <span>© {new Date().getFullYear()} Sree Shine Studio</span>
 
-          {/* Replay Entrance Animation Control */}
           <button
             ref={replayBtnRef}
             type="button"
-            onClick={playEntranceAnimation}
+            onClick={() => {
+              setIsVideoFading(false);
+              setIsVideoPlaying(true);
+            }}
             className="cursor-pointer inline-flex items-center gap-1.5 text-[11px] text-[#9CA3AF] hover:text-[#C8A25D] transition-colors focus-visible:outline-none"
-            aria-label="Replay Brand Introduction Animation"
+            aria-label="Replay Brand Introduction Video & Animation"
           >
             <RotateCcw className="w-3 h-3 text-[#C8A25D]" />
             <span>Replay Intro</span>
