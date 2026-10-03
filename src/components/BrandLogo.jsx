@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import LogoImage from "../../Logo.png";
 
 export default function BrandLogo({
   variant = "compact", // "full" | "compact" | "header" | "icon"
@@ -23,7 +24,7 @@ export default function BrandLogo({
     <div className={`inline-flex items-center gap-2.5 select-none ${className}`}>
       {!imageError ? (
         <img
-          src="/logo.png"
+          src={LogoImage}
           alt="Sree Shine Studio"
           className={`${currentSizeClass} w-auto object-contain`}
           onError={() => setImageError(true)}

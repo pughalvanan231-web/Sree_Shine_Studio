@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Star, MoreVertical, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const REVIEWS = [
   {
@@ -46,18 +47,22 @@ const REVIEWS = [
 
 export default function CustomerReviews() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
 
   const prevReview = () => {
+    setDirection(-1);
     setCurrentIndex((prev) => (prev === 0 ? REVIEWS.length - 1 : prev - 1));
   };
 
   const nextReview = () => {
+    setDirection(1);
     setCurrentIndex((prev) => (prev === REVIEWS.length - 1 ? 0 : prev + 1));
   };
 
   // Optional subtle auto-cycle
   useEffect(() => {
     const timer = setInterval(() => {
+      setDirection(1);
       setCurrentIndex((prev) => (prev === REVIEWS.length - 1 ? 0 : prev + 1));
     }, 6000);
     return () => clearInterval(timer);
@@ -66,6 +71,30 @@ export default function CustomerReviews() {
   const current = REVIEWS[currentIndex];
   const prevItem = REVIEWS[(currentIndex - 1 + REVIEWS.length) % REVIEWS.length];
   const nextItem = REVIEWS[(currentIndex + 1) % REVIEWS.length];
+
+  const variants = {
+    enter: (direction) => {
+      return {
+        x: direction > 0 ? 150 : -150,
+        opacity: 0,
+        scale: 0.95
+      };
+    },
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+      scale: 1
+    },
+    exit: (direction) => {
+      return {
+        zIndex: 0,
+        x: direction < 0 ? 150 : -150,
+        opacity: 0,
+        scale: 0.95
+      };
+    }
+  };
 
   return (
     <section
@@ -100,142 +129,179 @@ export default function CustomerReviews() {
           </span>
         </div>
 
-        {/* Carousel Showcase Row with Peeking Side Cards */}
-        <div className="relative max-w-5xl mx-auto flex items-center justify-center">
-          
-          {/* Left Peeking Card (Clickable to go Prev) */}
-          <button
-            type="button"
-            onClick={prevReview}
-            className="hidden md:block absolute -left-12 lg:-left-20 w-44 lg:w-64 h-[420px] rounded-[32px] bg-white/[0.03] backdrop-blur-md border border-white/10 opacity-30 hover:opacity-60 transition-all duration-300 transform -rotate-3 scale-90 cursor-pointer overflow-hidden p-6 text-left"
-            aria-label="Previous Review"
-          >
-            <div className="space-y-3 pointer-events-none">
-              <span className="text-xl font-heading text-white/50 block">Feedback</span>
-              <div className="flex text-[#C8A25D] text-xs">★★★★★</div>
-              <p className="text-[11px] text-white/40 line-clamp-4">"{prevItem.quote}"</p>
-            </div>
-          </button>
+        {/* Stacked Swipe Cards Container */}
+        <div className="relative max-w-lg mx-auto flex justify-center min-h-[480px] sm:min-h-[520px]">
+          <AnimatePresence custom={direction}>
+            {[...Array(3)].map((_, i) => {
+              const reviewIndex = (currentIndex + i) % REVIEWS.length;
+              const current = REVIEWS[reviewIndex];
+              const isTop = i === 0;
 
-          {/* Center Main Glass Card (Exact Match to Reference Design) */}
-          <div className="relative w-full max-w-lg mx-auto rounded-[32px] sm:rounded-[38px] bg-white/[0.05] backdrop-blur-xl border border-white/20 p-6 sm:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.85)] z-10 transition-all duration-300">
-            
-            {/* Title: Client (Light) / Feedback (Bold) */}
-            <div className="space-y-0.5 mb-6">
-              <span className="font-sans text-2xl sm:text-3xl text-[#ECE5D8] font-light block tracking-tight">
-                Client
-              </span>
-              <h2 className="font-heading text-3xl sm:text-5xl font-bold uppercase tracking-tight text-white">
-                Feedback
-              </h2>
-            </div>
+              // Calculate stack offsets based on position in stack (0 is top, 1 is middle, 2 is back)
+              const scale = 1 - i * 0.06;
+              const yOffset = i * -24; // Push back cards up slightly
+              const zIndex = REVIEWS.length - i;
+              const opacity = 1 - i * 0.25;
 
-            {/* 5 Prominent Gold Stars */}
-            <div className="flex items-center gap-1.5 mb-7">
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className="w-5 h-5 sm:w-6 sm:h-6 fill-[#FFCC00] text-[#FFCC00] drop-shadow-[0_2px_8px_rgba(255,204,0,0.4)]"
+              return (
+                <motion.div
+                  key={current.id}
+                  custom={direction}
+                  initial={{ scale: 0.8, y: -50, opacity: 0, x: 0, rotate: 0 }}
+                  animate={{
+                    scale,
+                    y: yOffset,
+                    zIndex,
+                    opacity,
+                    x: 0,
+                    rotate: 0,
+                  }}
+                  exit={(dir) => ({
+                    x: dir > 0 ? -300 : 300,
+                    y: 100, // swoop down slightly
+                    rotate: dir > 0 ? -15 : 15,
+                    opacity: 0,
+                    scale: 0.9,
+                    zIndex: REVIEWS.length + 1, // Stay on top while exiting
+                  })}
+                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                  drag={isTop ? "x" : false}
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.8}
+                  onDragEnd={(e, { offset }) => {
+                    const swipe = offset.x;
+                    if (swipe < -100) {
+                      setDirection(1);
+                      nextReview();
+                    } else if (swipe > 100) {
+                      setDirection(-1);
+                      prevReview();
+                    }
+                  }}
+                  className={`absolute top-0 w-full rounded-[32px] sm:rounded-[38px] bg-white/[0.05] backdrop-blur-xl border border-white/20 p-6 sm:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.85)] ${
+                    isTop ? "cursor-grab active:cursor-grabbing" : "pointer-events-none"
+                  }`}
+                >
+                  {/* Title: Client (Light) / Feedback (Bold) */}
+                  <div className="space-y-0.5 mb-6">
+                    <span className="font-sans text-2xl sm:text-3xl text-[#ECE5D8] font-light block tracking-tight">
+                      Client
+                    </span>
+                    <h2 className="font-heading text-3xl sm:text-5xl font-bold uppercase tracking-tight text-white">
+                      Feedback
+                    </h2>
+                  </div>
+
+                  {/* 5 Prominent Gold Stars */}
+                  <div className="flex items-center gap-1.5 mb-7">
+                    {[...Array(5)].map((_, starIdx) => (
+                      <Star
+                        key={starIdx}
+                        className="w-5 h-5 sm:w-6 sm:h-6 fill-[#FFCC00] text-[#FFCC00] drop-shadow-[0_2px_8px_rgba(255,204,0,0.4)]"
+                      />
+                    ))}
+                  </div>
+
+                  {/* Dark Review Bubble */}
+                  <div className="rounded-2xl bg-[#181818]/95 border border-white/10 p-5 sm:p-6 shadow-inner space-y-4">
+                    {/* Reviewer Header */}
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        {/* Avatar */}
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#DFB873] to-[#A67C1E] text-black font-bold text-base flex items-center justify-center shadow-md">
+                          {current.initial}
+                        </div>
+                        {/* Name & Subtitle */}
+                        <div>
+                          <h3 className="font-heading text-sm sm:text-base font-bold text-[#ECE5D8] tracking-wide">
+                            {current.name}
+                          </h3>
+                          <span className="text-[11px] text-[#9CA3AF] block font-sans">
+                            {current.subtitle}
+                          </span>
+                        </div>
+                      </div>
+                      <MoreVertical className="w-4 h-4 text-[#6B7280]" />
+                    </div>
+
+                    {/* Stars & Time */}
+                    <div className="flex items-center gap-2 text-xs">
+                      <div className="flex text-[#FFCC00] gap-0.5">
+                        {[...Array(current.stars)].map((_, starIdx) => (
+                          <Star key={starIdx} className="w-3.5 h-3.5 fill-[#FFCC00] text-[#FFCC00]" />
+                        ))}
+                      </div>
+                      <span className="text-[#9CA3AF] text-[11px]">{current.timeAgo}</span>
+                    </div>
+
+                    {/* Review Body Text */}
+                    <p className="text-xs sm:text-sm text-[#D1D5DB] leading-relaxed font-sans pt-1">
+                      "{current.quote}"
+                    </p>
+                  </div>
+                  
+                  {/* Desktop Only: Drag Hint */}
+                  {isTop && (
+                    <div className="hidden sm:block absolute -right-4 top-1/2 -translate-y-1/2 rotate-90 text-[10px] text-white/30 uppercase tracking-[0.2em] pointer-events-none">
+                      Swipe
+                    </div>
+                  )}
+                </motion.div>
+              );
+            }).reverse()}
+          </AnimatePresence>
+        </div>
+
+        {/* Mobile Swipe Hint and Nav Dots */}
+        <div className="relative max-w-lg mx-auto flex flex-col items-center mt-12 sm:mt-8 z-20">
+          <div className="flex items-center justify-between w-full px-6">
+            <button
+              type="button"
+              onClick={() => {
+                setDirection(-1);
+                prevReview();
+              }}
+              className="w-10 h-10 rounded-full bg-white/5 hover:bg-[#C8A25D] hover:text-black transition-colors flex items-center justify-center text-[#ECE5D8]"
+              aria-label="Previous client review"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            {/* Dot Indicators */}
+            <div className="flex items-center gap-2">
+              {REVIEWS.map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => {
+                    setDirection(idx > currentIndex ? 1 : -1);
+                    setCurrentIndex(idx);
+                  }}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    currentIndex === idx
+                      ? "w-6 bg-[#C8A25D]"
+                      : "w-2 bg-white/20 hover:bg-white/40"
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
                 />
               ))}
             </div>
 
-            {/* Dark Review Bubble (Google Review style inside) */}
-            <div className="rounded-2xl bg-[#181818]/95 border border-white/10 p-5 sm:p-6 shadow-inner space-y-4">
-              
-              {/* Reviewer Header */}
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  {/* Avatar Circle with Initial */}
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#DFB873] to-[#A67C1E] text-black font-bold text-base flex items-center justify-center shadow-md">
-                    {current.initial}
-                  </div>
-
-                  {/* Name & Subtitle */}
-                  <div>
-                    <h3 className="font-heading text-sm sm:text-base font-bold text-[#ECE5D8] tracking-wide">
-                      {current.name}
-                    </h3>
-                    <span className="text-[11px] text-[#9CA3AF] block font-sans">
-                      {current.subtitle}
-                    </span>
-                  </div>
-                </div>
-
-                {/* 3 Vertical Dots */}
-                <MoreVertical className="w-4 h-4 text-[#6B7280]" />
-              </div>
-
-              {/* Stars & Time */}
-              <div className="flex items-center gap-2 text-xs">
-                <div className="flex text-[#FFCC00] gap-0.5">
-                  {[...Array(current.stars)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-[#FFCC00] text-[#FFCC00]" />
-                  ))}
-                </div>
-                <span className="text-[#9CA3AF] text-[11px]">{current.timeAgo}</span>
-              </div>
-
-              {/* Review Body Text */}
-              <p className="text-xs sm:text-sm text-[#D1D5DB] leading-relaxed font-sans pt-1">
-                "{current.quote}"
-              </p>
-            </div>
-
-            {/* Slider Dots & Mobile Nav */}
-            <div className="flex items-center justify-between mt-6 pt-4 border-t border-white/10">
-              <button
-                type="button"
-                onClick={prevReview}
-                className="w-8 h-8 rounded-full bg-white/5 hover:bg-[#C8A25D] hover:text-black transition-colors flex items-center justify-center text-[#ECE5D8]"
-                aria-label="Previous client review"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-
-              {/* Dot Indicators */}
-              <div className="flex items-center gap-2">
-                {REVIEWS.map((_, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() => setCurrentIndex(idx)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      currentIndex === idx
-                        ? "w-6 bg-[#C8A25D]"
-                        : "w-2 bg-white/20 hover:bg-white/40"
-                    }`}
-                    aria-label={`Go to slide ${idx + 1}`}
-                  />
-                ))}
-              </div>
-
-              <button
-                type="button"
-                onClick={nextReview}
-                className="w-8 h-8 rounded-full bg-white/5 hover:bg-[#C8A25D] hover:text-black transition-colors flex items-center justify-center text-[#ECE5D8]"
-                aria-label="Next client review"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
-
+            <button
+              type="button"
+              onClick={() => {
+                setDirection(1);
+                nextReview();
+              }}
+              className="w-10 h-10 rounded-full bg-white/5 hover:bg-[#C8A25D] hover:text-black transition-colors flex items-center justify-center text-[#ECE5D8]"
+              aria-label="Next client review"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
-
-          {/* Right Peeking Card (Clickable to go Next) */}
-          <button
-            type="button"
-            onClick={nextReview}
-            className="hidden md:block absolute -right-12 lg:-right-20 w-44 lg:w-64 h-[420px] rounded-[32px] bg-white/[0.03] backdrop-blur-md border border-white/10 opacity-30 hover:opacity-60 transition-all duration-300 transform rotate-3 scale-90 cursor-pointer overflow-hidden p-6 text-left"
-            aria-label="Next Review"
-          >
-            <div className="space-y-3 pointer-events-none">
-              <span className="text-xl font-heading text-white/50 block">Feedback</span>
-              <div className="flex text-[#C8A25D] text-xs">★★★★★</div>
-              <p className="text-[11px] text-white/40 line-clamp-4">"{nextItem.quote}"</p>
-            </div>
-          </button>
-
+          <span className="sm:hidden text-[10px] text-white/30 uppercase tracking-widest mt-6 block">
+            Swipe cards to navigate
+          </span>
         </div>
 
         {/* Bottom Thank You Pill (Matching Reference) */}

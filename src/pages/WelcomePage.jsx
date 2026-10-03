@@ -4,6 +4,7 @@ import { ArrowRight, Compass, RotateCcw, FastForward } from "lucide-react";
 import gsap from "gsap";
 import SeoMeta from "../components/SeoMeta";
 import BrandLogo from "../components/BrandLogo";
+import LogoImage from "../../Logo.png";
 
 export default function WelcomePage() {
   const navigate = useNavigate();
@@ -286,7 +287,7 @@ export default function WelcomePage() {
             className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mb-6 sm:mb-8 flex items-center justify-center pointer-events-none"
           >
             <img
-              src="/logo.png"
+              src={LogoImage}
               alt="Sree Shine Studio"
               className="w-full h-full object-contain filter drop-shadow-[0_4px_16px_rgba(200,162,93,0.35)]"
             />

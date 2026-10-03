@@ -71,12 +71,11 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 h-18 sm:h-20 transition-all duration-300 flex items-center bg-[#0a0a0a]/90 backdrop-blur-md border-b ${
-          isScrolled ? "border-white/10 shadow-lg shadow-black/60" : "border-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-40 h-16 sm:h-20 transition-all duration-300 flex items-center bg-black/10 backdrop-blur-md border-b ${isScrolled ? "border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]" : "border-transparent"
+          }`}
       >
-        <div className="site-container flex items-center justify-between">
-          <BrandLogo variant="compact" size="md" asLink={true} linkTo="/home" />
+        <div className="site-container w-full flex items-center justify-between">
+          <BrandLogo variant="compact" size="lg" asLink={true} linkTo="/home" />
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6 lg:gap-8">
@@ -85,8 +84,7 @@ export default function Navbar() {
                 key={link.path}
                 to={link.path}
                 className={({ isActive }) =>
-                  `text-xs lg:text-sm font-medium tracking-wide uppercase transition-colors py-1 ${
-                    isActive ? "text-[#C8A25D] font-semibold" : "text-[#ECE5D8] hover:text-[#C8A25D]"
+                  `text-xs lg:text-sm font-medium tracking-wide uppercase transition-colors py-1 ${isActive ? "text-[#C8A25D] font-semibold" : "text-[#ECE5D8] hover:text-[#C8A25D]"
                   }`
                 }
               >
@@ -131,8 +129,7 @@ export default function Navbar() {
                 to={link.path}
                 onClick={() => setMenuOpen(false)}
                 className={({ isActive }) =>
-                  `flex items-center justify-between py-3.5 border-b border-white/5 text-xl sm:text-2xl font-heading font-semibold uppercase tracking-tight transition-colors ${
-                    isActive ? "text-[#C8A25D] pl-2 border-l-2 border-l-[#C8A25D]" : "text-[#ECE5D8] hover:text-[#C8A25D]"
+                  `flex items-center justify-between py-3.5 border-b border-white/5 text-xl sm:text-2xl font-heading font-semibold uppercase tracking-tight transition-colors ${isActive ? "text-[#C8A25D] pl-2 border-l-2 border-l-[#C8A25D]" : "text-[#ECE5D8] hover:text-[#C8A25D]"
                   }`
                 }
               >
@@ -152,10 +149,9 @@ export default function Navbar() {
                     to={cat.path}
                     onClick={() => setMenuOpen(false)}
                     className={({ isActive }) =>
-                      `text-xs py-2 px-3 rounded-lg border transition-colors ${
-                        isActive
-                          ? "bg-[#C8A25D]/10 text-[#C8A25D] border-[#C8A25D]/30"
-                          : "text-[#9CA3AF] border-white/5 hover:text-[#ECE5D8] hover:border-white/20"
+                      `text-xs py-2 px-3 rounded-lg border transition-colors ${isActive
+                        ? "bg-[#C8A25D]/10 text-[#C8A25D] border-[#C8A25D]/30"
+                        : "text-[#9CA3AF] border-white/5 hover:text-[#ECE5D8] hover:border-white/20"
                       }`
                     }
                   >
