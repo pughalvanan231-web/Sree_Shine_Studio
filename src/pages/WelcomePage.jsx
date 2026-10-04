@@ -216,10 +216,12 @@ export default function WelcomePage() {
         >
           <video
             ref={videoRef}
-            src="/videos/intro.mp4?v=2"
             autoPlay
             muted
             playsInline
+            preload="auto"
+            disablePictureInPicture
+            disableRemotePlayback
             onEnded={handleVideoEnd}
             className="w-full h-full max-w-[94vw] sm:max-w-none max-h-[85vh] sm:max-h-none object-contain md:object-cover md:scale-105"
           >

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Star, MoreVertical, ChevronLeft, ChevronRight } from "lucide-react";
+import { Star, MoreVertical, ChevronLeft, ChevronRight, Hand } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const REVIEWS = [
@@ -48,13 +48,16 @@ const REVIEWS = [
 export default function CustomerReviews() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [hasInteracted, setHasInteracted] = useState(false);
 
   const prevReview = () => {
+    setHasInteracted(true);
     setDirection(-1);
     setCurrentIndex((prev) => (prev === 0 ? REVIEWS.length - 1 : prev - 1));
   };
 
   const nextReview = () => {
+    setHasInteracted(true);
     setDirection(1);
     setCurrentIndex((prev) => (prev === REVIEWS.length - 1 ? 0 : prev + 1));
   };
@@ -169,6 +172,7 @@ export default function CustomerReviews() {
                   dragConstraints={{ left: 0, right: 0 }}
                   dragElastic={0.8}
                   onDragEnd={(e, { offset }) => {
+                    setHasInteracted(true);
                     const swipe = offset.x;
                     if (swipe < -100) {
                       setDirection(1);
@@ -241,10 +245,23 @@ export default function CustomerReviews() {
                   </div>
                   
                   {/* Desktop Only: Drag Hint */}
-                  {isTop && (
-                    <div className="hidden sm:block absolute -right-4 top-1/2 -translate-y-1/2 rotate-90 text-[10px] text-white/30 uppercase tracking-[0.2em] pointer-events-none">
-                      Swipe
-                    </div>
+                  {isTop && !hasInteracted && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ 
+                        opacity: [0, 1, 1, 0],
+                        x: [0, -30, 30, 0]
+                      }}
+                      transition={{ 
+                        repeat: Infinity, 
+                        duration: 3, 
+                        ease: "easeInOut" 
+                      }}
+                      className="absolute inset-0 m-auto w-24 h-24 flex flex-col items-center justify-center text-white bg-black/60 rounded-full backdrop-blur-sm z-50 pointer-events-none shadow-2xl"
+                    >
+                      <Hand className="w-8 h-8 mb-1 animate-pulse" />
+                      <span className="text-[9px] uppercase tracking-widest font-bold">Swipe</span>
+                    </motion.div>
                   )}
                 </motion.div>
               );
