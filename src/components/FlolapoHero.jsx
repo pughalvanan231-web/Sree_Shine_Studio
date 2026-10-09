@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import { ArrowDown, ArrowRight } from "lucide-react";
-import HeroBg from "../../download (1).jpg";
+import HeroBg from "../assets/images/download (1).jpg";
 import WaterRippleBackground from "./WaterRippleBackground";
+import RingsImg from "../assets/images/Rings.jpg";
+import ElegantGoldRingImg from "../assets/images/Elegant Gold Wedding Ring Set_ Timeless Symbols of Love.jpg";
+import BridalScentImg from "../assets/images/Bridal Scent.jpg";
+import Download2Img from "../assets/images/download (2).jpg";
 
 export default function FlolapoHero() {
   const handleScrollToExplore = () => {
@@ -54,7 +58,7 @@ export default function FlolapoHero() {
             {/* Left Photo: Traditional Indian Bride in Saree */}
             <div className="w-20 xs:w-24 sm:w-36 md:w-44 aspect-[3/4] bg-black border-2 sm:border-4 border-white rounded-xs overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-300 pointer-events-auto">
               <img
-                src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=800&auto=format&fit=crop"
+                src={RingsImg}
                 alt="Traditional Indian Wedding Photography"
                 className="w-full h-full object-cover"
               />
@@ -63,7 +67,7 @@ export default function FlolapoHero() {
             {/* Top Center Photo: Gold Jewelry Earrings on Podium */}
             <div className="w-20 xs:w-24 sm:w-36 md:w-44 aspect-[3/4] bg-black border-2 sm:border-4 border-white rounded-xs overflow-hidden shadow-2xl -mt-4 sm:-mt-10 hover:scale-105 transition-transform duration-300 pointer-events-auto">
               <img
-                src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=800&auto=format&fit=crop"
+                src={ElegantGoldRingImg}
                 alt="Product and Jewelry Photography"
                 className="w-full h-full object-cover"
               />
@@ -72,7 +76,7 @@ export default function FlolapoHero() {
             {/* Right Photo: Fashion Model in Green Studio */}
             <div className="w-20 xs:w-24 sm:w-36 md:w-44 aspect-[3/4] bg-black border-2 sm:border-4 border-white rounded-xs overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-300 pointer-events-auto">
               <img
-                src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop"
+                src={BridalScentImg}
                 alt="Editorial Fashion Model Photography"
                 className="w-full h-full object-cover"
               />
@@ -82,7 +86,7 @@ export default function FlolapoHero() {
           {/* Center Main Feature Photo: Black & White Editorial Woman Portrait */}
           <div className="relative z-20 w-56 xs:w-64 sm:w-96 md:w-[480px] aspect-[16/10] bg-black border-[3px] sm:border-[5px] border-white rounded-xs overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.75)] hover:scale-102 transition-transform duration-300 pointer-events-auto">
             <img
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=85&w=1200&auto=format&fit=crop"
+              src={Download2Img}
               alt="Editorial Portrait Photography"
               className="w-full h-full object-cover filter grayscale contrast-110"
             />

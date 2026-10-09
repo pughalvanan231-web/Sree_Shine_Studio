@@ -2,6 +2,8 @@
  * Sree Shine Studio - Portfolio Projects Data
  * Clearly labeled sample projects demonstrating studio capabilities
  */
+import BridalScentImg from "../assets/images/Bridal Scent.jpg";
+import PremiumCreativeAgencyImg from "../assets/images/Premium Creative Agency Website Mockup _ Modern UI Presentation by Omnix Studio.jpg";
 
 export const CATEGORIES = [
   { id: "all", label: "All Projects" },
@@ -70,8 +72,8 @@ export const PROJECTS = [
     client: "Sample Concept Project · Luxury Apparel",
     tagline: "Hand-rendered botanical pattern repeats and editorial lookbook for an artisanal silk collection.",
     shortDescription: "Bespoke surface pattern designs and campaign lookbook direction for an autumn silk capsule.",
-    heroImage: "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1600&auto=format&fit=crop",
-    thumbnail: "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1000&auto=format&fit=crop",
+    heroImage: BridalScentImg,
+    thumbnail: BridalScentImg,
     brief: "Develop seamless textile patterns inspired by heritage Indian flora with a modern European silhouette, culminating in an editorial lookbook shot in natural architectural light.",
     approach: "We hand-painted botanical motifs with gouache and ink, digitizing them into multi-directional pattern repeats for Jacquard and digital silk printing. The lookbook art direction prioritized architectural shadows and effortless drape.",
     deliverables: [
@@ -83,7 +85,7 @@ export const PROJECTS = [
     outcome: "An evocative visual narrative celebrating fluid movement, rich natural fibers, and contemporary elegance.",
     gallery: [
       {
-        url: "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1400&auto=format&fit=crop",
+        url: BridalScentImg,
         alt: "Model wearing Lumina draped silk dress in architectural sunlight",
         caption: "Dramatic chiaroscuro lighting capturing the drape and subtle sheen of raw silk."
       },
@@ -208,7 +210,7 @@ export const PROJECTS = [
         caption: "Clean responsive grid highlighting product dimensions and material choices."
       },
       {
-        url: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1400&auto=format&fit=crop",
+        url: PremiumCreativeAgencyImg,
         alt: "Mobile responsive view of digital storefront",
         caption: "Mobile-first navigation with buttery-smooth drawer transitions."
       }

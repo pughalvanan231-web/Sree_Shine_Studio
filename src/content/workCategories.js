@@ -8,6 +8,8 @@
  * 5. photography
  * 6. content-production
  */
+import BridalScentImg from "../assets/images/Bridal Scent.jpg";
+import PremiumCreativeAgencyImg from "../assets/images/Premium Creative Agency Website Mockup _ Modern UI Presentation by Omnix Studio.jpg";
 
 export const WORK_CATEGORIES = {
   "social-media": {
@@ -44,7 +46,7 @@ export const WORK_CATEGORIES = {
     statement: "WE TRANSFORM PASSIVE BROWSERS INTO COMMITTED BRAND ADVOCATES THROUGH CINEMATIC VISUAL STORYTELLING.",
     gallery: [
       {
-        url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=85&w=1200&auto=format&fit=crop",
+        url: BridalScentImg,
         title: "Editorial Campaign Feed",
         category: "Social Production",
         aspect: "portrait"
@@ -141,7 +143,7 @@ export const WORK_CATEGORIES = {
     title: "WEB DESIGN",
     shortTitle: "Web Design",
     tagline: "Bespoke digital flagships combining editorial typography, tactile interactions, and uncompromising web performance.",
-    heroImage: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=85&w=1800&auto=format&fit=crop",
+    heroImage: PremiumCreativeAgencyImg,
     scrollLabel: "SCROLL TO EXPLORE",
     sectionTitle: "DIGITAL CRAFT & ART DIRECTION",
     sectionSubtitle: "Websites that feel like curated galleries rather than standard template software.",
@@ -176,7 +178,7 @@ export const WORK_CATEGORIES = {
         aspect: "landscape"
       },
       {
-        url: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=85&w=1200&auto=format&fit=crop",
+        url: PremiumCreativeAgencyImg,
         title: "Editorial Portfolio Experience",
         category: "Interactive Design",
         aspect: "portrait"

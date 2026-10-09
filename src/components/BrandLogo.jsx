@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import LogoImage from "../../Logo.png";
+import LogoImage from "../assets/images/Logo.png";
 
 export default function BrandLogo({
   variant = "compact", // "full" | "compact" | "header" | "icon"

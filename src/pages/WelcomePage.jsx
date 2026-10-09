@@ -4,7 +4,7 @@ import { ArrowRight, Compass, RotateCcw, FastForward } from "lucide-react";
 import gsap from "gsap";
 import SeoMeta from "../components/SeoMeta";
 import BrandLogo from "../components/BrandLogo";
-import LogoImage from "../../Logo.png";
+import LogoImage from "../assets/images/Logo.png";
 
 export default function WelcomePage() {
   const navigate = useNavigate();

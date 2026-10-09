@@ -4,6 +4,15 @@ import { ArrowUpRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import DetailModal from "./DetailModal";
+import RingsImg from "../assets/images/Rings.jpg";
+import BridalScentImg from "../assets/images/Bridal Scent.jpg";
+import PremiumCreativeAgencyImg from "../assets/images/Premium Creative Agency Website Mockup _ Modern UI Presentation by Omnix Studio.jpg";
+import Download3Img from "../assets/images/download (3).jpg";
+import PhantomImg from "../assets/images/Phantom.jpg";
+import SonyCameraImg from "../assets/images/Sony camera cgI.jpg";
+import Top5SlideshowImg from "../assets/images/Top 5 Slideshow Video Creators for Stunning Visuals.jpg";
+import ValentinesDayImg from "../assets/images/valentine's day.jpg";
+import EditingImg from "../assets/images/Editing 💻.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,9 +25,9 @@ const SHOWCASE_ITEMS = [
     date: "2026",
     bgGradient: "from-[#241914] via-[#1a120e] to-[#120d0a]",
     accentBorder: "border-[#b56c4d]/30",
-    mainImage: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=85&w=1200&auto=format&fit=crop",
-    subImage1: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=600&auto=format&fit=crop",
-    subImage2: "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=600&auto=format&fit=crop",
+    mainImage: BridalScentImg,
+    subImage1: RingsImg,
+    subImage2: SonyCameraImg,
     summary: "Precision commercial photography and evocative wedding narratives crafted to accentuate natural light, textures, and genuine emotions.",
     deliverables: [
       "Commercial Tabletop & Macro Sets",
@@ -35,9 +44,9 @@ const SHOWCASE_ITEMS = [
     date: "2026",
     bgGradient: "from-[#141e26] via-[#0e161c] to-[#090f13]",
     accentBorder: "border-[#38bdf8]/20",
-    mainImage: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=85&w=1200&auto=format&fit=crop",
-    subImage1: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop",
-    subImage2: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop",
+    mainImage: PremiumCreativeAgencyImg,
+    subImage1: PhantomImg,
+    subImage2: Download3Img,
     summary: "Bespoke digital platforms, immersive portfolios, and web applications built with editorial typography, buttery-smooth interactions, and top-tier SEO performance.",
     deliverables: [
       "Custom Responsive UI/UX Systems",
@@ -54,9 +63,9 @@ const SHOWCASE_ITEMS = [
     date: "2026",
     bgGradient: "from-[#221c2b] via-[#17131e] to-[#0f0c14]",
     accentBorder: "border-[#c084fc]/20",
-    mainImage: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=85&w=1200&auto=format&fit=crop",
-    subImage1: "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=600&auto=format&fit=crop",
-    subImage2: "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=600&auto=format&fit=crop",
+    mainImage: Top5SlideshowImg,
+    subImage1: EditingImg,
+    subImage2: ValentinesDayImg,
     summary: "From intricate surface pattern repeats to conceptual collection styling, we merge artisanal sensibilities with contemporary fashion aesthetics.",
     deliverables: [
       "Seamless Surface Pattern Collections",

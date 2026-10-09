@@ -8,11 +8,11 @@ export const STUDIO_INFO = {
   subtitle: "Photography, design, and digital experiences that help your brand shine.",
   establishedYear: 2024,
   location: {
-    city: "Bengaluru",
-    state: "Karnataka",
+    city: "Coimbatore",
+    state: "Tamil Nadu",
     country: "India",
-    address: "Studio 4B, Creative Avenue, Indiranagar, Bengaluru, 560038",
-    googleMapsUrl: "https://maps.google.com/?q=Indiranagar+Bengaluru",
+    address: "Door No :102, Chinasamy naidu road new Siddhapudhur near Aaiyapan kovil temple, Pincode: 641044",
+    googleMapsUrl: "https://maps.google.com/?q=Door+No+102+Chinasamy+naidu+road+new+Siddhapudhur+near+Aaiyapan+kovil+temple+641044",
   },
   contact: {
     email: "hello@sreeshinestudio.com",
@@ -22,10 +22,9 @@ export const STUDIO_INFO = {
     hours: "Monday – Friday: 9:30 AM – 6:30 PM IST",
   },
   socials: [
-    { name: "Instagram", url: "https://instagram.com", handle: "@sreeshinestudio" },
-    { name: "Behance", url: "https://behance.net", handle: "sreeshinestudio" },
-    { name: "LinkedIn", url: "https://linkedin.com", handle: "sree-shine-studio" },
-    { name: "Pinterest", url: "https://pinterest.com", handle: "sreeshinestudio" }
+    { name: "Instagram", url: "https://www.instagram.com/sree_shine_studio?utm_source=qr", handle: "@sree_shine_studio" },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/sree-shine-studio-276570438?utm_source=share_via&utm_content=profile&utm_medium=member_ios", handle: "sree-shine-studio" },
+    { name: "Behance", url: "https://www.behance.net/gokuldesigner1", handle: "gokuldesigner1" }
   ],
   creativePhilosophy: {
     intro: "Sree Shine Studio is a dedicated multidisciplinary creative practice rooted in precision, aesthetic nuance, and storytelling. We partner with emerging visionaries and established brands to sculpt identities, capture luminous imagery, and build tactile physical & digital experiences.",

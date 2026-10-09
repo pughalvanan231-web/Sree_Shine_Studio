@@ -41,68 +41,15 @@ const REVIEWS = [
     timeAgo: "7 months ago",
     stars: 5,
     quote:
-      "The exhibition pavilion designed by Sree Shine Studio became the centerpiece of the entire summit. Incredible execution and responsive support.",
+      "ஸ்ரீ ஷைன் ஸ்டுடியோ வடிவமைத்த கண்காட்சி அரங்கம் ஒட்டுமொத்த நிகழ்வின் மையமாக அமைந்தது. இவர்களின் உழைப்பு மற்றும் சிறப்பான வாடிக்கையாளர் சேவை மிகவும் அருமை.",
   },
 ];
 
 export default function CustomerReviews() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
-  const [hasInteracted, setHasInteracted] = useState(false);
-
-  const prevReview = () => {
-    setHasInteracted(true);
-    setDirection(-1);
-    setCurrentIndex((prev) => (prev === 0 ? REVIEWS.length - 1 : prev - 1));
-  };
-
-  const nextReview = () => {
-    setHasInteracted(true);
-    setDirection(1);
-    setCurrentIndex((prev) => (prev === REVIEWS.length - 1 ? 0 : prev + 1));
-  };
-
-  // Optional subtle auto-cycle
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setDirection(1);
-      setCurrentIndex((prev) => (prev === REVIEWS.length - 1 ? 0 : prev + 1));
-    }, 6000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const current = REVIEWS[currentIndex];
-  const prevItem = REVIEWS[(currentIndex - 1 + REVIEWS.length) % REVIEWS.length];
-  const nextItem = REVIEWS[(currentIndex + 1) % REVIEWS.length];
-
-  const variants = {
-    enter: (direction) => {
-      return {
-        x: direction > 0 ? 150 : -150,
-        opacity: 0,
-        scale: 0.95
-      };
-    },
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1,
-      scale: 1
-    },
-    exit: (direction) => {
-      return {
-        zIndex: 0,
-        x: direction < 0 ? 150 : -150,
-        opacity: 0,
-        scale: 0.95
-      };
-    }
-  };
-
   return (
     <section
       id="customer-reviews"
-      className="relative py-24 sm:py-32 bg-[#0a0a0a] text-[#ECE5D8] border-t border-white/10 overflow-hidden select-none"
+      className="relative py-24 sm:py-32 bg-[#0a0a0a] text-[#ECE5D8] border-t border-white/10 overflow-hidden"
       aria-label="Client Feedback Showcase"
     >
       {/* Ambient Gold Glow Rings in Background (Matching Reference) */}
@@ -117,10 +64,10 @@ export default function CustomerReviews() {
         ))}
       </div>
 
-      <div className="site-container relative z-10">
+      <div className="site-container relative z-10 max-w-6xl mx-auto px-4">
         
         {/* Top Studio Brand Mark Header */}
-        <div className="flex flex-col items-center justify-center mb-10 sm:mb-14 space-y-2">
+        <div className="flex flex-col items-center justify-center mb-16 sm:mb-20 space-y-2">
           <div className="flex items-center gap-2">
             <span className="text-[#C8A25D] text-lg font-bold">✦</span>
             <span className="font-heading text-sm sm:text-base tracking-[0.35em] text-[#ECE5D8] uppercase font-bold">
@@ -130,199 +77,81 @@ export default function CustomerReviews() {
           <span className="text-[10px] uppercase tracking-[0.5em] text-[#C8A25D]">
             STUDIO
           </span>
+          
+          <div className="mt-8 text-center space-y-2">
+            <span className="font-sans text-2xl sm:text-3xl text-[#ECE5D8] font-light block tracking-tight">
+              Client
+            </span>
+            <h2 className="font-heading text-4xl sm:text-6xl font-bold uppercase tracking-tight text-white">
+              Feedback
+            </h2>
+          </div>
         </div>
 
-        {/* Stacked Swipe Cards Container */}
-        <div className="relative max-w-lg mx-auto flex justify-center min-h-[480px] sm:min-h-[520px]">
-          <AnimatePresence custom={direction}>
-            {[...Array(3)].map((_, i) => {
-              const reviewIndex = (currentIndex + i) % REVIEWS.length;
-              const current = REVIEWS[reviewIndex];
-              const isTop = i === 0;
+        {/* 2-Column Grid for Reviews */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10">
+          {REVIEWS.map((current, i) => (
+            <motion.div
+              key={current.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="w-full rounded-[24px] sm:rounded-[38px] bg-white/[0.03] backdrop-blur-md border border-white/10 p-4 sm:p-8 shadow-2xl hover:bg-white/[0.05] hover:border-white/20 transition-all duration-300"
+            >
+              {/* 5 Prominent Gold Stars */}
+              <div className="flex items-center gap-1 mb-5 sm:mb-7">
+                {[...Array(5)].map((_, starIdx) => (
+                  <Star
+                    key={starIdx}
+                    className="w-4 h-4 sm:w-6 sm:h-6 fill-[#FFCC00] text-[#FFCC00] drop-shadow-[0_2px_8px_rgba(255,204,0,0.4)]"
+                  />
+                ))}
+              </div>
 
-              // Calculate stack offsets based on position in stack (0 is top, 1 is middle, 2 is back)
-              const scale = 1 - i * 0.06;
-              const yOffset = i * -24; // Push back cards up slightly
-              const zIndex = REVIEWS.length - i;
-              const opacity = 1 - i * 0.25;
-
-              return (
-                <motion.div
-                  key={current.id}
-                  custom={direction}
-                  initial={{ scale: 0.8, y: -50, opacity: 0, x: 0, rotate: 0 }}
-                  animate={{
-                    scale,
-                    y: yOffset,
-                    zIndex,
-                    opacity,
-                    x: 0,
-                    rotate: 0,
-                  }}
-                  exit={(dir) => ({
-                    x: dir > 0 ? -300 : 300,
-                    y: 100, // swoop down slightly
-                    rotate: dir > 0 ? -15 : 15,
-                    opacity: 0,
-                    scale: 0.9,
-                    zIndex: REVIEWS.length + 1, // Stay on top while exiting
-                  })}
-                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                  drag={isTop ? "x" : false}
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.8}
-                  onDragEnd={(e, { offset }) => {
-                    setHasInteracted(true);
-                    const swipe = offset.x;
-                    if (swipe < -100) {
-                      setDirection(1);
-                      nextReview();
-                    } else if (swipe > 100) {
-                      setDirection(-1);
-                      prevReview();
-                    }
-                  }}
-                  className={`absolute top-0 w-full rounded-[32px] sm:rounded-[38px] bg-white/[0.05] backdrop-blur-xl border border-white/20 p-6 sm:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.85)] ${
-                    isTop ? "cursor-grab active:cursor-grabbing" : "pointer-events-none"
-                  }`}
-                >
-                  {/* Title: Client (Light) / Feedback (Bold) */}
-                  <div className="space-y-0.5 mb-6">
-                    <span className="font-sans text-2xl sm:text-3xl text-[#ECE5D8] font-light block tracking-tight">
-                      Client
-                    </span>
-                    <h2 className="font-heading text-3xl sm:text-5xl font-bold uppercase tracking-tight text-white">
-                      Feedback
-                    </h2>
+              {/* Dark Review Bubble */}
+              <div className="rounded-[20px] bg-[#181818]/80 border border-white/5 p-4 sm:p-6 shadow-inner space-y-3 sm:space-y-4">
+                {/* Reviewer Header */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    {/* Avatar */}
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-[#DFB873] to-[#A67C1E] text-black font-bold text-sm sm:text-base flex items-center justify-center shadow-md shrink-0">
+                      {current.initial}
+                    </div>
+                    {/* Name & Subtitle */}
+                    <div className="min-w-0">
+                      <h3 className="font-heading text-xs sm:text-base font-bold text-[#ECE5D8] tracking-wide truncate">
+                        {current.name}
+                      </h3>
+                      <span className="text-[10px] sm:text-[11px] text-[#9CA3AF] block font-sans truncate">
+                        {current.subtitle}
+                      </span>
+                    </div>
                   </div>
+                  <MoreVertical className="w-4 h-4 text-[#6B7280] shrink-0" />
+                </div>
 
-                  {/* 5 Prominent Gold Stars */}
-                  <div className="flex items-center gap-1.5 mb-7">
-                    {[...Array(5)].map((_, starIdx) => (
-                      <Star
-                        key={starIdx}
-                        className="w-5 h-5 sm:w-6 sm:h-6 fill-[#FFCC00] text-[#FFCC00] drop-shadow-[0_2px_8px_rgba(255,204,0,0.4)]"
-                      />
+                {/* Stars & Time */}
+                <div className="flex items-center gap-2 text-[10px] sm:text-xs">
+                  <div className="flex text-[#FFCC00] gap-0.5">
+                    {[...Array(current.stars)].map((_, starIdx) => (
+                      <Star key={starIdx} className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-[#FFCC00] text-[#FFCC00]" />
                     ))}
                   </div>
+                  <span className="text-[#9CA3AF]">{current.timeAgo}</span>
+                </div>
 
-                  {/* Dark Review Bubble */}
-                  <div className="rounded-2xl bg-[#181818]/95 border border-white/10 p-5 sm:p-6 shadow-inner space-y-4">
-                    {/* Reviewer Header */}
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        {/* Avatar */}
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#DFB873] to-[#A67C1E] text-black font-bold text-base flex items-center justify-center shadow-md">
-                          {current.initial}
-                        </div>
-                        {/* Name & Subtitle */}
-                        <div>
-                          <h3 className="font-heading text-sm sm:text-base font-bold text-[#ECE5D8] tracking-wide">
-                            {current.name}
-                          </h3>
-                          <span className="text-[11px] text-[#9CA3AF] block font-sans">
-                            {current.subtitle}
-                          </span>
-                        </div>
-                      </div>
-                      <MoreVertical className="w-4 h-4 text-[#6B7280]" />
-                    </div>
-
-                    {/* Stars & Time */}
-                    <div className="flex items-center gap-2 text-xs">
-                      <div className="flex text-[#FFCC00] gap-0.5">
-                        {[...Array(current.stars)].map((_, starIdx) => (
-                          <Star key={starIdx} className="w-3.5 h-3.5 fill-[#FFCC00] text-[#FFCC00]" />
-                        ))}
-                      </div>
-                      <span className="text-[#9CA3AF] text-[11px]">{current.timeAgo}</span>
-                    </div>
-
-                    {/* Review Body Text */}
-                    <p className="text-xs sm:text-sm text-[#D1D5DB] leading-relaxed font-sans pt-1">
-                      "{current.quote}"
-                    </p>
-                  </div>
-                  
-                  {/* Desktop Only: Drag Hint */}
-                  {isTop && !hasInteracted && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ 
-                        opacity: [0, 1, 1, 0],
-                        x: [0, -30, 30, 0]
-                      }}
-                      transition={{ 
-                        repeat: Infinity, 
-                        duration: 3, 
-                        ease: "easeInOut" 
-                      }}
-                      className="absolute inset-0 m-auto w-24 h-24 flex flex-col items-center justify-center text-white bg-black/60 rounded-full backdrop-blur-sm z-50 pointer-events-none shadow-2xl"
-                    >
-                      <Hand className="w-8 h-8 mb-1 animate-pulse" />
-                      <span className="text-[9px] uppercase tracking-widest font-bold">Swipe</span>
-                    </motion.div>
-                  )}
-                </motion.div>
-              );
-            }).reverse()}
-          </AnimatePresence>
-        </div>
-
-        {/* Mobile Swipe Hint and Nav Dots */}
-        <div className="relative max-w-lg mx-auto flex flex-col items-center mt-12 sm:mt-8 z-20">
-          <div className="flex items-center justify-between w-full px-6">
-            <button
-              type="button"
-              onClick={() => {
-                setDirection(-1);
-                prevReview();
-              }}
-              className="w-10 h-10 rounded-full bg-white/5 hover:bg-[#C8A25D] hover:text-black transition-colors flex items-center justify-center text-[#ECE5D8]"
-              aria-label="Previous client review"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-
-            {/* Dot Indicators */}
-            <div className="flex items-center gap-2">
-              {REVIEWS.map((_, idx) => (
-                <button
-                  key={idx}
-                  type="button"
-                  onClick={() => {
-                    setDirection(idx > currentIndex ? 1 : -1);
-                    setCurrentIndex(idx);
-                  }}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    currentIndex === idx
-                      ? "w-6 bg-[#C8A25D]"
-                      : "w-2 bg-white/20 hover:bg-white/40"
-                  }`}
-                  aria-label={`Go to slide ${idx + 1}`}
-                />
-              ))}
-            </div>
-
-            <button
-              type="button"
-              onClick={() => {
-                setDirection(1);
-                nextReview();
-              }}
-              className="w-10 h-10 rounded-full bg-white/5 hover:bg-[#C8A25D] hover:text-black transition-colors flex items-center justify-center text-[#ECE5D8]"
-              aria-label="Next client review"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
-          <span className="sm:hidden text-[10px] text-white/30 uppercase tracking-widest mt-6 block">
-            Swipe cards to navigate
-          </span>
+                {/* Review Body Text */}
+                <p className="text-xs sm:text-base text-[#D1D5DB] leading-relaxed font-sans pt-1">
+                  "{current.quote}"
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
         {/* Bottom Thank You Pill (Matching Reference) */}
-        <div className="mt-12 sm:mt-16 text-center max-w-xl mx-auto px-4">
+        <div className="mt-20 sm:mt-24 text-center max-w-xl mx-auto px-4">
           <div className="inline-block px-6 sm:px-10 py-3.5 rounded-full border border-[#C8A25D]/40 bg-black/60 backdrop-blur-md shadow-lg">
             <p className="text-xs sm:text-sm text-[#ECE5D8] italic font-serif leading-relaxed">
               Thank you so much for your valuable feedback! We're thrilled you had a great experience and truly appreciate your support.

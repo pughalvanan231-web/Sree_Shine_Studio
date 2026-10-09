@@ -177,9 +177,14 @@ export default function ContactPage() {
                 <div className="space-y-6 text-sm text-[#ECE5D8]">
                   <div>
                     <span className="text-[11px] uppercase tracking-wider text-[#6B7280] font-semibold block">Location</span>
-                    <p className="mt-1 text-[#9CA3AF] leading-relaxed">
+                    <a
+                      href={STUDIO_INFO.location.googleMapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-1 block text-[#9CA3AF] leading-relaxed hover:text-[#C8A25D] transition-colors"
+                    >
                       {STUDIO_INFO.location.address}
-                    </p>
+                    </a>
                   </div>
 
                   <div>
