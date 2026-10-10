@@ -15,10 +15,10 @@ export const STUDIO_INFO = {
     googleMapsUrl: "https://maps.google.com/?q=Door+No+102+Chinasamy+naidu+road+new+Siddhapudhur+near+Aaiyapan+kovil+temple+641044",
   },
   contact: {
-    email: "hello@sreeshinestudio.com",
-    phone: "+91 98765 43210",
-    formattedPhone: "+91 98765 43210",
-    whatsapp: "+919876543210",
+    email: "sreeshinesstudio@gmail.com",
+    phone: "+91 95247 80695",
+    formattedPhone: "+91 95247 80695",
+    whatsapp: "+919524780695",
     hours: "Monday – Friday: 9:30 AM – 6:30 PM IST",
   },
   socials: [
