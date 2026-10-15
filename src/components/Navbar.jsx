@@ -175,7 +175,9 @@ export default function Navbar() {
 
           <div className="site-container py-6 border-t border-white/10 text-xs text-[#9CA3AF] flex flex-col sm:flex-row justify-between items-center gap-2">
             <span>Sree Shine Studio</span>
-            <span>hello@sreeshinestudio.com</span>
+            <a href="mailto:sreeshinestudio@gmail.com" className="hover:text-[#C8A25D] transition-colors">
+              sreeshinestudio@gmail.com
+            </a>
           </div>
         </div>
       )}
